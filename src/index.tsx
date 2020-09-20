@@ -1,2 +1,4 @@
 import '@app/app.module';
-import 'src/styles.scss';
+import './styles.scss';
+import '@syncfusion/ej2-react-diagrams/styles/material.css';
+import 'antd/dist/antd.css';
