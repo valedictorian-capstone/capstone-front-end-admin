@@ -1,27 +1,27 @@
-export class WorkFlowConnectionVM {
-  public readonly Id!: string;
-  public readonly Type!: string;
-  public readonly Description!: string;
-  public readonly FromWorkFlowStepId!: string;
-  public readonly ToWorkFlowStepId!: string;
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface WorkFlowConnectionVM {
+  readonly Id: string;
+  readonly Type: string;
+  readonly Description: string;
+  readonly FromWorkFlowStepId: string;
+  readonly ToWorkFlowStepId: string;
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class WorkFlowConnectionCM {
-  public readonly Type!: string;
-  public readonly Description!: string;
-  public readonly FromWorkFlowStepId!: string;
-  public readonly ToWorkFlowStepId!: string;
+export interface WorkFlowConnectionCM {
+  readonly Type: string;
+  readonly Description: string;
+  readonly FromWorkFlowStepId: string;
+  readonly ToWorkFlowStepId: string;
 }
 
-export class WorkFlowConnectionUM {
-  public readonly Id!: string;
-  public readonly Type!: string;
-  public readonly Description!: string;
-  public readonly FromWorkFlowStepId!: string;
-  public readonly ToWorkFlowStepId!: string;
+export interface WorkFlowConnectionUM {
+  readonly Id: string;
+  readonly Type: string;
+  readonly Description: string;
+  readonly FromWorkFlowStepId: string;
+  readonly ToWorkFlowStepId: string;
 }

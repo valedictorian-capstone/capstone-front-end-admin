@@ -1,1 +1,2 @@
-import 'src/app/app.module';
+import '@app/app.module';
+import 'src/styles.scss';

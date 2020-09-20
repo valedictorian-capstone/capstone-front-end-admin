@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import 'src/styles.scss';
 import * as serviceWorker from 'src/worker.service';
-import { AppComponent } from 'src/app/app.component';
-import { AppRoutes } from 'src/app/app.routing';
+import { AppComponent } from '@app/app.component';
+import { AppRoutes } from '@app/app.routing';
+import { useStoreModule } from '@app/stores';
 ReactDOM.render(
-  <React.StrictMode>
-      <AppComponent>
-        <AppRoutes/>
-      </AppComponent>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  <Provider store={useStoreModule()}>
+    <AppComponent>
+      <AppRoutes />
+    </AppComponent>
+  </Provider>,
+  document.getElementById('root'));
 serviceWorker.register();

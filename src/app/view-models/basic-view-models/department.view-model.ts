@@ -1,31 +1,31 @@
-import { AccountDepartmentVM } from "./account-department.view-model";
+import { AccountVM } from '../account-view-models';
 
-export class DepartmentVM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Level!: string;
-  public readonly ParentId!: string;
-  public readonly AccountDepartmentVMs!: AccountDepartmentVM[];
-  public readonly Childrens!: DepartmentVM[];
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface DepartmentVM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
+  readonly Level: string;
+  readonly ParentId: string;
+  readonly Accounts: AccountVM[];
+  readonly Childrens: DepartmentVM[];
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class DepartmentCM {
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Level!: string;
-  public readonly ParentId!: string;
+export interface DepartmentCM {
+  readonly Name: string;
+  readonly Description: string;
+  readonly Level: string;
+  readonly ParentId: string;
 }
 
-export class DepartmentUM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Level!: string;
-  public readonly ParentId!: string;
+export interface DepartmentUM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
+  readonly Level: string;
+  readonly ParentId: string;
 }

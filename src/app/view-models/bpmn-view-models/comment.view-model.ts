@@ -1,24 +1,24 @@
-export class CommentVM {
-  public readonly Id!: string;
-  public readonly AccountId!: string;
-  public readonly WorkFlowStepInstanceId!: string;
-  public readonly Value!: string;
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface CommentVM {
+  readonly Id: string;
+  readonly AccountId: string;
+  readonly WorkFlowStepInstanceId: string;
+  readonly Value: string;
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class CommentCM {
-  public readonly AccountId!: string;
-  public readonly WorkFlowStepInstanceId!: string;
-  public readonly Value!: string;
+export interface CommentCM {
+  readonly AccountId: string;
+  readonly WorkFlowStepInstanceId: string;
+  readonly Value: string;
 }
 
-export class CommentUM {
-  public readonly Id!: string;
-  public readonly AccountId!: string;
-  public readonly WorkFlowStepInstanceId!: string;
-  public readonly Value!: string;
+export interface CommentUM {
+  readonly Id: string;
+  readonly AccountId: string;
+  readonly WorkFlowStepInstanceId: string;
+  readonly Value: string;
 }

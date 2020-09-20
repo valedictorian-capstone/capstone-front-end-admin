@@ -1,26 +1,26 @@
-import { RolePermissionVM } from "../bpmn-view-models";
-import { AccountRoleVM } from "./account-role.view-model";
+import { AccountVM } from '../account-view-models';
+import { PermissionVM } from './permission.view-model';
 
-export class RoleVM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly AccountRoleVMs!: AccountRoleVM[];
-  public readonly RolePermissionVMs!: RolePermissionVM[];
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface RoleVM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
+  readonly Accounts: AccountVM[];
+  readonly Permissions: PermissionVM[];
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class RoleCM {
-  public readonly Name!: string;
-  public readonly Description!: string;
+export interface RoleCM {
+  readonly Name: string;
+  readonly Description: string;
 }
 
-export class RoleUM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
+export interface RoleUM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
 }

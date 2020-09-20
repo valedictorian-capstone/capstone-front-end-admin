@@ -1,0 +1,23 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": ["./"],
+                "alias": {
+                    "src": "./src",
+                    "@environments": "./src/environments",
+                    "@environments/*": "./src/environments/*",
+                    "@modules": "./src/app/modules",
+                    "@services": "./src/app/services",
+                    "@store": "./src/app/store",
+                    "@store/*": "./src/app/store/*",
+                    "@extras/*": "./src/app/extras/*",
+                    "@view-models": "./src/app/view-models",
+                    "@app/*": "./src/app/*"
+                },
+            },
+        ],
+    ],
+}

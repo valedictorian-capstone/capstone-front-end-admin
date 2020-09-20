@@ -1,31 +1,31 @@
-import { WorkFlowConditionVM } from "./work-flow-condition.view-model";
-import { WorkFlowInstanceVM } from "./work-flow-instance.view-model";
-import { WorkFlowStepVM } from "./work-flow-step.view-model";
+import { ConditionVM } from './condition.view-model';
+import { WorkFlowInstanceVM } from './work-flow-instance.view-model';
+import { WorkFlowStepVM } from './work-flow-step.view-model';
 
-export class WorkFlowVM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Code!: string;
-  public readonly WorkFlowConditionVMs!: WorkFlowConditionVM[];
-  public readonly WorkFlowStepVMs!: WorkFlowStepVM[];
-  public readonly WorkFlowInstanceVMs!: WorkFlowInstanceVM[];
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface WorkFlowVM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
+  readonly Code: string;
+  readonly Conditions: ConditionVM[];
+  readonly WorkFlowStepVMs: WorkFlowStepVM[];
+  readonly WorkFlowInstanceVMs: WorkFlowInstanceVM[];
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class WorkFlowCM {
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Code!: string;
+export interface WorkFlowCM {
+  readonly Name: string;
+  readonly Description: string;
+  readonly Code: string;
 }
 
-export class WorkFlowUM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Description!: string;
-  public readonly Code!: string;
+export interface WorkFlowUM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Description: string;
+  readonly Code: string;
 }

@@ -1,36 +1,36 @@
-import { AccountWorkFlowStepInstanceVM } from "./account-work-flow-step-instance.view-model";
-import { CommentVM } from "./comment.view-model";
-import { CustomerWorkFlowStepInstanceVM } from "./customer-work-flow-step-instance.view-model";
-import { FormDataVM } from "./form-data.view-model";
+import { AccountVM } from '../account-view-models';
+import { CustomerVM } from '../customer-view-models';
+import { FormDataVM } from '../form-view-models';
+import { CommentVM } from './comment.view-model';
 
-export class WorkFlowStepInstanceVM {
-  public readonly Id!: string;
-  public readonly Status!: string;
-  public readonly Note!: string;
-  public readonly WorkFlowStepId!: string;
-  public readonly WorkFlowInstanceId!: string;
-  public readonly CommentVMs!: CommentVM[];
-  public readonly CustomerWorkFlowStepInstanceVMs!: CustomerWorkFlowStepInstanceVM[];
-  public readonly AccountWorkFlowStepInstanceVMs!: AccountWorkFlowStepInstanceVM[];
-  public readonly FormDataVMs!: FormDataVM[];
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface WorkFlowStepInstanceVM {
+  readonly Id: string;
+  readonly Status: string;
+  readonly Note: string;
+  readonly WorkFlowStepId: string;
+  readonly WorkFlowInstanceId: string;
+  readonly CommentVMs: CommentVM[];
+  readonly Customers: CustomerVM[];
+  readonly Accounts: AccountVM[];
+  readonly FormDataVMs: FormDataVM[];
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class WorkFlowStepInstanceCM {
-  public readonly Status!: string;
-  public readonly Note!: string;
-  public readonly WorkFlowStepId!: string;
-  public readonly WorkFlowInstanceId!: string;
+export interface WorkFlowStepInstanceCM {
+  readonly Status: string;
+  readonly Note: string;
+  readonly WorkFlowStepId: string;
+  readonly WorkFlowInstanceId: string;
 }
 
-export class WorkFlowStepInstanceUM {
-  public readonly Id!: string;
-  public readonly Status!: string;
-  public readonly Note!: string;
-  public readonly WorkFlowStepId!: string;
-  public readonly WorkFlowInstanceId!: string;
+export interface WorkFlowStepInstanceUM {
+  readonly Id: string;
+  readonly Status: string;
+  readonly Note: string;
+  readonly WorkFlowStepId: string;
+  readonly WorkFlowInstanceId: string;
 }

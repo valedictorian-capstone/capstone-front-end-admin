@@ -1,27 +1,50 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react",
-    "baseUrl": "."
+      "target": "es5",
+      "lib": [
+          "dom",
+          "dom.iterable",
+          "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "noEmit": true,
+      "jsx": "react",
+      "baseUrl": ".",
+      "paths": {
+          "@stores": ["./src/app/stores"],
+          "@stores/*": ["./src/app/stores/*"],
+          "@environments/*": ["./src/environments/*"],
+          "@extras": ["./src/app/extras"],
+          "@extras/*": ["./src/app/extras/*"],
+          "@modules": ["./src/app/modules"],
+          "@view-models": ["./src/app/view-models"],
+          "@services": ["./src/app/services"],
+          "@app/*": ["./src/app/*"]
+      },
+      "isolatedModules": true,
+      "strict": true,
+      "plugins": [
+        {"name": "typescript-tslint-plugin"}
+      ]
   },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/worker.service.ts"
+  ],
   "include": [
-    "src",
-    "babel.config.js"
+      "src",
+      ".babelrc"
   ]
 }

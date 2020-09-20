@@ -1,24 +1,24 @@
-import { WorkFlowConditionVM } from "./work-flow-condition.view-model";
+import { WorkFlowVM } from './work-flow.view-model';
 
-export class ConditionVM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Value!: string;
-  public readonly WorkFlowConditionVMs!: WorkFlowConditionVM[];
-  public readonly IsDelete!: boolean;
-  public readonly CreatedBy!: string;
-  public readonly UpdatedBy!: string;
-  public readonly CreatedAt!: Date;
-  public readonly UpdatedAt!: Date;
+export interface ConditionVM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Value: string;
+  readonly WorkFlows: WorkFlowVM[];
+  readonly IsDelete: boolean;
+  readonly CreatedBy: string;
+  readonly UpdatedBy: string;
+  readonly CreatedAt: Date;
+  readonly UpdatedAt: Date;
 }
 
-export class ConditionCM {
-  public readonly Name!: string;
-  public readonly Value!: string;
+export interface ConditionCM {
+  readonly Name: string;
+  readonly Value: string;
 }
 
-export class ConditionUM {
-  public readonly Id!: string;
-  public readonly Name!: string;
-  public readonly Value!: string;
+export interface ConditionUM {
+  readonly Id: string;
+  readonly Name: string;
+  readonly Value: string;
 }
