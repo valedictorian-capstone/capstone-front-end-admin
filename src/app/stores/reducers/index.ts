@@ -5,7 +5,7 @@ import { useDepartmentReducer, useGroupReducer, usePatternReducer, usePermission
 import { useCommentReducer, useConditionReducer, useWorkFlowConnectionReducer, useWorkFlowInstanceReducer, useWorkFlowReducer, useWorkFlowStepInstanceReducer, useWorkFlowStepReducer } from './bpmn-reducers';
 import { useCustomerExtraDataReducer, useCustomerExtraInformationDataReducer, useCustomerExtraInformationReducer, useCustomerReducer } from './customer-reducers';
 import { useFormControlReducer, useFormDataReducer, useFormValueReducer, useFormGroupReducer } from './form-reducers';
-import { useLoadingReducer } from './extra-reducers';
+import { useLanguageReducer, useLoadingReducer } from './extra-reducers';
 
 export const useRootReducer = (): Reducer<CombinedState<RootState>> => (combineReducers<RootState>({
   department: useDepartmentReducer,
@@ -14,6 +14,7 @@ export const useRootReducer = (): Reducer<CombinedState<RootState>> => (combineR
   permission: usePermissionReducer,
   role: useRoleReducer,
   loading: useLoadingReducer,
+  language: useLanguageReducer,
   comment: useCommentReducer,
   condition: useConditionReducer,
   workFlowConnection: useWorkFlowConnectionReducer,

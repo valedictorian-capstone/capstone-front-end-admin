@@ -5,45 +5,45 @@ import { WORK_FLOW_TYPE } from '@stores/types';
 
 export const useWorkFlowAction = (): ActionCreatorsMapObject<WorkFlow> => {
   const reset = (): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.RESET.FETCH, payload: { data: WORK_FLOW_TYPE.RESET.FETCH } });
+    return { type: WORK_FLOW_TYPE.RESET.FETCH, payload: { data: WORK_FLOW_TYPE.RESET.FETCH } };
   };
   const getAll = (): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.GETALL.FETCH, payload: { data: WORK_FLOW_TYPE.GETALL.FETCH } });
+    return { type: WORK_FLOW_TYPE.GETALL.FETCH, payload: { data: WORK_FLOW_TYPE.GETALL.FETCH } };
   };
   const getAllSuccess = (data: WorkFlowVM[]): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.GETALL.SUCCESS, payload: { data } });
+    return { type: WORK_FLOW_TYPE.GETALL.SUCCESS, payload: { data } };
   };
   const getAllError = (error: any): WorkFlow => {
     console.log(error.response);
-    return new WorkFlow({ type: WORK_FLOW_TYPE.GETALL.ERROR, payload: { data: WORK_FLOW_TYPE.GETALL.ERROR } });
+    return { type: WORK_FLOW_TYPE.GETALL.ERROR, payload: { data: WORK_FLOW_TYPE.GETALL.ERROR } };
   };
   const create = (data: WorkFlowCM): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.CREATE.FETCH, payload: { data } });
+    return { type: WORK_FLOW_TYPE.CREATE.FETCH, payload: { data } };
   };
   const createSuccess = (data: WorkFlowVM): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.CREATE.SUCCESS, payload: { data } });
+    return { type: WORK_FLOW_TYPE.CREATE.SUCCESS, payload: { data } };
   };
   const createError = (error: any): WorkFlow => {
     console.log(error);
-    return new WorkFlow({ type: WORK_FLOW_TYPE.CREATE.ERROR, payload: { data: WORK_FLOW_TYPE.CREATE.ERROR } });
+    return { type: WORK_FLOW_TYPE.CREATE.ERROR, payload: { data: WORK_FLOW_TYPE.CREATE.ERROR } };
   };
   const update = (data: WorkFlowUM): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.UPDATE.FETCH, payload: { data } });
+    return { type: WORK_FLOW_TYPE.UPDATE.FETCH, payload: { data } };
   };
   const updateSuccess = (data: WorkFlowVM): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.UPDATE.SUCCESS, payload: { data } });
+    return { type: WORK_FLOW_TYPE.UPDATE.SUCCESS, payload: { data } };
   };
   const updateError = (error: any): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.UPDATE.ERROR, payload: { data: WORK_FLOW_TYPE.UPDATE.ERROR} });
+    return { type: WORK_FLOW_TYPE.UPDATE.ERROR, payload: { data: WORK_FLOW_TYPE.UPDATE.ERROR} };
   };
   const remove = (data: string): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.REMOVE.FETCH, payload: { data } });
+    return { type: WORK_FLOW_TYPE.REMOVE.FETCH, payload: { data } };
   };
   const removeSuccess = (data: string): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.REMOVE.SUCCESS, payload: { data } });
+    return { type: WORK_FLOW_TYPE.REMOVE.SUCCESS, payload: { data } };
   };
   const removeError = (error: any): WorkFlow => {
-    return new WorkFlow({ type: WORK_FLOW_TYPE.REMOVE.ERROR, payload: {data: WORK_FLOW_TYPE.REMOVE.ERROR} });
+    return { type: WORK_FLOW_TYPE.REMOVE.ERROR, payload: {data: WORK_FLOW_TYPE.REMOVE.ERROR} };
   };
   const actions: ActionCreatorsMapObject<WorkFlow> = {
     reset,

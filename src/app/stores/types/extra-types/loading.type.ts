@@ -1,4 +1,4 @@
-export const LOADINGTYPE = {
+export const LOADING_TYPE = {
   HIDE: 'LOADING/HIDE',
   SHOW: 'LOADING/SHOW',
 };

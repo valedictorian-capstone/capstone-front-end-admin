@@ -1,14 +1,15 @@
+import { ActionCreatorsMapObject } from 'redux';
 import { Loading } from '@stores/models';
-import { LOADINGTYPE } from '@stores/types';
+import { LOADING_TYPE } from '@stores/types';
 
-export const useLoadingAction = () => {
+export const useLoadingAction = (): ActionCreatorsMapObject<Loading> => {
 
   const showLoader = (): Loading => {
-    return new Loading({ type: LOADINGTYPE.HIDE, payload: { status: false } });
+    return { type: LOADING_TYPE.HIDE, payload: { status: false } };
 
   };
   const hideLoader = (): Loading => {
-    return new Loading({ type: LOADINGTYPE.HIDE, payload: { status: false } });
+    return { type: LOADING_TYPE.HIDE, payload: { status: false } };
   };
   return { showLoader, hideLoader };
 };

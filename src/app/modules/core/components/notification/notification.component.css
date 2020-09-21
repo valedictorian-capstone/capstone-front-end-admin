@@ -1,0 +1,11 @@
+.tabs :global .ant-tabs-nav-scroll {
+    text-align: center;
+}
+
+.tabs :global .ant-tabs-nav-list {
+    padding-left: 30px;
+}
+
+.tabs :global .ant-tabs-bar {
+    margin-bottom: 4px;
+}

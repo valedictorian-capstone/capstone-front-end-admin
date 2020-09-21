@@ -1,5 +1,5 @@
 import { DepartmentState, GroupState, PatternState, PermissionState, RoleState } from './basic-states';
-import { LoadingState } from './extra-states';
+import { LanguageState, LoadingState } from './extra-states';
 import { CommentState, ConditionState, WorkFlowConnectionState, WorkFlowInstanceState, WorkFlowState, WorkFlowStepInstanceState, WorkFlowStepState } from './bpmn-states';
 import { CustomerExtraDataState, CustomerExtraInformationDataState, CustomerExtraInformationState, CustomerState } from './customer-states';
 import { AccountExtraDataState, AccountExtraInformationDataState, AccountExtraInformationState, AccountState } from './account-states';
@@ -18,6 +18,7 @@ export class RootState {
   permission: PermissionState;
   role: RoleState;
   loading: LoadingState;
+  language: LanguageState;
   comment: CommentState;
   condition: ConditionState;
   workFlowConnection: WorkFlowConnectionState;
@@ -44,6 +45,7 @@ export class RootState {
     this.permission = props.permission;
     this.role = props.role;
     this.loading = props.loading;
+    this.language = props.language;
     this.comment = props.comment;
     this.condition = props.condition;
     this.workFlowConnection = props.workFlowConnection;

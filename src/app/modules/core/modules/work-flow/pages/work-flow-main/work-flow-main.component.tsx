@@ -2,10 +2,12 @@ import {
   BpmnDiagrams, ConnectorModel, DataBinding, DiagramComponent, DiagramContextMenu, Inject, NodeModel, PointPortModel, PortVisibility, SymbolPaletteComponent,
   UndoRedo,
 } from '@syncfusion/ej2-react-diagrams';
-import { Col, Row } from 'antd';
-import React from 'react';
+import { Col, Row, Collapse } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { uuid } from 'uuidv4';
 import './work-flow-main.component.scss';
 export const WorkFlowMainComponent = (props: {}) => {
+  const { Panel } = Collapse;
   let diagramInstance: DiagramComponent | any = new DiagramComponent({});
   const getPorts = (id: string): PointPortModel[] => {
     return [
@@ -252,73 +254,188 @@ export const WorkFlowMainComponent = (props: {}) => {
   return (
     <Row gutter={16}>
       <Col className="gutter-row" span={6}>
-        <SymbolPaletteComponent id="symbolpalette" expandMode="Multiple" palettes={[
-          {
-            id: 'event',
-            expanded: true,
-            symbols: events,
-            title: 'Event Shapes',
-          },
-          {
-            id: 'gateway',
-            expanded: true,
-            symbols: gateways,
-            title: 'Gateway Shapes',
-          },
-          {
-            id: 'activity',
-            expanded: true,
-            symbols: activitys,
-            title: 'Activity Shapes',
-          },
-          {
-            id: 'message',
-            expanded: true,
-            symbols: messages,
-            title: 'Message Shapes',
-          },
-          {
-            id: 'data-object',
-            expanded: true,
-            symbols: dataobjects,
-            title: 'DataObject Shapes',
-          },
-          {
-            id: 'data-source',
-            expanded: true,
-            symbols: datasources,
-            title: 'DataSource Shapes',
-          },
-          {
-            id: 'group',
-            expanded: true,
-            symbols: groups,
-            title: 'Group Shapes',
-          },
-          {
-            id: 'text-annotaion',
-            expanded: true,
-            symbols: textannotations,
-            title: 'Text Annotation Shapes',
-          },
-          {
-            id: 'connectors',
-            expanded: true,
-            symbols: connectors,
-            title: 'Connectors',
-          },
-        ]}
-          enableAnimation={true}
-          width={'100%'}
-          height={window.innerHeight - 160}
-          style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
-          symbolHeight={80}
-          symbolWidth={80}
-          symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
-          getSymbolInfo={() => {
-            return { fit: true };
-          }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
-        </SymbolPaletteComponent>
+        <Collapse>
+          <Panel header="Event Shapes" key="1">
+            <SymbolPaletteComponent id="event-palette" expandMode="Single" palettes={[
+              {
+                id: 'event',
+                expanded: true,
+                symbols: events,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="Gateway Shapes" key="2">
+            <SymbolPaletteComponent id="gateway-palette" expandMode="Single" palettes={[
+              {
+                id: 'gateway',
+                expanded: true,
+                symbols: gateways,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="Activity Shapes" key="3">
+            <SymbolPaletteComponent id="activity-palette" expandMode="Single" palettes={[
+              {
+                id: 'activity',
+                expanded: true,
+                symbols: activitys,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="Message Shapes" key="4">
+            <SymbolPaletteComponent id="message-palette" expandMode="Single" palettes={[
+              {
+                id: 'message',
+                expanded: true,
+                symbols: messages,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="DataObject Shapes" key="5">
+            <SymbolPaletteComponent id="data-object-palette" expandMode="Single" palettes={[
+              {
+                id: 'data-object',
+                expanded: true,
+                symbols: dataobjects,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="DataSource Shapes" key="6">
+            <SymbolPaletteComponent id="data-source-palette" expandMode="Single" palettes={[
+              {
+                id: 'data-source',
+                expanded: true,
+                symbols: datasources,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="Group Shapes" key="7">
+            <SymbolPaletteComponent id="group-palette" expandMode="Single" palettes={[
+              {
+                id: 'group',
+                expanded: true,
+                symbols: groups,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="TextAnnotation Shapes" key="8">
+            <SymbolPaletteComponent id="text-annotation-palette" expandMode="Single" palettes={[
+              {
+                id: 'text-annotation',
+                expanded: true,
+                symbols: textannotations,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+          <Panel header="Connectors" key="9">
+            <SymbolPaletteComponent id="connector-palette" expandMode="Single" palettes={[
+              {
+                id: 'connectors',
+                expanded: true,
+                symbols: connectors,
+              },
+            ]}
+              enableAnimation={true}
+              width={'100%'}
+              height={'100%'}
+              style={{ maxHeight: window.innerHeight - 160, overflow: 'auto' }}
+              symbolHeight={80}
+              symbolWidth={80}
+              symbolMargin={{ left: 15, right: 15, top: 15, bottom: 15 }}
+              getSymbolInfo={() => {
+                return { fit: true };
+              }}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+            </SymbolPaletteComponent>
+          </Panel>
+        </Collapse>,
       </Col>
       <Col className="gutter-row" span={18} style={{ padding: 0 }}>
         <DiagramComponent ref={diagram => (diagramInstance = diagram)} click={() => {
@@ -328,9 +445,22 @@ export const WorkFlowMainComponent = (props: {}) => {
           console.log('diagram: ', JSON.parse(diagramInstance.saveDiagram()));
           console.log('---------------------------------------------------------------------');
           console.log('');
-        }} id="diagram" width={'100%'} height={window.innerHeight - 160}><Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
+        }}
+          id="diagram"
+          width={'100%'}
+          height={window.innerHeight - 160}
+          doubleClick={(e) => console.log(e)}
+          dragEnter={(e) => {
+            if (e && e.element) {
+              e.element.id = uuid();
+            }
+          }}
+          title={'ABC'}
+        >
+          <Inject services={[BpmnDiagrams, UndoRedo, DiagramContextMenu, DataBinding]} />
         </DiagramComponent>
       </Col>
     </Row>
+
   );
 };

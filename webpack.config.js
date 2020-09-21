@@ -19,10 +19,29 @@ module.exports = () => {
         mode: 'development',
         module: {
             rules: [{
-                test: /\.tsx?$/,
-                use: 'babel-loader',
-                exclude: /node_modules/,
-            }]
+                    test: /\.tsx?$/,
+                    use: 'babel-loader',
+                    exclude: /node_modules/,
+                },
+                {
+                    test: /\.(sa|sc|c)ss$/,
+                    use: [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true, //remove this or set to false
+                                importLoaders: 1,
+                                localIdentName: "[name]_[local]_[hash:base64:5]", //remove this 
+                            }
+                        },
+                        'sass-loader'
+                    ]
+                }
+            ],
+        },
+        options: {
+
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),

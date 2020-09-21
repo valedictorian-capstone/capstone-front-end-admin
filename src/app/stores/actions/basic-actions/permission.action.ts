@@ -5,45 +5,45 @@ import { PERMISSION_TYPE } from '@stores/types';
 
 export const usePermissionAction = (): ActionCreatorsMapObject<Permission> => {
   const reset = (): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.RESET.FETCH, payload: { data: PERMISSION_TYPE.RESET.FETCH } });
+    return { type: PERMISSION_TYPE.RESET.FETCH, payload: { data: PERMISSION_TYPE.RESET.FETCH } };
   };
   const getAll = (): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.GETALL.FETCH, payload: { data: PERMISSION_TYPE.GETALL.FETCH } });
+    return { type: PERMISSION_TYPE.GETALL.FETCH, payload: { data: PERMISSION_TYPE.GETALL.FETCH } };
   };
   const getAllSuccess = (data: PermissionVM[]): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.GETALL.SUCCESS, payload: { data } });
+    return { type: PERMISSION_TYPE.GETALL.SUCCESS, payload: { data } };
   };
   const getAllError = (error: any): Permission => {
     console.log(error.response);
-    return new Permission({ type: PERMISSION_TYPE.GETALL.ERROR, payload: { data: PERMISSION_TYPE.GETALL.ERROR } });
+    return { type: PERMISSION_TYPE.GETALL.ERROR, payload: { data: PERMISSION_TYPE.GETALL.ERROR } };
   };
   const create = (data: PermissionCM): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.CREATE.FETCH, payload: { data } });
+    return { type: PERMISSION_TYPE.CREATE.FETCH, payload: { data } };
   };
   const createSuccess = (data: PermissionVM): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.CREATE.SUCCESS, payload: { data } });
+    return { type: PERMISSION_TYPE.CREATE.SUCCESS, payload: { data } };
   };
   const createError = (error: any): Permission => {
     console.log(error);
-    return new Permission({ type: PERMISSION_TYPE.CREATE.ERROR, payload: { data: PERMISSION_TYPE.CREATE.ERROR } });
+    return { type: PERMISSION_TYPE.CREATE.ERROR, payload: { data: PERMISSION_TYPE.CREATE.ERROR } };
   };
   const update = (data: PermissionUM): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.UPDATE.FETCH, payload: { data } });
+    return { type: PERMISSION_TYPE.UPDATE.FETCH, payload: { data } };
   };
   const updateSuccess = (data: PermissionVM): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.UPDATE.SUCCESS, payload: { data } });
+    return { type: PERMISSION_TYPE.UPDATE.SUCCESS, payload: { data } };
   };
   const updateError = (error: any): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.UPDATE.ERROR, payload: { data: PERMISSION_TYPE.UPDATE.ERROR} });
+    return { type: PERMISSION_TYPE.UPDATE.ERROR, payload: { data: PERMISSION_TYPE.UPDATE.ERROR} };
   };
   const remove = (data: string): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.REMOVE.FETCH, payload: { data } });
+    return { type: PERMISSION_TYPE.REMOVE.FETCH, payload: { data } };
   };
   const removeSuccess = (data: string): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.REMOVE.SUCCESS, payload: { data } });
+    return { type: PERMISSION_TYPE.REMOVE.SUCCESS, payload: { data } };
   };
   const removeError = (error: any): Permission => {
-    return new Permission({ type: PERMISSION_TYPE.REMOVE.ERROR, payload: {data: PERMISSION_TYPE.REMOVE.ERROR} });
+    return { type: PERMISSION_TYPE.REMOVE.ERROR, payload: {data: PERMISSION_TYPE.REMOVE.ERROR} };
   };
   const actions: ActionCreatorsMapObject<Permission> = {
     reset,
