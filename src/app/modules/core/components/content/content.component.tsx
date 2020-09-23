@@ -1,20 +1,20 @@
-import React, { CSSProperties } from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
 import { Layout } from 'antd';
+import React from 'react';
 import './content.component.scss';
-export const ContentComponent = (
-  props: {
-    children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode,
-    style?: CSSProperties,
-    className?: string,
-    id?: string,
-  }) => {
+
+export interface IContentComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const ContentComponent = (props: IContentComponentProps) => {
   return (
     <Layout.Content
       className={props.className}
       id={props.id}
       style={{
-        ...props.style,
+        ...props.styles,
         margin: '24px 16px',
         padding: 24,
         minHeight: 280,

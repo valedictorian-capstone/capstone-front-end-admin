@@ -1,20 +1,22 @@
-import React, { CSSProperties, useState } from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
-import './side-bar.component.scss';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { environment } from '@environments/environment';
+import { IBaseProps } from '@extras/interfaces';
 import { RootState } from '@stores/states';
+import { Layout, Menu } from 'antd';
+import React from 'react';
 import { useSelector } from 'react-redux';
-export const SideBarComponent = (
-  props: {
-    children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode,
-    style?: CSSProperties,
-    className?: string,
-    id?: string,
-  }) => {
-  const region = useSelector<RootState>((data) => data.language.language.region);
-  const [state, setState] = useState<{ collapsed: boolean }>({ collapsed: true });
+import { Link } from 'react-router-dom';
+import './side-bar.component.scss';
+
+export interface ISideBarComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const SideBarComponent = (props: ISideBarComponentProps) => {
+  const [state, setState] = React.useState<{ collapsed: boolean }>({ collapsed: true });
+  const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((data) => data.language.language.region);
+  const config = environment.i18n[region].data;
   const toggle = (collapsed: boolean) => {
     setState({ collapsed });
   };
@@ -24,9 +26,9 @@ export const SideBarComponent = (
     } onCollapse={toggle} collapsible={true} collapsed={state.collapsed} >
       <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)', margin: 10 }} />
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        {environment.languages.find((lang) => lang.value === region)?.data.categories.map((category) => (
+        {(config?.categories as any).map((category: any) => (
           <Menu.Item key={category.value} icon={category.icon}>
-            {category.label}
+            <Link to={'/core/' + category.value}>{category.label}</Link>
           </Menu.Item>
         ))}
       </Menu>

@@ -1,9 +1,14 @@
-import React from 'react';
+import { IBaseProps } from '@extras/interfaces';
+import { AccountComponent, ContentComponent, HeaderComponent, LanguageComponent, NotificationComponent, SideBarComponent } from '@modules/core/components';
 import { Layout } from 'antd';
-import { RouteChildrenProps } from 'react-router-dom';
+import React from 'react';
 import './layout.component.css';
-import { ContentComponent, HeaderComponent, SideBarComponent, AccountComponent, FooterComponent, LanguageComponent, NotificationComponent } from '@modules/core/components';
-export const LayoutComponent = (props: { children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode }) => {
+
+export interface ILayoutComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+export const LayoutComponent = (props: ILayoutComponentProps) => {
   const account: any = localStorage.getItem('m-crm-username');
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -11,7 +16,7 @@ export const LayoutComponent = (props: { children?: ((props: RouteChildrenProps<
       <Layout className="site-layout">
         <HeaderComponent>
           <NotificationComponent />
-          {account && <AccountComponent account={account} />}
+          {account && <AccountComponent input={{ account }} />}
           <LanguageComponent />
         </HeaderComponent>
         <ContentComponent>

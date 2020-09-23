@@ -1,6 +1,138 @@
 import { ApartmentOutlined, HomeOutlined, LogoutOutlined, NotificationOutlined, PartitionOutlined, PhoneOutlined, ProfileOutlined, SettingOutlined, SmileOutlined, TeamOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 import React from 'react';
-
+const getPorts = (id: string) => {
+  return [
+    {
+      'id': id + 'port1',
+      'shape': 'Circle',
+      'offset': { 'x': 0, 'y': 0 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port2',
+      'shape': 'Circle',
+      'offset': { 'x': 0, 'y': 0.25 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port3',
+      'shape': 'Circle',
+      'offset': { 'x': 0, 'y': 0.5 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port4',
+      'shape': 'Circle',
+      'offset': { 'x': 0, 'y': 0.75 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port5',
+      'shape': 'Circle',
+      'offset': { 'x': 0, 'y': 1 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port6',
+      'shape': 'Circle',
+      'offset': { 'x': 0.25, 'y': 0 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port7',
+      'shape': 'Circle',
+      'offset': { 'x': 0.5, 'y': 0 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port9',
+      'shape': 'Circle',
+      'offset': { 'x': 0.75, 'y': 0 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port0',
+      'shape': 'Circle',
+      'offset': { 'x': 1, 'y': 0 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port10',
+      'shape': 'Circle',
+      'offset': { 'x': 1, 'y': 0.25 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port11',
+      'shape': 'Circle',
+      'offset': { 'x': 1, 'y': 0.5 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port12',
+      'shape': 'Circle',
+      'offset': { 'x': 1, 'y': 0.75 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port13',
+      'shape': 'Circle',
+      'offset': { 'x': 1, 'y': 1 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port14',
+      'shape': 'Circle',
+      'offset': { 'x': 0.25, 'y': 1 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port15',
+      'shape': 'Circle',
+      'offset': { 'x': 0.5, 'y': 1 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+    {
+      'id': id + 'port16',
+      'shape': 'Circle',
+      'offset': { 'x': 0.75, 'y': 1 },
+      'height': 8,
+      'width': 8,
+      'visibility': 1,
+    },
+  ];
+};
 export const environment = {
   'apiEndpont': 'http://localhost:3000/',
   'api': {
@@ -165,9 +297,13 @@ export const environment = {
       },
     },
   },
-  'languages': [
-    {
-      'value': 'vi',
+  'i18n': {
+    'languages': [
+      { 'label': 'English', 'value': 'en' },
+      { 'label': 'Tiếng việt', 'value': 'vi' },
+      { 'label': '日本語', 'value': 'jp' },
+    ],
+    'vi': {
       'label': 'Tiếng Việt',
       'data': {
         'categories': [
@@ -197,51 +333,193 @@ export const environment = {
             'icon': (<PartitionOutlined />),
           },
         ],
-        'work-flow-step': [
-          {
-            'value': 'activity',
-            'label': 'Activity',
-            'data': [
-              { 'value': 'task', 'label': 'Task' },
-              { 'value': 'sub-process', 'label': 'Sub-process' },
-              { 'value': 'transaction', 'label': 'Transaction' },
-              { 'value': 'call-activity', 'label': 'Call Activity' },
-            ],
+        'work-flow': {
+          'nodes': [
+            {
+              'key': 'events',
+              'label': 'Event Shapes',
+              'data': [
+                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
+                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
+                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
+                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
+                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
+                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
+              ],
+            },
+            {
+              'key': 'gateways',
+              'label': 'Gateway Shapes',
+              'data': [
+                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
+                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
+                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
+                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
+                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
+                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
+                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
+                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
+              ],
+            },
+            {
+              'key': 'activitys',
+              'label': 'Activity Shapes',
+              'data': [
+                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
+              ],
+            },
+            {
+              'key': 'messages',
+              'label': 'Message Shapes',
+              'data': [
+                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
+              ],
+            },
+            {
+              'key': 'dataobjects',
+              'label': 'DataObject Shapes',
+              'data': [
+                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
+                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
+                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'datasources',
+              'label': 'DataSource Shapes',
+              'data': [
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'groups',
+              'label': 'Group Shapes',
+              'data': [
+                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
+              ],
+            },
+            {
+              'key': 'textannotations',
+              'label': 'Text Annotation Shapes',
+              'data': [
+                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
+              ],
+            },
+            {
+              'key': 'connectors',
+              'label': 'Connectors',
+              'data': [
+                {
+                  'id': 'Sequen_Flow_Normal',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'Arrow' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                },
+                {
+                  'id': 'Sequen_Flow_Conditional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'Arrow' },
+                  'sourceDecorator': { 'shape': 'Diamond' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Conditional' },
+                },
+                {
+                  'id': 'Association_BiDirectional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'IndentedArrow' },
+                  'sourceDecorator': { 'shape': 'OutdentedArrow' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'BiDirectional' },
+                },
+                {
+                  'id': 'Association_Directional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'IndentedArrow' },
+                  'sourceDecorator': { 'shape': 'None' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'Directional' },
+                },
+                {
+                  'id': 'Association_Default',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'None' },
+                  'sourceDecorator': { 'shape': 'None' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
+                },
+                {
+                  'id': 'Message_Flow_Default',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'OpenArrow' },
+                  'sourceDecorator': { 'shape': 'Circle' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Message', 'message': 'Default' },
+                },
+                {
+                  'id': 'Message_Flow_InitiatingMessage',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'OpenArrow' },
+                  'sourceDecorator': { 'shape': 'Circle' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Message', 'message': 'InitiatingMessage' },
+                },
+              ],
+            },
+          ],
+          'label': 'Qui trình',
+          'canvas': {
+            'title': {
+              'nodes': 'Thông tin bước',
+              'connectors': 'Thông tin kết nối',
+            },
+            'form': {
+              'basic': {
+                'content': {
+                  'placeholder': 'Nội dung',
+                },
+                'description': {
+                  'placeholder': 'Ghi chú',
+                },
+              },
+            },
           },
-          {
-            'value': 'event',
-            'label': 'Event',
-            'data': [
-              { 'value': 'start-event', 'label': 'Start Event' },
-              { 'value': 'intermediate-event', 'label': 'Intermediate Event' },
-              { 'value': 'end-event', 'label': 'End Event' },
-            ],
+          'detail': {
+            'title': 'Thông tin qui trình',
+            'form': {
+              'basic': {
+                'code': {
+                  'placeholder': 'Mã',
+                },
+                'name': {
+                  'placeholder': 'Tên',
+                },
+                'description': {
+                  'placeholder': 'Ghi chú',
+                },
+                'button': {
+                  'save': 'Lưu',
+                  'draft': 'Nháp',
+                },
+              },
+            },
           },
-          {
-            'value': 'gateway',
-            'label': 'Gateway',
-            'data': [
-              { 'value': 'exclusive', 'label': 'Exclusive' },
-              { 'value': 'parallel', 'label': 'Parallel' },
-              { 'value': 'inclusive', 'label': 'Inclusive' },
-              { 'value': 'complex', 'label': 'Complex' },
-            ],
-          },
-        ],
-        'work-flow-connection': [
-          {
-            'value': 'sequence',
-            'label': 'Sequence Flow',
-          },
-          {
-            'value': 'message',
-            'label': 'Message Flow',
-          },
-          {
-            'value': 'association',
-            'label': 'Association',
-          },
-        ],
+        },
         'form-control': [
           { 'label': 'INPUT', value: 'input', icon: '' },
           { 'label': 'TEXT-AREA', value: 'text-area', icon: '' },
@@ -306,12 +584,12 @@ export const environment = {
                 Chưa có thông báo
               </span>
             ),
+            'title': 'Thông báo',
           },
         },
       },
     },
-    {
-      'value': 'en',
+    'en': {
       'label': 'English',
       'data': {
         'categories': [
@@ -341,64 +619,206 @@ export const environment = {
             'icon': (<PartitionOutlined />),
           },
         ],
-        'work-flow-step': [
-          {
-            'value': 'activity',
-            'label': 'Activity',
-            'data': [
-              { 'value': 'task', 'label': 'Task' },
-              { 'value': 'sub-process', 'label': 'Sub-process' },
-              { 'value': 'transaction', 'label': 'Transaction' },
-              { 'value': 'call-activity', 'label': 'Call Activity' },
-            ],
+        'work-flow': {
+          'nodes': [
+            {
+              'key': 'events',
+              'label': 'Event Shapes',
+              'data': [
+                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
+                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
+                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
+                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
+                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
+                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
+              ],
+            },
+            {
+              'key': 'gateways',
+              'label': 'Gateway Shapes',
+              'data': [
+                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
+                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
+                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
+                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
+                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
+                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
+                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
+                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
+              ],
+            },
+            {
+              'key': 'activitys',
+              'label': 'Activity Shapes',
+              'data': [
+                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
+              ],
+            },
+            {
+              'key': 'messages',
+              'label': 'Message Shapes',
+              'data': [
+                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
+              ],
+            },
+            {
+              'key': 'dataobjects',
+              'label': 'DataObject Shapes',
+              'data': [
+                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
+                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
+                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'datasources',
+              'label': 'DataSource Shapes',
+              'data': [
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'groups',
+              'label': 'Group Shapes',
+              'data': [
+                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
+              ],
+            },
+            {
+              'key': 'textannotations',
+              'label': 'Text Annotation Shapes',
+              'data': [
+                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
+              ],
+            },
+            {
+              'key': 'connectors',
+              'label': 'Connectors',
+              'data': [
+                {
+                  'id': 'Sequen_Flow_Normal',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'Arrow' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                },
+                {
+                  'id': 'Sequen_Flow_Conditional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'Arrow' },
+                  'sourceDecorator': { 'shape': 'Diamond' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Conditional' },
+                },
+                {
+                  'id': 'Association_BiDirectional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'IndentedArrow' },
+                  'sourceDecorator': { 'shape': 'OutdentedArrow' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'BiDirectional' },
+                },
+                {
+                  'id': 'Association_Directional',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'IndentedArrow' },
+                  'sourceDecorator': { 'shape': 'None' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'Directional' },
+                },
+                {
+                  'id': 'Association_Default',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'None' },
+                  'sourceDecorator': { 'shape': 'None' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
+                },
+                {
+                  'id': 'Message_Flow_Default',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'OpenArrow' },
+                  'sourceDecorator': { 'shape': 'Circle' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Message', 'message': 'Default' },
+                },
+                {
+                  'id': 'Message_Flow_InitiatingMessage',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'OpenArrow' },
+                  'sourceDecorator': { 'shape': 'Circle' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Message', 'message': 'InitiatingMessage' },
+                },
+              ],
+            },
+          ],
+          'label': 'Work Flow',
+          'canvas': {
+            'title': {
+              'nodes': 'Step detail',
+              'connectors': 'Connection detail',
+            },
+            'form': {
+              'basic': {
+                'content': {
+                  'placeholder': 'Content',
+                },
+                'description': {
+                  'placeholder': 'Note',
+                },
+              },
+            },
           },
-          {
-            'value': 'event',
-            'label': 'Event',
-            'data': [
-              { 'value': 'start-event', 'label': 'Start Event' },
-              { 'value': 'intermediate-event', 'label': 'Intermediate Event' },
-              { 'value': 'end-event', 'label': 'End Event' },
-            ],
+          'detail': {
+            'title': 'Workflow detail',
+            'form': {
+              'basic': {
+                'code': {
+                  'placeholder': 'Code',
+                },
+                'name': {
+                  'placeholder': 'Name',
+                },
+                'description': {
+                  'placeholder': 'Note',
+                },
+                'button': {
+                  'save': 'Save',
+                  'draft': 'Draft',
+                },
+              },
+            },
           },
-          {
-            'value': 'gateway',
-            'label': 'Gateway',
-            'data': [
-              { 'value': 'exclusive', 'label': 'Exclusive' },
-              { 'value': 'parallel', 'label': 'Parallel' },
-              { 'value': 'inclusive', 'label': 'Inclusive' },
-              { 'value': 'complex', 'label': 'Complex' },
-            ],
-          },
-        ],
-        'work-flow-connection': [
-          {
-            'value': 'sequence',
-            'label': 'Sequence Flow',
-          },
-          {
-            'value': 'message',
-            'label': 'Message Flow',
-          },
-          {
-            'value': 'association',
-            'label': 'Association',
-          },
-        ],
+        },
         'form-control': [
-          { 'label': 'INPUT', value: 'input', icon: '' },
-          { 'label': 'TEXT-AREA', value: 'text-area', icon: '' },
-          { 'label': 'AUTO-COMPLETE', value: 'auto-complete', icon: '' },
-          { 'label': 'CHECK-BOX', value: 'check-box', icon: '' },
-          { 'label': 'RADIO', value: 'radio', icon: '' },
-          { 'label': 'FILE', value: 'file', icon: '' },
-          { 'label': 'MULTI-SELECT', value: 'multi-select', icon: '' },
-          { 'label': 'COMBO-BOX', value: 'combo-box', icon: '' },
-          { 'label': 'DATE-PICKER', value: 'date-picker', icon: '' },
-          { 'label': 'TIME-PICKER', value: 'time-picker', icon: '' },
-          { 'label': 'LABEL', value: 'label', icon: '' },
-          { 'label': 'EDITOR', value: 'editor', icon: '' },
+          { 'label': 'INPUT', 'value': 'input', 'icon': '' },
+          { 'label': 'TEXT-AREA', 'value': 'text-area', 'icon': '' },
+          { 'label': 'AUTO-COMPLETE', 'value': 'auto-complete', 'icon': '' },
+          { 'label': 'CHECK-BOX', 'value': 'check-box', 'icon': '' },
+          { 'label': 'RADIO', 'value': 'radio', 'icon': '' },
+          { 'label': 'FILE', 'value': 'file', 'icon': '' },
+          { 'label': 'MULTI-SELECT', 'value': 'multi-select', 'icon': '' },
+          { 'label': 'COMBO-BOX', 'value': 'combo-box', 'icon': '' },
+          { 'label': 'DATE-PICKER', 'value': 'date-picker', 'icon': '' },
+          { 'label': 'TIME-PICKER', 'value': 'time-picker', 'icon': '' },
+          { 'label': 'LABEL', 'value': 'label', 'icon': '' },
+          { 'label': 'EDITOR', 'value': 'editor', 'icon': '' },
         ],
         'header': {
           'account': {
@@ -450,12 +870,12 @@ export const environment = {
                 No notification yet
               </span>
             ),
+            'title': 'Notification',
           },
         },
       },
     },
-    {
-      'value': 'jp',
+    'jp': {
       'label': '日本語',
       'data': {
         'categories': [
@@ -485,51 +905,153 @@ export const environment = {
             'icon': (<PartitionOutlined />),
           },
         ],
-        'work-flow-step': [
-          {
-            'value': 'activity',
-            'label': 'Activity',
-            'data': [
-              { 'value': 'task', 'label': 'Task' },
-              { 'value': 'sub-process', 'label': 'Sub-process' },
-              { 'value': 'transaction', 'label': 'Transaction' },
-              { 'value': 'call-activity', 'label': 'Call Activity' },
-            ],
+        'work-flow': {
+          'nodes': [
+            {
+              'key': 'events',
+              'label': 'Event Shapes',
+              'data': [
+                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
+                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
+                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
+                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
+                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
+                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
+              ],
+            },
+            {
+              'key': 'gateways',
+              'label': 'Gateway Shapes',
+              'data': [
+                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
+                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
+                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
+                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
+                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
+                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
+                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
+                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
+              ],
+            },
+            {
+              'key': 'activitys',
+              'label': 'Activity Shapes',
+              'data': [
+                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
+              ],
+            },
+            {
+              'key': 'messages',
+              'label': 'Message Shapes',
+              'data': [
+                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
+              ],
+            },
+            {
+              'key': 'dataobjects',
+              'label': 'DataObject Shapes',
+              'data': [
+                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
+                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
+                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'datasources',
+              'label': 'DataSource Shapes',
+              'data': [
+                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
+              ],
+            },
+            {
+              'key': 'groups',
+              'label': 'Group Shapes',
+              'data': [
+                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
+              ],
+            },
+            {
+              'key': 'textannotations',
+              'label': 'Text Annotation Shapes',
+              'data': [
+                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
+              ],
+            },
+            {
+              'key': 'connectors',
+              'label': 'Connectors',
+              'data': [
+                {
+                  'id': 'Sequence_Flow',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'Arrow' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                },
+                {
+                  'id': 'Association',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'None' },
+                  'sourceDecorator': { 'shape': 'None' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
+                },
+                {
+                  'id': 'Message_Flow',
+                  'type': 'Orthogonal',
+                  'sourcePoint': { 'x': 0, 'y': 0 },
+                  'targetPoint': { 'x': 40, 'y': 40 },
+                  'targetDecorator': { 'shape': 'OpenArrow' },
+                  'sourceDecorator': { 'shape': 'Circle' },
+                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                  'shape': { 'bpmnFlow': 'Message', 'message': 'Default' },
+                },
+              ],
+            },
+          ],
+          'label': 'ワークフロー',
+          'canvas': {
+            'title': {
+              'nodes': 'ステップ詳細',
+              'connectors': '接続詳細',
+            },
+            'form': {
+              'basic': {
+                'content': {
+                  'placeholder': 'コンテンツ',
+                },
+                'description': {
+                  'placeholder': '注意',
+                },
+              },
+            },
           },
-          {
-            'value': 'event',
-            'label': 'Event',
-            'data': [
-              { 'value': 'start-event', 'label': 'Start Event' },
-              { 'value': 'intermediate-event', 'label': 'Intermediate Event' },
-              { 'value': 'end-event', 'label': 'End Event' },
-            ],
+          'detail': {
+            'title': 'ワークフローの詳細',
+            'form': {
+              'basic': {
+                'code': {
+                  'placeholder': 'コード',
+                },
+                'name': {
+                  'placeholder': '名前',
+                },
+                'description': {
+                  'placeholder': '注意',
+                },
+                'button': {
+                  'save': '保存する',
+                  'draft': 'ドラフト',
+                },
+              },
+            },
           },
-          {
-            'value': 'gateway',
-            'label': 'Gateway',
-            'data': [
-              { 'value': 'exclusive', 'label': 'Exclusive' },
-              { 'value': 'parallel', 'label': 'Parallel' },
-              { 'value': 'inclusive', 'label': 'Inclusive' },
-              { 'value': 'complex', 'label': 'Complex' },
-            ],
-          },
-        ],
-        'work-flow-connection': [
-          {
-            'value': 'sequence',
-            'label': 'Sequence Flow',
-          },
-          {
-            'value': 'message',
-            'label': 'Message Flow',
-          },
-          {
-            'value': 'association',
-            'label': 'Association',
-          },
-        ],
+        },
         'form-control': [
           { 'label': 'INPUT', value: 'input', icon: '' },
           { 'label': 'TEXT-AREA', value: 'text-area', icon: '' },
@@ -594,142 +1116,10 @@ export const environment = {
                 通知なし
               </span>
             ),
+            'title': '通知',
           },
         },
       },
     },
-  ],
-};
-
-const getPorts = (id: string) => {
-  return [
-    {
-      id: id + 'port1',
-      shape: 'Circle',
-      offset: { x: 0, y: 0 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port2',
-      shape: 'Circle',
-      offset: { x: 0, y: 0.25 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port3',
-      shape: 'Circle',
-      offset: { x: 0, y: 0.5 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port4',
-      shape: 'Circle',
-      offset: { x: 0, y: 0.75 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port5',
-      shape: 'Circle',
-      offset: { x: 0, y: 1 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port6',
-      shape: 'Circle',
-      offset: { x: 0.25, y: 0 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port7',
-      shape: 'Circle',
-      offset: { x: 0.5, y: 0 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port9',
-      shape: 'Circle',
-      offset: { x: 0.75, y: 0 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port0',
-      shape: 'Circle',
-      offset: { x: 1, y: 0 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port10',
-      shape: 'Circle',
-      offset: { x: 1, y: 0.25 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port11',
-      shape: 'Circle',
-      offset: { x: 1, y: 0.5 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port12',
-      shape: 'Circle',
-      offset: { x: 1, y: 0.75 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port13',
-      shape: 'Circle',
-      offset: { x: 1, y: 1 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port14',
-      shape: 'Circle',
-      offset: { x: 0.25, y: 1 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port15',
-      shape: 'Circle',
-      offset: { x: 0.5, y: 1 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-    {
-      id: id + 'port16',
-      shape: 'Circle',
-      offset: { x: 0.75, y: 1 },
-      height: 8,
-      width: 8,
-      visibility: 1,
-    },
-  ];
+  },
 };

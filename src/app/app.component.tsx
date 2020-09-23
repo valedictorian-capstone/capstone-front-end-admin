@@ -1,10 +1,13 @@
 import React from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
 import '@app/app.component.css';
-import 'src/styles.css';
-import '@syncfusion/ej2-react-diagrams/styles/material.css';
-import 'antd/dist/antd.css';
-export const AppComponent = (props: { children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode }) => {
+
+export interface IAppComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const AppComponent = (props: IAppComponentProps) => {
   return (
     <div>
       {props.children}

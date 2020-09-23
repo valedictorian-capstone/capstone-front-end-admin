@@ -1,12 +1,17 @@
+import { IBaseProps } from '@extras/interfaces';
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { WorkFlowMainComponent } from './pages';
 
-export const WorkFlowRoutes = (props: {}) => {
+export interface IWorkFlowRoutesProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const WorkFlowRoutes = (props: IWorkFlowRoutesProps) => {
   return (
-    <BrowserRouter>
-      <Route path={['/', '/work-flow']} component={() => <WorkFlowMainComponent />}/>
-      <Route path={['', '']}/>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/core/work-flow" component={() => <WorkFlowMainComponent />} />
+    </Switch>
   );
 };

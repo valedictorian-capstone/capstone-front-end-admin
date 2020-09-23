@@ -1,20 +1,20 @@
-import React, { CSSProperties } from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
 import { Layout } from 'antd';
+import React from 'react';
 import './footer.component.css';
-export const FooterComponent = (
-  props: {
-    children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode,
-    style?: CSSProperties,
-    className?: string,
-    id?: string,
-  }) => {
+
+export interface IFooterComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const FooterComponent = (props: IFooterComponentProps) => {
   return (
     <Layout.Footer
-    className={props.className}
-    id={props.id}
+      className={props.className}
+      id={props.id}
       style={{
-        ...props.style,
+        ...props.styles,
       }}
     >
       {props.children}

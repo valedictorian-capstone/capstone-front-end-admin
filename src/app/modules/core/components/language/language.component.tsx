@@ -6,9 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@stores/states';
 import { useLanguageAction } from '@stores/actions';
 import './language.component.css';
-export const LanguageComponent = (props: {}) => {
+import { IBaseProps } from '@extras/interfaces';
+
+export interface ILanguageComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const LanguageComponent = (props: ILanguageComponentProps) => {
   const dispatch = useDispatch();
-  const region = useSelector<RootState>((state) => state.language.language.region);
+  const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const menu = <Menu activeKey={region as any} onClick={(e) => {
     switch (e.key) {
       case 'vi': dispatch(useLanguageAction().toVietnamese());
@@ -21,7 +28,7 @@ export const LanguageComponent = (props: {}) => {
         break;
     }
   }}>
-    {environment.languages.map((lang) => (
+    {environment.i18n.languages.map((lang) => (
       <Menu.Item key={lang.value} style={{minWidth: '160px'}} className={lang.value === region ? 'active' : ''}>
         {lang.label}
       </Menu.Item>

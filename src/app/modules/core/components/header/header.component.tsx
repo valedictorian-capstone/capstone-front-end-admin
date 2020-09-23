@@ -1,20 +1,20 @@
-import React, { CSSProperties } from 'react';
-import { RouteChildrenProps } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
 import { Layout } from 'antd';
+import React from 'react';
 import './header.component.css';
-export const HeaderComponent = (
-  props: {
-    children?: ((props: RouteChildrenProps<any>) => React.ReactNode) | React.ReactNode,
-    style?: CSSProperties,
-    className?: string,
-    id?: string,
-  }) => {
+
+export interface IHeaderComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const HeaderComponent = (props: IHeaderComponentProps) => {
   return (
     <Layout.Header
       className={props.className}
       id={props.id}
       style={{
-        ...props.style,
+        ...props.styles,
         background: 'white',
         padding: '0px 20px 0px 20px',
         height: 'auto',
