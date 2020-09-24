@@ -121,7 +121,8 @@
         ],
         "linebreak-style": [
             true,
-            "LF"
+            "LF",
+            "CRLF"
         ],
         "typedef": [
             false,
