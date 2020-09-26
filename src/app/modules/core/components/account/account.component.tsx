@@ -13,7 +13,7 @@ export interface IAccountComponentProps extends IBaseProps {
   output?: {};
 }
 
-export const AccountComponent = (props: IAccountComponentProps) => {
+export const AccountComponent: React.FC<IAccountComponentProps> = (props: IAccountComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const config = environment.i18n[region].data.header.account;
   const menu = <Menu>

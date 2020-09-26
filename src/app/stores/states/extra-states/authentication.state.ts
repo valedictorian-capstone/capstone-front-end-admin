@@ -1,8 +1,8 @@
 import { AuthenticationVM } from '@view-models';
 
 export class AuthenticationState {
-  public readonly arr: AuthenticationVM[];
+  public readonly item: AuthenticationVM;
   constructor(props: AuthenticationState) {
-    this.arr = props.arr;
+    this.item = props.item;
   }
 }

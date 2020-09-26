@@ -2,74 +2,56 @@ import { AUTHENTICATION_TYPE } from '@stores/types';
 import { Reducer } from 'redux';
 import { AuthenticationState } from '@stores/states';
 import { Authentication } from '@stores/models';
-import { AuthenticationUM, AuthenticationVM } from '@view-models';
+import { AccountVM, AuthenticationUM, AuthenticationVM } from '@view-models';
 
-export const useAuthenticationReducer: Reducer<AuthenticationState, Authentication> = (state: AuthenticationState = new AuthenticationState({arr: []}), action: Authentication): AuthenticationState => {
+export const useAuthenticationReducer: Reducer<AuthenticationState, Authentication> = (state: AuthenticationState = new AuthenticationState({ item: {} as any }), action: Authentication): AuthenticationState => {
   switch (action.type) {
     case AUTHENTICATION_TYPE.RESET.FETCH: {
       return {
         ...state,
-        arr: [],
+        item: {} as AuthenticationVM,
       };
     }
     case AUTHENTICATION_TYPE.GETALL.SUCCESS: {
       return {
         ...state,
-        arr: action.payload.data as AuthenticationVM[],
+        item: action.payload.data as AuthenticationVM,
       };
     }
     case AUTHENTICATION_TYPE.CREATE.SUCCESS: {
-      const newArr = state.arr;
-      newArr.push(action.payload.data as AuthenticationVM);
       return {
         ...state,
-        arr: [...newArr],
+        item: action.payload.data as AuthenticationVM,
       };
     }
     case AUTHENTICATION_TYPE.UPDATE.SUCCESS: {
-      const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as AuthenticationUM).Id)] = action.payload.data as AuthenticationVM;
       return {
         ...state,
-        arr: [...newArr],
+        item: action.payload.data as AuthenticationVM,
       };
     }
     case AUTHENTICATION_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const accountVM: AccountVM = {} as any;
+      const result: AuthenticationVM = {
+        AccountVM: accountVM,
+        IsLogin: false,
+        Token: '',
+      };
       return {
         ...state,
-        arr: [...newArr],
+        item: result,
       };
     }
     case AUTHENTICATION_TYPE.AUTHENTICATION.SUCCESS: {
-      const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as AuthenticationVM).Id)] = action.payload.data as AuthenticationVM;
       return {
         ...state,
-        arr: [...newArr],
-      };
-    }
-    case AUTHENTICATION_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
-      return {
-        ...state,
-        arr: [...newArr],
+        item: action.payload.data as AuthenticationVM,
       };
     }
     case AUTHENTICATION_TYPE.CHECKLOGIN.SUCCESS: {
-      const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as AuthenticationVM).Id)] = action.payload.data as AuthenticationVM;
       return {
         ...state,
-        arr: [...newArr],
-      };
-    }
-    case AUTHENTICATION_TYPE.LOGIN.SUCCESS: {
-      const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as AuthenticationVM).Id)] = action.payload.data as AuthenticationVM;
-      return {
-        ...state,
-        arr: [...newArr],
+        item: action.payload.data as AuthenticationVM,
       };
     }
     default: {

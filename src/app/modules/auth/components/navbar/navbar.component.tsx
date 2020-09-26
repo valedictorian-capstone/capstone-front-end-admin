@@ -1,15 +1,10 @@
+import { IBaseProps } from '@extras/interfaces';
+import AppBar from '@material-ui/core/AppBar';
+import Link from '@material-ui/core/Link';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
 import React from 'react';
 import './navbar.component.css';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import PeopleIcon from '@material-ui/icons/People';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import Link from '@material-ui/core/Link';
-import { Container, Grid, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -42,16 +37,22 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export const NavBarComponent = (props: {}) => {
+
+export interface INavBarComponentProps extends IBaseProps {
+    input?: {};
+    output?: {};
+}
+
+export const NavBarComponent: React.FC<INavBarComponentProps> = (props: INavBarComponentProps) => {
     const classes = useStyles();
-    const [value, setValue] = React.useState('recents');
+    const [value, setValue] = React.useState<string>('recents');
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
         setValue(newValue);
     };
 
     return (
-        <header style={{backgroundColor: 'transparent'}}>
+        <header style={{ backgroundColor: 'transparent' }}>
             <AppBar position="static" color="transparent" className={classes.root}>
                 <Toolbar>
                     <Link href="#">

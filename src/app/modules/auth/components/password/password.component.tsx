@@ -1,25 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
-import clsx from 'clsx';
-import { useSelector, useDispatch } from 'react-redux';
-import { RouteProps } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
+import { Button, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import React, { useState } from 'react';
+import { PasswordCodeComponent } from './password-code.component';
 import './password.component.css';
 
-import { LOADING_TYPE } from '@stores/types';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Checkbox, CssBaseline, Divider, FormControlLabel, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { AccountCircle, Face, Fingerprint, Visibility, VisibilityOff } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-
-import { NavigateComponent } from '../navigate/navigate.component';
-import { NavBarComponent } from '../navbar/navbar.component';
-import { Container } from '@material-ui/core';
-import { FooterComponent } from '../footer/footer.component';
-
-export interface DefaultProps {
-  changePage: (e: any) => void;
+export interface IPasswordRecoveryComponentProps extends IBaseProps {
+  input?: {
+    changePage: (e: any) => void,
+  };
+  output?: {};
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -56,55 +47,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        VAT3 CRM
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-export const PasswordRecoveryComponent = ({ changePage }: DefaultProps) => {
+export const PasswordRecoveryComponent: React.FC<IPasswordRecoveryComponentProps> = ( props: IPasswordRecoveryComponentProps) => {
   const classes = useStyles();
+  const changePage = props.input?.changePage;
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
-  const [showOld, setShowOld] = useState(false);
-  const handleShowOldPassword = () => {
-    setShowOld(!showOld);
+  const [showCode, setShowCode] = useState<boolean>(false);
+  const handleShowCode = () => {
+    setShowCode(!showCode);
   };
-  const [showNew, setShowNew] = useState(false);
+  const [showNew, setShowNew] = useState<boolean>(false);
   const handleShowNewPassword = () => {
     setShowNew(!showNew);
   };
   return (
     <>
+    <PasswordCodeComponent input={{ openModal: true }} />
       <form className={classes.form} noValidate={true}>
         <TextField
           variant="outlined"
           margin="normal"
           required={true}
           fullWidth={true}
-          name="oldPassword"
-          label="Old Password"
-          type={showOld ? 'text' : 'password'}
-          id="oldPassword"
-          autoComplete="current-password"
+          name="code"
+          label="Your Code"
+          type={showCode ? 'text' : 'password'}
+          id="code"
+          autoComplete="current-code"
           autoFocus={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end" >
                 <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleShowOldPassword}
-                  onMouseDown={handleShowOldPassword}
+                  aria-label="toggle code visibility"
+                  onClick={handleShowCode}
+                  onMouseDown={handleShowCode}
                 >
-                  {showOld ? <Visibility /> : <VisibilityOff />}
+                  {showCode ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             ),
@@ -117,7 +97,7 @@ export const PasswordRecoveryComponent = ({ changePage }: DefaultProps) => {
           fullWidth={true}
           name="newPassword"
           label="New Password"
-          type={showOld ? 'text' : 'password'}
+          type={showCode ? 'text' : 'password'}
           id="newPassword"
           autoComplete="new-password"
           InputProps={{
@@ -141,7 +121,7 @@ export const PasswordRecoveryComponent = ({ changePage }: DefaultProps) => {
           fullWidth={true}
           name="newPasswordAgain"
           label="New Password Again"
-          type={showOld ? 'text' : 'password'}
+          type={showCode ? 'text' : 'password'}
           id="newPasswordAgain"
           autoComplete="new-password-again"
         // InputProps={{
@@ -169,15 +149,15 @@ export const PasswordRecoveryComponent = ({ changePage }: DefaultProps) => {
             </Button>
         <Grid container={true}>
           <Grid item={true} xs={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Sign In')}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Sign In')}>
               {'Sign In'}
             </Link>
           </Grid>
-          <Grid item={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Sign Up')}>
+          {/* <Grid item={true}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Sign Up')}>
               {'Sign Up'}
             </Link>
-          </Grid>
+          </Grid> */}
         </Grid>
       </form>
     </>

@@ -1,28 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RouteProps } from 'react-router-dom';
+import { RouteProps, useHistory } from 'react-router-dom';
 import './navigate.component.css';
 import { RootState } from '@stores/states';
 import { useAuthenticationAction, useLoadingAction } from '@stores/actions';
-import { LOADING_TYPE } from '@stores/types';
+import { IBaseProps } from '@extras/interfaces';
 
-export const NavigateComponent = (props: Readonly<RouteProps>) => {
-  //  redux
-  console.log(useAuthenticationAction().authenticate('aaaaaaaa'));
+export interface INavigateComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
+}
+
+export const NavigateComponent: React.FC<INavigateComponentProps> = (props: INavigateComponentProps) => {
   const dispatch = useDispatch();
-  // const newToken = useSelector<RootState>((state) => state.authentication.arr[0] ? state.authentication.arr[0].JWTToken : '....');
-  // useEffect(() => {
-  //   const storedJwtToken = localStorage.getItem('jwtToken') ? localStorage.getItem('jwtToken') : '';
-  //   if (!storedJwtToken) {
-  //     dispatch(useAuthenticationAction().authenticate('aaaaaaaa'));
-  //     // localStorage.setItem('jwtToken', JSON.stringify(newToken));
-  //     console.log('..............................');
-  //     // setOpen(!open);
-  //   }
-  // }, []);
-  //  material ui
-  // const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const history = useHistory();
+  const [open, setOpen] = React.useState(!useSelector<RootState>((state) => state.authentication.item.IsLogin));
+  useEffect(() => {
+    const tokenInLocal = localStorage.getItem('crm-token');
+    return tokenInLocal ? history.push('/core') : handleClose();
+  }, []);
   const handleClose = () => {
     setOpen(false);
   };

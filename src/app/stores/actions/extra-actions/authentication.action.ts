@@ -48,20 +48,11 @@ export const useAuthenticationAction = (): ActionCreatorsMapObject<Authenticatio
   const authenticate = (data: string): Authentication => {
     return { type: AUTHENTICATION_TYPE.AUTHENTICATION.FETCH, payload: { data } };
   };
-  const authenticateSuccess = (data: string): Authentication => {
+  const authenticateSuccess = (data: AuthenticationVM): Authentication => {
     return { type: AUTHENTICATION_TYPE.AUTHENTICATION.SUCCESS, payload: { data } };
   };
   const authenticateError = (error: any): Authentication => {
     return { type: AUTHENTICATION_TYPE.AUTHENTICATION.ERROR, payload: {data: AUTHENTICATION_TYPE.AUTHENTICATION.ERROR} };
-  };
-  const checkLogin = (data: string): Authentication => {
-    return { type: AUTHENTICATION_TYPE.CHECKLOGIN.FETCH, payload: { data } };
-  };
-  const checkLoginSuccess = (data: string): Authentication => {
-    return { type: AUTHENTICATION_TYPE.CHECKLOGIN.SUCCESS, payload: { data } };
-  };
-  const checkLoginError = (error: any): Authentication => {
-    return { type: AUTHENTICATION_TYPE.CHECKLOGIN.ERROR, payload: {data: AUTHENTICATION_TYPE.CHECKLOGIN.ERROR} };
   };
   const login = (data: AuthenticationCM): Authentication => {
     return { type: AUTHENTICATION_TYPE.LOGIN.FETCH, payload: { data } };
@@ -89,9 +80,6 @@ export const useAuthenticationAction = (): ActionCreatorsMapObject<Authenticatio
     authenticate,
     authenticateSuccess,
     authenticateError,
-    checkLogin,
-    checkLoginSuccess,
-    checkLoginError,
     login,
     loginSuccess,
     loginError,

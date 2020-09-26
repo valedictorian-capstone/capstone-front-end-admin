@@ -1,75 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
-import clsx from 'clsx';
-import { useSelector, useDispatch } from 'react-redux';
-import { RouteProps } from 'react-router-dom';
-import './authentication.component.css';
-
-import { LOADING_TYPE } from '@stores/types';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Checkbox, CssBaseline, Divider, FormControlLabel, Grid, Link, Tab, Tabs, TextField } from '@material-ui/core';
+import { IBaseProps } from '@extras/interfaces';
+import { Avatar, Box, Container, CssBaseline, Grid, Link } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { AccountCircle, Face, Fingerprint, Visibility, VisibilityOff } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import PeopleIcon from '@material-ui/icons/People';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import { NavigateComponent } from '../navigate/navigate.component';
-import { NavBarComponent } from '../navbar/navbar.component';
-import { Container } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { FooterComponent } from '../footer/footer.component';
 import { LoginComponent } from '../login/login.component';
+import { NavBarComponent } from '../navbar/navbar.component';
+import { NavigateComponent } from '../navigate/navigate.component';
+import { PasswordCodeComponent } from '../password/password-code.component';
 import { PasswordRecoveryComponent } from '../password/password.component';
-import { RegisterComponent } from '../register/register.component';
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      aria-labelledby={`nav-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: any) {
-  return {
-    id: `nav-tab-${index}`,
-    'aria-controls': `nav-tabpanel-${index}`,
-  };
-}
-
-interface LinkTabProps {
-  label?: string;
-  href?: string;
-}
-
-function LinkTab(props: LinkTabProps) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+import './authentication.component.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     // paddingTop: '10vh',
@@ -105,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Copyright() {
+const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -116,15 +59,20 @@ function Copyright() {
       {'.'}
     </Typography>
   );
+};
+
+export interface IAuthenticationComponentProps extends IBaseProps {
+  input?: {};
+  output?: {};
 }
 
-export const AuthenticationComponent = (props: Readonly<RouteProps>) => {
+export const AuthenticationComponent: React.FC<IAuthenticationComponentProps> = (props: IAuthenticationComponentProps) => {
   const classes = useStyles();
   useEffect(() => {
     document.body.classList.add('bg-default');
   });
-  const [page, SetPage] = useState('login');
-  const [value, setValue] = React.useState(0);
+  const [page, SetPage] = useState<string>('login');
+  const [value, setValue] = useState<number>(0);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
@@ -140,17 +88,15 @@ export const AuthenticationComponent = (props: Readonly<RouteProps>) => {
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
                 {page === 'Forgot Password' ? <LockOutlinedIcon />
-                  : page === 'Sign Up' ? <PeopleIcon />
-                    : <VpnKeyIcon />}
+                  : <VpnKeyIcon />}
               </Avatar>
               <Typography component="h1" variant="h5">
-                {page === 'Forgot Password' ? 'Change Password'
-                  : page === 'Sign Up' ? 'Sign Up'
-                    : 'Sign In'}
+                {page === 'Forgot Password' ? 'Forgot Password'
+                  : 'Sign In'}
               </Typography>
-              {page === 'Forgot Password' ? <PasswordRecoveryComponent changePage={SetPage} />
-                : page === 'Sign Up' ? <RegisterComponent changePage={SetPage} />
-                  : <LoginComponent changePage={SetPage} />}
+              {page === 'Forgot Password' ?
+                <PasswordRecoveryComponent input={{ changePage: SetPage }} />
+                : <LoginComponent input={{ changePage: SetPage }} />}
               <Box mt={5}>
                 <Copyright />
               </Box>

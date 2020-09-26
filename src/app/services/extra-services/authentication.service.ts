@@ -14,20 +14,15 @@ export class AuthenticationService {
   }
 
   public static readonly authenticate = (data: string = ''): Promise<AxiosResponse<AuthenticationVM>> => {
-    return useHttp().post<AuthenticationVM>(`${environment.apiEndpont}${environment.api['extra-api']['auth'].main}`, data);
+    return useHttp().post<AuthenticationVM>(`${environment.apiEndpont}${environment.api['extra-api']['auth'].authenticate}`, data);
   }
 
-  public static readonly checkLogin = (data: string = 'false') => {
+  public static readonly checkLogin = (data: boolean = false) => {
     const accountVM: AccountVM = {} as any;
     const result: AuthenticationVM = {
-      Id: 'string',
-      JWTToken: 'string',
-      Email: 'string',
-      Phone: '0000000000',
-      Password: 'string',
-      OldPassword: 'string',
       AccountVM: accountVM,
       IsLogin: data,
+      Token: '',
     };
     return result;
   }
@@ -35,6 +30,7 @@ export class AuthenticationService {
   public static readonly insert = (data: AuthenticationCM): Promise<AxiosResponse<AuthenticationVM>> => {
     return useHttp().post<AuthenticationVM>(`${environment.apiEndpont}${environment.api['extra-api']['auth'].main}`, data);
   }
+
   public static readonly login = (data: AuthenticationCM): Promise<AxiosResponse<AuthenticationVM>> => {
     return useHttp().post<AuthenticationVM>(`${environment.apiEndpont}${environment.api['extra-api']['auth'].login}`, data);
   }

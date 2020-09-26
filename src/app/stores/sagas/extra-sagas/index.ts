@@ -1,1 +1,1 @@
-export const SAGA = 'SAGA';
+export * from './authentication.saga';

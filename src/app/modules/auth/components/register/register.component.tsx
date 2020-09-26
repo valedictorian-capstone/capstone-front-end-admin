@@ -1,24 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
-import clsx from 'clsx';
-import { useSelector, useDispatch } from 'react-redux';
-import { RouteProps } from 'react-router-dom';
+import { Button, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import React, { useState } from 'react';
 import './register.component.css';
 
-import { LOADING_TYPE } from '@stores/types';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Checkbox, CssBaseline, Divider, FormControlLabel, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { AccountCircle, Face, Fingerprint, Visibility, VisibilityOff } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { NavigateComponent } from '../navigate/navigate.component';
-import { NavBarComponent } from '../navbar/navbar.component';
-import { Container } from '@material-ui/core';
-import { FooterComponent } from '../footer/footer.component';
+import { IBaseProps } from '@extras/interfaces';
 
-interface DefaultProps {
-  changePage: (e: any) => void;
+export interface IRegisterComponentProps extends IBaseProps {
+  input?: {
+    changePage: (e: any) => void,
+  };
+  output?: {};
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -55,22 +48,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        VAT3 CRM
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-export const RegisterComponent = ({ changePage }: DefaultProps) => {
+export const RegisterComponent = (props: IRegisterComponentProps) => {
   const classes = useStyles();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
   const handleShowPassword = () => {
     setShow(!show);
   };
@@ -154,12 +134,12 @@ export const RegisterComponent = ({ changePage }: DefaultProps) => {
             </Button>
         <Grid container={true}>
           <Grid item={true} xs={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Forgot Password')}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Forgot Password')}>
               Forgot password?
                 </Link>
           </Grid>
           <Grid item={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Sign In')}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Sign In')}>
               {'Sign In'}
             </Link>
           </Grid>

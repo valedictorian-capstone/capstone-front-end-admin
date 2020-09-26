@@ -1,29 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
-import clsx from 'clsx';
-import { useSelector, useDispatch } from 'react-redux';
-import { Route, RouteProps, Redirect, useHistory } from 'react-router-dom';
+import { IBaseProps } from '@extras/interfaces';
+import { Button, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './login.component.css';
 
-import { LOADING_TYPE } from '@stores/types';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Avatar, Box, Button, Checkbox, CssBaseline, Divider, FormControlLabel, Grid, IconButton, InputAdornment, Link, TextField } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { AccountCircle, Face, Fingerprint, Visibility, VisibilityOff } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-
-import { NavigateComponent } from '../navigate/navigate.component';
-import { NavBarComponent } from '../navbar/navbar.component';
-import { Container } from '@material-ui/core';
-import { FooterComponent } from '../footer/footer.component';
-import { useAuthenticationAction } from '@stores/actions';
-import { RootState } from '@stores/states';
-import { AccountVM, AuthenticationCM, AuthenticationVM } from '@view-models';
-import { CoreModule } from '@modules';
-
-export interface DefaultProps {
-  changePage: (e: any) => void;
+export interface ILoginComponentProps extends IBaseProps {
+  input?: {
+    changePage: (e: any) => void,
+  };
+  output?: {};
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -60,44 +48,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        VAT3 CRM
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 const validation = ({ phone = '', password = '' }) => {
-  console.log(phone + '.....' + password);
-  console.log(phone && phone.length <= 15 && phone.length > 9
-    && password && password.length <= 20 && password.length > 5 ? true : false);
   return (
-    phone && phone.length <= 15 && phone.length > 9
+    phone && phone.length <= 15 && phone.length >= 9
       && password && password.length <= 20 && password.length > 5
       ? true : false
   );
 };
 
-export const LoginComponent = ({ changePage }: DefaultProps) => {
+export const LoginComponent: React.FC<ILoginComponentProps> = (props: ILoginComponentProps) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  const [currentState, SetCurrentState] = useState(useSelector<RootState>((state) => state.authentication.arr[0] ? state.authentication.arr[0] : {}) as AuthenticationVM);
-  const checkLogin = () => {
-    alert(currentState.IsLogin);
-    dispatch(useAuthenticationAction().checkLogin('true'));
-    alert(currentState.IsLogin);
-  };
+  // const [currentState, SetCurrentState] = useState(useSelector<RootState>((state) => state.authentication.item ? state.authentication.item : {}) as AuthenticationVM);
+  // const checkLogin = () => {
+  //   alert(currentState.IsLogin);
+  //   dispatch(useAuthenticationAction().checkLogin('true'));
+  //   alert(currentState.IsLogin);
+  // };
   useEffect(() => {
     document.body.classList.add('bg-default');
   });
-  const [formData, setFormData] = useState({ phone: '', password: '' });
-  const [enableSubmitButton, setEnableSubmitButton] = useState(false);
+  const [formData, setFormData] = useState<{}>({ phone: '', password: '' });
+  const [enableSubmitButton, setEnableSubmitButton] = useState<boolean>(false);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.target.type === 'checkbox'
@@ -108,9 +81,8 @@ export const LoginComponent = ({ changePage }: DefaultProps) => {
   };
   const onSubmitForm = () => {
     const enableSubmit = validation(formData);
-    alert(enableSubmit);
     if (enableSubmit) {
-      history.push('/core');
+      history.push('core');
       // const data: AuthenticationCM = {
       //   Phone: formData.phone,
       //   Password: formData.password,
@@ -121,11 +93,11 @@ export const LoginComponent = ({ changePage }: DefaultProps) => {
     }
     // setFormData({ ...formData, submit: validation(formData) });
   };
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
   const handleShowPassword = () => {
     setShow(!show);
   };
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<{}>({
     phone: '',
     password: '',
     password2: '',
@@ -206,12 +178,12 @@ export const LoginComponent = ({ changePage }: DefaultProps) => {
             </Button>
         <Grid container={true}>
           <Grid item={true} xs={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Forgot Password')}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Forgot Password')}>
               Forgot password?
                 </Link>
           </Grid>
           <Grid item={true}>
-            <Link href="#" variant="body2" onClick={() => changePage('Sign Up')}>
+            <Link href="#" variant="body2" onClick={() => props.input?.changePage('Sign Up')}>
               {'Sign Up'}
             </Link>
           </Grid>

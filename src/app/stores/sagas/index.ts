@@ -3,6 +3,7 @@ import { useAccountExtraDataSaga, useAccountExtraInformationDataSaga, useAccount
 import { useDepartmentSaga, useGroupSaga, usePatternSaga, usePermissionSaga, useRoleSaga } from './basic-sagas';
 import { useCommentSaga, useConditionSaga, useWorkFlowConnectionSaga, useWorkFlowInstanceSaga, useWorkFlowSaga, useWorkFlowStepInstanceSaga, useWorkFlowStepSaga } from './bpmn-sagas';
 import { useCustomerExtraDataSaga, useCustomerExtraInformationDataSaga, useCustomerExtraInformationSaga, useCustomerSaga } from './customer-sagas';
+import { useAuthenticationSaga } from './extra-sagas/authentication.saga';
 import { useFormControlSaga, useFormDataSaga, useFormValueSaga, useFormGroupSaga } from './form-sagas';
 export const useRootSaga = () => {
     function* useInit() {
@@ -31,6 +32,7 @@ export const useRootSaga = () => {
           useFormDataSaga().useInit(),
           useFormValueSaga().useInit(),
           useFormGroupSaga().useInit(),
+          useAuthenticationSaga().useInit(),
         ]);
     }
     return { useInit };

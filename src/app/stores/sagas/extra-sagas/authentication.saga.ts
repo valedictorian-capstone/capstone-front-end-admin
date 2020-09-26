@@ -12,7 +12,6 @@ export const useAuthenticationSaga = () => {
     yield takeLatest(AUTHENTICATION_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(AUTHENTICATION_TYPE.REMOVE.FETCH, useRemove);
     yield takeLatest(AUTHENTICATION_TYPE.AUTHENTICATION.FETCH, useAuthentication);
-    yield takeLatest(AUTHENTICATION_TYPE.CHECKLOGIN.FETCH, useCheckLogin);
     yield takeLatest(AUTHENTICATION_TYPE.LOGIN.FETCH, useLogin);
   }
   function* useGetAll() {
@@ -46,6 +45,7 @@ export const useAuthenticationSaga = () => {
     yield put(useLoadingAction().hideLoader());
   }
   function* useRemove(action: Authentication) {
+    console.log(action);
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AuthenticationService.remove, action.payload.data as string);
@@ -58,21 +58,10 @@ export const useAuthenticationSaga = () => {
   function* useAuthentication(action: Authentication) {
     yield put(useLoadingAction().showLoader());
     try {
-      // const { data } = yield call(AuthenticationService.authenticate, action.payload.data as string);
-      console.log('21212');
-      // yield put(useAuthenticationAction().authenticateSuccess(data));
+      const { data } = yield call(AuthenticationService.authenticate, action.payload.data as string);
+      yield put(useAuthenticationAction().authenticateSuccess(data));
     } catch (error) {
       yield put(useAuthenticationAction().authenticateError(error));
-    }
-    yield put(useLoadingAction().hideLoader());
-  }
-  function* useCheckLogin(action: Authentication) {
-    yield put(useLoadingAction().showLoader());
-    try {
-      const { data } = yield call(AuthenticationService.checkLogin, action.payload.data as string);
-      yield put(useAuthenticationAction().checkLoginSuccess(data));
-    } catch (error) {
-      yield put(useAuthenticationAction().checkLoginError(error));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -86,6 +75,5 @@ export const useAuthenticationSaga = () => {
     }
     yield put(useLoadingAction().hideLoader());
   }
-
   return { useInit };
 };
