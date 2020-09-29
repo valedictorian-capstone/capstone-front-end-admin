@@ -1,5 +1,6 @@
 import { IBaseProps } from '@extras/interfaces';
 import { AuthModule, CoreModule } from '@modules';
+import { AuthenticationComponent } from '@modules/auth/components/auth/authentication.component';
 import React from 'react';
 import { HashRouter, Redirect, Route, RouteComponentProps } from 'react-router-dom';
 

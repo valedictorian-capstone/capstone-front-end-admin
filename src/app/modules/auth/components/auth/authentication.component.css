@@ -1,0 +1,10 @@
+.bg-default {
+  background: linear-gradient(to bottom, #0066ff 0%, #800000 74%) ;  
+}
+
+a.bg-default:hover,
+a.bg-default:focus,
+button.bg-default:hover,
+button.bg-default:focus {
+  background: linear-gradient(to bottom, #0000cc 0%, #993399 74%) !important;
+}

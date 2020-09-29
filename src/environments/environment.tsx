@@ -171,7 +171,11 @@ export const environment = {
     'extra-api': {
       'auth': {
         'main': 'api/v1/Auth',
-        'token': 'api/v1/Auth/Token',
+        'getById': 'api/v1/Auth/',
+        'active': 'api/v1/Auth/Active',
+        'deactive': 'api/v1/Auth/Deactive',
+        'authenticate': 'api/v1/Auth/Authentication',
+        'login': 'api/v1/Auth/Login',
       },
     },
     'bpmn-api': {
