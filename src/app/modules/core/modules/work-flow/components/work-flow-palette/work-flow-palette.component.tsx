@@ -6,14 +6,14 @@ import { BpmnDiagrams, DataBinding, DiagramContextMenu, Inject, SymbolPaletteCom
 import { Button, Popover, Tabs } from 'antd';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './palette.component.css';
+import './work-flow-palette.component.css';
 
-export interface IPaletteComponentProps extends IBaseProps {
+export interface IWorkFlowPaletteComponentProps extends IBaseProps {
   input?: {};
   output?: {};
 }
 
-export const PaletteComponent = (props: IPaletteComponentProps) => {
+export const WorkFlowPaletteComponent = (props: IWorkFlowPaletteComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const config = environment.i18n[region].data['work-flow'];
   const content = <Tabs defaultActiveKey="1" tabPosition={'left'} style={{ width: '100%' }}>
@@ -50,7 +50,7 @@ export const PaletteComponent = (props: IPaletteComponentProps) => {
       style={{ width: '100%' }}
       trigger={['click']}
     >
-      <Button type="primary" shape="round"><ToolOutlined /></Button>
+      <Button type="primary" shape="round" style={{ marginRight: 10 }}><ToolOutlined /></Button>
     </Popover>
   );
 };

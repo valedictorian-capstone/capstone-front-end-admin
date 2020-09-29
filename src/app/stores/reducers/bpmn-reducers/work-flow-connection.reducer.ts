@@ -28,14 +28,14 @@ export const useWorkFlowConnectionReducer: Reducer<WorkFlowConnectionState, Work
     }
     case WORK_FLOW_CONNECTION_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as WorkFlowConnectionUM).Id)] = action.payload.data as WorkFlowConnectionVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as WorkFlowConnectionUM).id)] = action.payload.data as WorkFlowConnectionVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case WORK_FLOW_CONNECTION_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

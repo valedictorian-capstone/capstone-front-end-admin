@@ -28,14 +28,14 @@ export const useFormControlReducer: Reducer<FormControlState, FormControl> = (st
     }
     case FORM_CONTROL_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as FormControlUM).Id)] = action.payload.data as FormControlVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as FormControlUM).id)] = action.payload.data as FormControlVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case FORM_CONTROL_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

@@ -28,14 +28,14 @@ export const useCustomerExtraDataReducer: Reducer<CustomerExtraDataState, Custom
     }
     case CUSTOMER_EXTRA_DATA_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as CustomerExtraDataUM).Id)] = action.payload.data as CustomerExtraDataVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as CustomerExtraDataUM).id)] = action.payload.data as CustomerExtraDataVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case CUSTOMER_EXTRA_DATA_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

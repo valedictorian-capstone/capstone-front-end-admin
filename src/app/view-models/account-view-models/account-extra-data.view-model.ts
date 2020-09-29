@@ -1,21 +1,21 @@
 import { AccountExtraInformationDataVM } from './account-extra-information-data.view-model';
 
 export interface AccountExtraDataVM {
-  readonly Id: string;
-  readonly AccountId: string;
-  readonly AccountExtraInformationDatas: AccountExtraInformationDataVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly accountId: string;
+  readonly accountExtraInformationDatas: AccountExtraInformationDataVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface AccountExtraDataCM {
-  readonly AccountId: string;
+  accountId: string;
 }
 
 export interface AccountExtraDataUM {
-  readonly Id: string;
-  readonly AccountId: string;
+  id: string;
+  accountId: string;
 }

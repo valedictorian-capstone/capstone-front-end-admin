@@ -28,14 +28,14 @@ export const useWorkFlowInstanceReducer: Reducer<WorkFlowInstanceState, WorkFlow
     }
     case WORK_FLOW_INSTANCE_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as WorkFlowInstanceUM).Id)] = action.payload.data as WorkFlowInstanceVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as WorkFlowInstanceUM).id)] = action.payload.data as WorkFlowInstanceVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case WORK_FLOW_INSTANCE_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

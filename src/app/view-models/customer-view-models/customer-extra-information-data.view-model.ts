@@ -1,24 +1,24 @@
 export interface CustomerExtraInformationDataVM {
-  readonly Id: string;
-  readonly CustomerExtraInformationId: string;
-  readonly CustomerExtraDataId: string;
-  readonly Value: string;
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly customerExtraInformationId: string;
+  readonly customerExtraDataId: string;
+  readonly value: string;
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface CustomerExtraInformationDataCM {
-  readonly CustomerExtraInformationId: string;
-  readonly CustomerExtraDataId: string;
-  readonly Value: string;
+  customerExtraInformationId: string;
+  customerExtraDataId: string;
+  value: string;
 }
 
 export interface CustomerExtraInformationDataUM {
-  readonly Id: string;
-  readonly CustomerExtraInformationId: string;
-  readonly CustomerExtraDataId: string;
-  readonly Value: string;
+  id: string;
+  customerExtraInformationId: string;
+  customerExtraDataId: string;
+  value: string;
 }

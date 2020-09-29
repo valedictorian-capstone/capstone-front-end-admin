@@ -2,25 +2,25 @@ import { WorkFlowStepVM } from '../bpmn-view-models';
 import { RoleVM } from './role.view-model';
 
 export interface PermissionVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly WorkFlowSteps: WorkFlowStepVM[];
-  readonly Roles: RoleVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly workFlowSteps: WorkFlowStepVM[];
+  readonly roles: RoleVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface PermissionCM {
-  readonly Name: string;
-  readonly Description: string;
+  name: string;
+  description: string;
 }
 
 export interface PermissionUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  description: string;
 }

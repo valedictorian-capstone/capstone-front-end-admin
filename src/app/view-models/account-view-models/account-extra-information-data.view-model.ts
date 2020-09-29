@@ -1,24 +1,24 @@
 export interface AccountExtraInformationDataVM {
-  readonly Id: string;
-  readonly AccountExtraInformationId: string;
-  readonly AccountExtraDataId: string;
-  readonly Value: string;
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly accountExtraInformationId: string;
+  readonly accountExtraDataId: string;
+  readonly value: string;
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface AccountExtraInformationDataCM {
-  readonly AccountExtraInformationId: string;
-  readonly AccountExtraDataId: string;
-  readonly Value: string;
+  accountExtraInformationId: string;
+  accountExtraDataId: string;
+  value: string;
 }
 
 export interface AccountExtraInformationDataUM {
-  readonly Id: string;
-  readonly AccountExtraInformationId: string;
-  readonly AccountExtraDataId: string;
-  readonly Value: string;
+  id: string;
+  accountExtraInformationId: string;
+  accountExtraDataId: string;
+  value: string;
 }

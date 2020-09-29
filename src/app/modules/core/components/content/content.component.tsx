@@ -20,7 +20,7 @@ export const ContentComponent = (props: IContentComponentProps) => {
         minHeight: 280,
         height: window.innerHeight - 110,
         maxHeight: window.innerHeight - 110,
-        overflow: 'auto',
+        overflow: 'hidden',
       }}
     >
       {props.children}

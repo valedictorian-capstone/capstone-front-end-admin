@@ -4,44 +4,44 @@ import { WorkFlowStepInstanceVM } from '../bpmn-view-models';
 import { GroupVM } from '../basic-view-models';
 
 export interface CustomerVM {
-  readonly Id: string;
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly CustomerExtraInformations: CustomerExtraInformationVM[];
-  readonly Groups: GroupVM[];
-  readonly CustomerExtraDatas: CustomerExtraDataVM[];
-  readonly WorkFlowStepInstances: WorkFlowStepInstanceVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly phone: string;
+  readonly email: string;
+  readonly code: string;
+  readonly fullname: string;
+  readonly avatar: string;
+  readonly address: string;
+  readonly gender: string;
+  readonly customerExtraInformations: CustomerExtraInformationVM[];
+  readonly groups: GroupVM[];
+  readonly customerExtraDatas: CustomerExtraDataVM[];
+  readonly workFlowStepInstances: WorkFlowStepInstanceVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface CustomerCM {
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly PasswordHash: string;
+  phone: string;
+  email: string;
+  code: string;
+  fullname: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  passwordHash: string;
 }
 
 export interface CustomerUM {
-  readonly Id: string;
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly PasswordHash: string;
+  id: string;
+  phone: string;
+  email: string;
+  code: string;
+  fullname: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  passwordHash: string;
 }

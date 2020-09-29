@@ -4,36 +4,36 @@ import { WorkFlowConnectionVM } from './work-flow-connection.view-model';
 import { WorkFlowStepInstanceVM } from './work-flow-step-instance.view-model';
 
 export interface WorkFlowStepVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly WorkFlowId: string;
-  readonly WorkFlowConnections: WorkFlowConnectionVM[];
-  readonly WorkFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
-  readonly Permissions: PermissionVM[];
-  readonly FormGroups: FormGroupVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly type: string;
+  readonly subType: string;
+  readonly workFlowId: string;
+  readonly workFlowConnections: WorkFlowConnectionVM[];
+  readonly workFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
+  readonly permissions: PermissionVM[];
+  readonly formGroups: FormGroupVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface WorkFlowStepCM {
-  readonly Name: string;
-  readonly Description: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly WorkFlowId: string;
+  name: string;
+  description: string;
+  type: string;
+  subType: string;
+  workFlowId: string;
 }
 
 export interface WorkFlowStepUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly WorkFlowId: string;
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  subType: string;
+  workFlowId: string;
 }

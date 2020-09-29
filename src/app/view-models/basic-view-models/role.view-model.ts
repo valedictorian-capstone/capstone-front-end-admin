@@ -2,25 +2,25 @@ import { AccountVM } from '../account-view-models';
 import { PermissionVM } from './permission.view-model';
 
 export interface RoleVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Accounts: AccountVM[];
-  readonly Permissions: PermissionVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly accounts: AccountVM[];
+  readonly permissions: PermissionVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface RoleCM {
-  readonly Name: string;
-  readonly Description: string;
+  name: string;
+  description: string;
 }
 
 export interface RoleUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  description: string;
 }

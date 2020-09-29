@@ -1,0 +1,57 @@
+.ant-list-bordered.ant-list-lg .ant-list-footer {
+    height: 6%;
+    padding: 0 !important;
+}
+
+.ant-list-bordered.ant-list-lg .ant-list-header {
+    height: 18%;
+    padding: 0 !important;
+}
+
+.ant-spin-nested-loading {
+    border: 1px solid gray;
+    min-height: 76%;
+    max-height: 76%;
+    height: 76%;
+    overflow: auto;
+}
+
+.form-center {
+    width: 20%;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+.form-left,
+.form-right {
+    width: 40%;
+    display: block;
+    float: left;
+}
+
+.item.active {
+    background-color: antiquewhite;
+}
+
+.item:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.setting:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.ant-spin-nested-loading .ant-spin-container {
+    height: 100%;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

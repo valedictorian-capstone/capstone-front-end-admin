@@ -28,14 +28,14 @@ export const usePatternReducer: Reducer<PatternState, Pattern> = (state: Pattern
     }
     case PATTERN_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as PatternUM).Id)] = action.payload.data as PatternVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as PatternUM).id)] = action.payload.data as PatternVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case PATTERN_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

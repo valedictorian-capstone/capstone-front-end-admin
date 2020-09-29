@@ -4,33 +4,33 @@ import { FormDataVM } from '../form-view-models';
 import { CommentVM } from './comment.view-model';
 
 export interface WorkFlowStepInstanceVM {
-  readonly Id: string;
-  readonly Status: string;
-  readonly Note: string;
-  readonly WorkFlowStepId: string;
-  readonly WorkFlowInstanceId: string;
-  readonly CommentVMs: CommentVM[];
-  readonly Customers: CustomerVM[];
-  readonly Accounts: AccountVM[];
-  readonly FormDataVMs: FormDataVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly status: string;
+  readonly note: string;
+  readonly workFlowStepId: string;
+  readonly workFlowInstanceId: string;
+  readonly commentVMs: CommentVM[];
+  readonly customers: CustomerVM[];
+  readonly accounts: AccountVM[];
+  readonly formDataVMs: FormDataVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface WorkFlowStepInstanceCM {
-  readonly Status: string;
-  readonly Note: string;
-  readonly WorkFlowStepId: string;
-  readonly WorkFlowInstanceId: string;
+  status: string;
+  note: string;
+  workFlowStepId: string;
+  workFlowInstanceId: string;
 }
 
 export interface WorkFlowStepInstanceUM {
-  readonly Id: string;
-  readonly Status: string;
-  readonly Note: string;
-  readonly WorkFlowStepId: string;
-  readonly WorkFlowInstanceId: string;
+  id: string;
+  status: string;
+  note: string;
+  workFlowStepId: string;
+  workFlowInstanceId: string;
 }

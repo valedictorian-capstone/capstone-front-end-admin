@@ -2,6 +2,7 @@ import { FormGroupCM, FormGroupUM, FormGroupVM } from '@view-models';
 import { ActionCreatorsMapObject } from 'redux';
 import { FormGroup } from '@stores/models';
 import { FORM_GROUP_TYPE } from '@stores/types';
+import { message } from 'antd';
 
 export const useFormGroupAction = (): ActionCreatorsMapObject<FormGroup> => {
   const reset = (): FormGroup => {
@@ -21,19 +22,24 @@ export const useFormGroupAction = (): ActionCreatorsMapObject<FormGroup> => {
     return { type: FORM_GROUP_TYPE.CREATE.FETCH, payload: { data } };
   };
   const createSuccess = (data: FormGroupVM): FormGroup => {
+    message.success('Create success', 1);
     return { type: FORM_GROUP_TYPE.CREATE.SUCCESS, payload: { data } };
   };
   const createError = (error: any): FormGroup => {
     console.log(error);
+    message.error('Have error', 1);
     return { type: FORM_GROUP_TYPE.CREATE.ERROR, payload: { data: FORM_GROUP_TYPE.CREATE.ERROR } };
   };
   const update = (data: FormGroupUM): FormGroup => {
     return { type: FORM_GROUP_TYPE.UPDATE.FETCH, payload: { data } };
   };
   const updateSuccess = (data: FormGroupVM): FormGroup => {
+    message.success('Update success', 1);
     return { type: FORM_GROUP_TYPE.UPDATE.SUCCESS, payload: { data } };
   };
   const updateError = (error: any): FormGroup => {
+    console.log(error);
+    message.error('Have error', 1);
     return { type: FORM_GROUP_TYPE.UPDATE.ERROR, payload: { data: FORM_GROUP_TYPE.UPDATE.ERROR} };
   };
   const remove = (data: string): FormGroup => {

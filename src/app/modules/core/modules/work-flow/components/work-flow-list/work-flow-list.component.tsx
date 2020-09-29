@@ -6,17 +6,17 @@ import { List } from 'antd';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { uuid } from 'uuidv4';
-import { CreateComponent, PaletteComponent, CloseComponent } from '..';
-import './work-flow.component.css';
+import { WorkFlowCreateComponent, WorkFlowPaletteComponent, WorkFlowCloseComponent } from '..';
+import './work-flow-list.component.css';
 
-export interface IWorkFlowComponentProps extends IBaseProps {
+export interface IWorkFlowListComponentProps extends IBaseProps {
   input?: {};
   output?: {
     onSelectItem: (data: WorkFlowVM) => void;
   };
 }
 
-export const WorkFlowComponent = (props: IWorkFlowComponentProps) => {
+export const WorkFlowListComponent = (props: IWorkFlowListComponentProps) => {
   const [edit, setEdit] = React.useState<boolean>(false);
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const arr = useSelector<RootState, WorkFlowVM[]>(state => state.workFlow.arr);
@@ -28,14 +28,14 @@ export const WorkFlowComponent = (props: IWorkFlowComponentProps) => {
       style={{ height: '100%' }}
       footer={(
         <div style={{ textAlign: 'center', height: '10%' }}>
-          {!edit && <CreateComponent output={{
+          {!edit && <WorkFlowCreateComponent output={{
             onClick: () => {
               setEdit(true);
               props.output?.onSelectItem({ id: uuid(), isDraft: true } as WorkFlowVM);
             },
           }} />}
-          {edit && <PaletteComponent />}
-          {edit && <CloseComponent output={{
+          {edit && <WorkFlowPaletteComponent />}
+          {edit && <WorkFlowCloseComponent output={{
             onClick: () => {
               setEdit(false);
               props.output?.onSelectItem(undefined as any);

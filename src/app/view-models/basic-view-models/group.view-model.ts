@@ -1,24 +1,24 @@
 import { CustomerVM } from '../customer-view-models';
 
 export interface GroupVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Customers: CustomerVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly customers: CustomerVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface GroupCM {
-  readonly Name: string;
-  readonly Description: string;
+  name: string;
+  description: string;
 }
 
 export interface GroupUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  description: string;
 }

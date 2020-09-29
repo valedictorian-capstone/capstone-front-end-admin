@@ -28,14 +28,14 @@ export const useDepartmentReducer: Reducer<DepartmentState, Department> = (state
     }
     case DEPARTMENT_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as DepartmentUM).Id)] = action.payload.data as DepartmentVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as DepartmentUM).id)] = action.payload.data as DepartmentVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case DEPARTMENT_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

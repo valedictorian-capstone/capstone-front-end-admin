@@ -28,14 +28,14 @@ export const useConditionReducer: Reducer<ConditionState, Condition> = (state: C
     }
     case CONDITION_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as ConditionUM).Id)] = action.payload.data as ConditionVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as ConditionUM).id)] = action.payload.data as ConditionVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case CONDITION_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

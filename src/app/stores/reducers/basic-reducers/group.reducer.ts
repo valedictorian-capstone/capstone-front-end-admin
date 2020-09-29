@@ -28,14 +28,14 @@ export const useGroupReducer: Reducer<GroupState, Group> = (state: GroupState = 
     }
     case GROUP_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as GroupUM).Id)] = action.payload.data as GroupVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as GroupUM).id)] = action.payload.data as GroupVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case GROUP_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

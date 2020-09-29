@@ -1,0 +1,26 @@
+.box-item {
+    -webkit-box-shadow: 10px 10px 22px -20px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 22px -20px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 22px -20px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    cursor: grab;
+    text-align: center;
+    background: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+.box-item:hover {
+    transform: scale(1.2);
+}
+
+.box-item:hover img {
+    width: 60%;
+}
+
+.box-item img {
+    width: 50%;
+}

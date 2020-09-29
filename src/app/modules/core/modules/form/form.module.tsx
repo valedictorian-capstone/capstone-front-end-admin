@@ -3,12 +3,12 @@ import React from 'react';
 import { FormRoutes } from './form.routing';
 
 export interface IFormModuleProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
 export const FormModule = (props: IFormModuleProps) => {
   return (
-    <FormRoutes />
+    <FormRoutes input={{}} output={{}} />
   );
 };

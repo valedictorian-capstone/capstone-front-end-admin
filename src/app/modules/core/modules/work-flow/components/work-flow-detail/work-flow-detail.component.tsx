@@ -6,18 +6,20 @@ import { WorkFlowVM } from '@view-models';
 import { Button, Card, Input } from 'antd';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './detail.component.css';
+import './work-flow-detail.component.css';
 
-export interface IDetailComponentProps extends IBaseProps {
+export interface IWorkFlowDetailComponentProps extends IBaseProps {
   input?: {
     diagram?: Diagram,
     data?: WorkFlowVM,
   };
-  output?: {};
+  output?: {
+    onSave: () => void,
+    onDraft: () => void,
+  };
 }
 
-export const DetailComponent = (props: IDetailComponentProps) => {
-  console.log(props);
+export const WorkFlowDetailComponent = (props: IWorkFlowDetailComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const detail = environment.i18n[region].data['work-flow'].detail;
   return (
@@ -40,10 +42,9 @@ export const DetailComponent = (props: IDetailComponentProps) => {
             (props.input?.data as any).description = e.target.value;
           }} />
           <div style={{ margin: '16px 0', textAlign: 'center' }}>
-            <Button type="primary" shape="round" style={{ marginRight: 10 }}>{detail.form.basic.button.save}</Button>
-            {props.input.data?.isDraft && <Button type="primary" shape="round">{detail.form.basic.button.draft}</Button>}
+            <Button type="primary" shape="round" style={{ marginRight: 10 }} onClick={props.output?.onSave}>{detail.form.basic.button.save}</Button>
+            {props.input.data?.isDraft && <Button type="primary" shape="round" onClick={props.output?.onDraft}>{detail.form.basic.button.draft}</Button>}
           </div>
-
         </>
       )}
     </Card>

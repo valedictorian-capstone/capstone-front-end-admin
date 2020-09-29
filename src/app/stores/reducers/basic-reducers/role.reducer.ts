@@ -28,14 +28,14 @@ export const useRoleReducer: Reducer<RoleState, Role> = (state: RoleState = new 
     }
     case ROLE_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as RoleUM).Id)] = action.payload.data as RoleVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as RoleUM).id)] = action.payload.data as RoleVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case ROLE_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

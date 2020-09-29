@@ -1,24 +1,24 @@
 export interface FormValueVM {
-  readonly Id: string;
-  readonly FormControlId: string;
-  readonly FormDataId: string;
-  readonly Value: string;
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly formControlId: string;
+  readonly formDataId: string;
+  readonly value: string;
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface FormValueCM {
-  readonly FormControlId: string;
-  readonly FormDataId: string;
-  readonly Value: string;
+  formControlId: string;
+  formDataId: string;
+  value: string;
 }
 
 export interface FormValueUM {
-  readonly Id: string;
-  readonly FormControlId: string;
-  readonly FormDataId: string;
-  readonly Value: string;
+  id: string;
+  formControlId: string;
+  formDataId: string;
+  value: string;
 }

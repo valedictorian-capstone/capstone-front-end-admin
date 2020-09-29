@@ -1,24 +1,24 @@
 import { FormValueVM } from './form-value.view-model';
 
 export interface FormDataVM {
-  readonly Id: string;
-  readonly WorkFlowStepInstanceId: string;
-  readonly FormGroupId: string;
-  readonly FormValues: FormValueVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly workFlowStepInstanceId: string;
+  readonly formGroupId: string;
+  readonly formValues: FormValueVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface FormDataCM {
-  readonly WorkFlowStepInstanceId: string;
-  readonly FormGroupId: string;
+  workFlowStepInstanceId: string;
+  formGroupId: string;
 }
 
 export interface FormDataUM {
-  readonly Id: string;
-  readonly WorkFlowStepInstanceId: string;
-  readonly FormGroupId: string;
+  id: string;
+  workFlowStepInstanceId: string;
+  formGroupId: string;
 }

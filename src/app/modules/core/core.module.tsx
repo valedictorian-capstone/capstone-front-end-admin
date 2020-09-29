@@ -4,14 +4,14 @@ import { CoreRoutes } from './core.routing';
 import { LayoutComponent } from './pages';
 
 export interface ICoreModuleProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
 export const CoreModule = (props: ICoreModuleProps) => {
   return (
     <LayoutComponent>
-      <CoreRoutes />
+      <CoreRoutes fatherProps={props} input={{}} output={{}} />
     </LayoutComponent>
   );
 };

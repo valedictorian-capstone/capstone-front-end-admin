@@ -1,27 +1,27 @@
 import { WorkFlowStepInstanceVM } from './work-flow-step-instance.view-model';
 
 export interface WorkFlowInstanceVM {
-  readonly Id: string;
-  readonly Code: string;
-  readonly WorkFlowId: string;
-  readonly Note: string;
-  readonly WorkFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly code: string;
+  readonly workFlowId: string;
+  readonly note: string;
+  readonly workFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface WorkFlowInstanceCM {
-  readonly Code: string;
-  readonly WorkFlowId: string;
-  readonly Note: string;
+  code: string;
+  workFlowId: string;
+  note: string;
 }
 
 export interface WorkFlowInstanceUM {
-  readonly Id: string;
-  readonly Code: string;
-  readonly WorkFlowId: string;
-  readonly Note: string;
+  id: string;
+  code: string;
+  workFlowId: string;
+  note: string;
 }

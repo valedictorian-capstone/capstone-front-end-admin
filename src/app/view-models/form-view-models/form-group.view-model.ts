@@ -1,28 +1,34 @@
 import { WorkFlowStepVM } from '../bpmn-view-models';
-import { FormControlVM } from './form-control.view-model';
+import { FormControlCM, FormControlUM, FormControlVM } from './form-control.view-model';
 import { FormDataVM } from './form-data.view-model';
 
 export interface FormGroupVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly FormControls: FormControlVM[];
-  readonly FormDatas: FormDataVM[];
-  readonly WorkFlowSteps: WorkFlowStepVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly code: string;
+  readonly description: string;
+  readonly formControls: FormControlVM[];
+  readonly formDatas: FormDataVM[];
+  readonly workFlowSteps: WorkFlowStepVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface FormGroupCM {
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  code: string;
+  description: string;
+  formControls: FormControlCM[];
 }
 
 export interface FormGroupUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  code: string;
+  description: string;
+  formControls: FormControlUM[];
 }

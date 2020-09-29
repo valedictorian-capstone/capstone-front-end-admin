@@ -3,8 +3,8 @@ import { IBaseProps } from '@extras/interfaces';
 import '@app/app.component.css';
 
 export interface IAppComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
 export const AppComponent = (props: IAppComponentProps) => {

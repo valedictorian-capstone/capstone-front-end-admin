@@ -28,14 +28,14 @@ export const usePermissionReducer: Reducer<PermissionState, Permission> = (state
     }
     case PERMISSION_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as PermissionUM).Id)] = action.payload.data as PermissionVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as PermissionUM).id)] = action.payload.data as PermissionVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case PERMISSION_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

@@ -1,31 +1,31 @@
 import { AccountVM } from '../account-view-models';
 
 export interface DepartmentVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Level: string;
-  readonly ParentId: string;
-  readonly Accounts: AccountVM[];
-  readonly Childrens: DepartmentVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly level: string;
+  readonly parentId: string;
+  readonly accounts: AccountVM[];
+  readonly childrens: DepartmentVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface DepartmentCM {
-  readonly Name: string;
-  readonly Description: string;
-  readonly Level: string;
-  readonly ParentId: string;
+  name: string;
+  description: string;
+  level: string;
+  parentId: string;
 }
 
 export interface DepartmentUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly Level: string;
-  readonly ParentId: string;
+  id: string;
+  name: string;
+  description: string;
+  level: string;
+  parentId: string;
 }

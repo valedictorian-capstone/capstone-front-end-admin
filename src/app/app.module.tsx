@@ -7,8 +7,8 @@ import { AppRoutes } from '@app/app.routing';
 import { useStoreModule } from '@app/stores';
 ReactDOM.render(
   <Provider store={useStoreModule()}>
-    <AppComponent>
-      <AppRoutes />
+    <AppComponent input={{}} output={{}}>
+      <AppRoutes input={{}} output={{}} />
     </AppComponent>
   </Provider>,
   document.getElementById('root'));

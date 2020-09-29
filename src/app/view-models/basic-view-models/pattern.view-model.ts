@@ -3,26 +3,26 @@ import { CustomerExtraInformationVM } from '../customer-view-models';
 import { FormControlVM } from '../form-view-models';
 
 export interface PatternVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
-  readonly CustomerExtraInformations: CustomerExtraInformationVM[];
-  readonly AccountExtraInformations: AccountExtraInformationVM[];
-  readonly FormControls: FormControlVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly customerExtraInformations: CustomerExtraInformationVM[];
+  readonly accountExtraInformations: AccountExtraInformationVM[];
+  readonly formControls: FormControlVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface PatternCM {
-  readonly Name: string;
-  readonly Description: string;
+  name: string;
+  description: string;
 }
 
 export interface PatternUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly Description: string;
+  id: string;
+  name: string;
+  description: string;
 }

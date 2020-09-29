@@ -2,40 +2,40 @@ import { PatternVM } from '../basic-view-models';
 import { AccountExtraInformationDataVM } from './account-extra-information-data.view-model';
 
 export interface AccountExtraInformationVM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly AccountId: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly Options: string;
-  readonly PlaceHolder: string;
-  readonly Tooltip: string;
-  readonly AccountExtraInformationDatas: AccountExtraInformationDataVM[];
-  readonly Patterns: PatternVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly name: string;
+  readonly accountId: string;
+  readonly type: string;
+  readonly subType: string;
+  readonly options: string;
+  readonly placeHolder: string;
+  readonly tooltip: string;
+  readonly accountExtraInformationDatas: AccountExtraInformationDataVM[];
+  readonly patterns: PatternVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface AccountExtraInformationCM {
-  readonly Name: string;
-  readonly AccountId: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly Options: string;
-  readonly PlaceHolder: string;
-  readonly Tooltip: string;
+  name: string;
+  accountId: string;
+  type: string;
+  subType: string;
+  options: string;
+  placeHolder: string;
+  tooltip: string;
 }
 
 export interface AccountExtraInformationUM {
-  readonly Id: string;
-  readonly Name: string;
-  readonly AccountId: string;
-  readonly Type: string;
-  readonly SubType: string;
-  readonly Options: string;
-  readonly PlaceHolder: string;
-  readonly Tooltip: string;
+  id: string;
+  name: string;
+  accountId: string;
+  type: string;
+  subType: string;
+  options: string;
+  placeHolder: string;
+  tooltip: string;
 }

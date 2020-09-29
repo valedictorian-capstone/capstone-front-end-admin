@@ -5,7 +5,7 @@ import { LOADING_TYPE } from '@stores/types';
 export const useLoadingAction = (): ActionCreatorsMapObject<Loading> => {
 
   const showLoader = (): Loading => {
-    return { type: LOADING_TYPE.HIDE, payload: { status: false } };
+    return { type: LOADING_TYPE.HIDE, payload: { status: true } };
 
   };
   const hideLoader = (): Loading => {

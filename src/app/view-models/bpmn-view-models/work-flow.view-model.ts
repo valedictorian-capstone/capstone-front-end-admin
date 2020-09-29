@@ -19,16 +19,16 @@ export interface WorkFlowVM {
 }
 
 export interface WorkFlowCM {
-  readonly name: string;
-  readonly description: string;
-  readonly code: string;
-  readonly isDraft: boolean;
+  name: string;
+  description: string;
+  code: string;
+  isDraft: boolean;
 }
 
 export interface WorkFlowUM {
-  readonly id: string;
-  readonly name: string;
-  readonly description: string;
-  readonly isDraft: boolean;
-  readonly code: string;
+  id: string;
+  name: string;
+  description: string;
+  isDraft: boolean;
+  code: string;
 }

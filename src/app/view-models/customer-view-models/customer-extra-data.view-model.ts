@@ -1,21 +1,21 @@
 import { CustomerExtraInformationDataVM } from './customer-extra-information-data.view-model';
 
 export interface CustomerExtraDataVM {
-  readonly Id: string;
-  readonly CustomerId: string;
-  readonly CustomerExtraInformationDatas: CustomerExtraInformationDataVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly customerId: string;
+  readonly customerExtraInformationDatas: CustomerExtraInformationDataVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface CustomerExtraDataCM {
-  readonly CustomerId: string;
+  customerId: string;
 }
 
 export interface CustomerExtraDataUM {
-  readonly Id: string;
-  readonly CustomerId: string;
+  id: string;
+  customerId: string;
 }

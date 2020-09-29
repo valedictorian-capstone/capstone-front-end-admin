@@ -4,52 +4,52 @@ import { AccountExtraDataVM } from './account-extra-data.view-model';
 import { AccountExtraInformationVM } from './account-extra-information.view-model';
 
 export interface AccountVM {
-  readonly Id: string;
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly CurrentValidateCode: string;
-  readonly Position: string;
-  readonly Roles: RoleVM[];
-  readonly AccountExtraInformations: AccountExtraInformationVM[];
-  readonly AccountExtraDatas: AccountExtraDataVM[];
-  readonly Departments: DepartmentVM[];
-  readonly Comments: CommentVM[];
-  readonly WorkFlowStepInstances: WorkFlowStepInstanceVM[];
-  readonly IsDelete: boolean;
-  readonly CreatedBy: string;
-  readonly UpdatedBy: string;
-  readonly CreatedAt: Date;
-  readonly UpdatedAt: Date;
+  readonly id: string;
+  readonly phone: string;
+  readonly email: string;
+  readonly code: string;
+  readonly fullname: string;
+  readonly avatar: string;
+  readonly address: string;
+  readonly gender: string;
+  readonly currentValidateCode: string;
+  readonly position: string;
+  readonly roles: RoleVM[];
+  readonly accountExtraInformations: AccountExtraInformationVM[];
+  readonly accountExtraDatas: AccountExtraDataVM[];
+  readonly departments: DepartmentVM[];
+  readonly comments: CommentVM[];
+  readonly workFlowStepInstances: WorkFlowStepInstanceVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
 
 export interface AccountCM {
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly PasswordHash: string;
-  readonly CurrentValidateCode: string;
-  readonly Position: string;
+  phone: string;
+  email: string;
+  code: string;
+  fullname: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  passwordHash: string;
+  currentValidateCode: string;
+  position: string;
 }
 
 export interface AccountUM {
-  readonly Id: string;
-  readonly Phone: string;
-  readonly Email: string;
-  readonly Code: string;
-  readonly Fullname: string;
-  readonly Avatar: string;
-  readonly Address: string;
-  readonly Gender: string;
-  readonly PasswordHash: string;
-  readonly CurrentValidateCode: string;
-  readonly Position: string;
+  id: string;
+  phone: string;
+  email: string;
+  code: string;
+  fullname: string;
+  avatar: string;
+  address: string;
+  gender: string;
+  passwordHash: string;
+  currentValidateCode: string;
+  position: string;
 }

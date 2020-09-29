@@ -28,14 +28,14 @@ export const useAccountExtraDataReducer: Reducer<AccountExtraDataState, AccountE
     }
     case ACCOUNT_EXTRA_DATA_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as AccountExtraDataUM).Id)] = action.payload.data as AccountExtraDataVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as AccountExtraDataUM).id)] = action.payload.data as AccountExtraDataVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case ACCOUNT_EXTRA_DATA_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

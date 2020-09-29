@@ -28,14 +28,14 @@ export const useCustomerReducer: Reducer<CustomerState, Customer> = (state: Cust
     }
     case CUSTOMER_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as CustomerUM).Id)] = action.payload.data as CustomerVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as CustomerUM).id)] = action.payload.data as CustomerVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case CUSTOMER_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],

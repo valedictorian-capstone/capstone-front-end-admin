@@ -28,14 +28,14 @@ export const useCommentReducer: Reducer<CommentState, Comment> = (state: Comment
     }
     case COMMENT_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
-      newArr[newArr.findIndex(model => model.Id === (action.payload.data as CommentUM).Id)] = action.payload.data as CommentVM;
+      newArr[newArr.findIndex(model => model.id === (action.payload.data as CommentUM).id)] = action.payload.data as CommentVM;
       return {
         ...state,
         arr: [...newArr],
       };
     }
     case COMMENT_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.Id !== action.payload.data);
+      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
         arr: [...newArr],
