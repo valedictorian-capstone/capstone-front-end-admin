@@ -25,11 +25,11 @@ export class FormGroupService {
     return useHttp().delete<FormGroupVM>(`${environment.apiEndpont}${environment.api['form-api']['form-group'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<FormGroupVM>> => {
-    return useHttp().put<FormGroupVM>(`${environment.apiEndpont}${environment.api['form-api']['form-group'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<FormGroupVM>> => {
+    return useHttp().put<FormGroupVM>(`${environment.apiEndpont}${environment.api['form-api']['form-group'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<FormGroupVM>> => {
-    return useHttp().put<FormGroupVM>(`${environment.apiEndpont}${environment.api['form-api']['form-group'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<FormGroupVM>> => {
+    return useHttp().put<FormGroupVM>(`${environment.apiEndpont}${environment.api['form-api']['form-group'].deactive}`, ids);
   }
 }

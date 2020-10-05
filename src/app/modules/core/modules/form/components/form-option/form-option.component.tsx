@@ -17,14 +17,14 @@ export interface IFormOptionComponentProps extends IBaseProps {
   };
 }
 
-export const FormOptionComponent = (props: IFormOptionComponentProps) => {
+export const FormOptionComponent: React.FC<IFormOptionComponentProps> = (props: IFormOptionComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
-  const canvas = environment.i18n[region].data['form'].canvas;
+  const config = environment.i18n.data.core.modules.form.components['form-option'][region];
   const [option, setOption] = React.useState<{ value: string, label: string }>(props.input.option);
   return (
     <Input.Group compact={true} onBlur={() => props.output.save(option)}>
-      <Input style={{ width: '50%' }} placeholder={canvas.form.basic.options.placeholder[1]} value={option.label} onChange={(ev) => setOption({ ...option, label: ev.target.value })} />
-      <Input style={{ width: '50%' }} placeholder={canvas.form.basic.options.placeholder[0]} value={option.value} onChange={(ev) => setOption({ ...option, value: ev.target.value })} addonAfter={<Button onClick={props.output.remove} danger={true} shape="circle" size="small" icon={<RestOutlined />} />} />
+      <Input style={{ width: '50%' }} placeholder={config.label} value={option.label} onChange={(ev) => setOption({ ...option, label: ev.target.value })} />
+      <Input style={{ width: '50%' }} placeholder={config.value} value={option.value} onChange={(ev) => setOption({ ...option, value: ev.target.value })} addonAfter={<Button onClick={props.output.remove} danger={true} shape="circle" size="small" icon={<RestOutlined />} />} />
     </Input.Group>
   );
 };

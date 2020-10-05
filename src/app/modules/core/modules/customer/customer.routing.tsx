@@ -1,16 +1,17 @@
 import { IBaseProps } from '@extras/interfaces';
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { CustomerMainComponent } from './pages';
+import { BrowserRouter, Route, RouteComponentProps } from 'react-router-dom';
+import { CustomerMainComponent, CustomerEditableComponent } from './pages';
 
 export interface ICustomerRoutesProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
-export const CustomerRoutes = (props: ICustomerRoutesProps) => {
+export const CustomerRoutes: React.FC<ICustomerRoutesProps> = (props: ICustomerRoutesProps) => {
   return (
     <BrowserRouter>
-      <Route path={['']} component={() => <CustomerMainComponent />} />
+      <Route exact={true} path="/core/customer" component={(routeProps: RouteComponentProps) => <CustomerMainComponent {...routeProps} input={{}} output={{}} fatherProps={props} />} />
+      <Route exact={true} path="/core/customer/extra" component={(routeProps: RouteComponentProps) => <CustomerEditableComponent {...routeProps} input={{}} output={{}} fatherProps={props} />} />
     </BrowserRouter>
   );
 };

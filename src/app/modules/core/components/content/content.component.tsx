@@ -4,11 +4,11 @@ import React from 'react';
 import './content.component.scss';
 
 export interface IContentComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
-export const ContentComponent = (props: IContentComponentProps) => {
+export const ContentComponent: React.FC<IContentComponentProps> = (props: IContentComponentProps) => {
   return (
     <Layout.Content
       className={props.className}

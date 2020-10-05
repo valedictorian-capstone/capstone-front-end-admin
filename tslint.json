@@ -120,8 +120,7 @@
             }
         ],
         "linebreak-style": [
-            true,
-            "LF"
+            false
         ],
         "typedef": [
             false,

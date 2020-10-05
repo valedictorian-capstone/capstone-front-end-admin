@@ -51,6 +51,24 @@ export const useFormGroupAction = (): ActionCreatorsMapObject<FormGroup> => {
   const removeError = (error: any): FormGroup => {
     return { type: FORM_GROUP_TYPE.REMOVE.ERROR, payload: {data: FORM_GROUP_TYPE.REMOVE.ERROR} };
   };
+  const active = (data: string[]): FormGroup => {
+    return { type: FORM_GROUP_TYPE.ACTIVE.FETCH, payload: { data } };
+  };
+  const activeSuccess = (data: string[]): FormGroup => {
+    return { type: FORM_GROUP_TYPE.ACTIVE.SUCCESS, payload: { data } };
+  };
+  const activeError = (error: any): FormGroup => {
+    return { type: FORM_GROUP_TYPE.ACTIVE.ERROR, payload: {data: FORM_GROUP_TYPE.ACTIVE.ERROR} };
+  };
+  const deactive = (data: string[]): FormGroup => {
+    return { type: FORM_GROUP_TYPE.DEACTIVE.FETCH, payload: { data } };
+  };
+  const deactiveSuccess = (data: string[]): FormGroup => {
+    return { type: FORM_GROUP_TYPE.DEACTIVE.SUCCESS, payload: { data } };
+  };
+  const deactiveError = (error: any): FormGroup => {
+    return { type: FORM_GROUP_TYPE.DEACTIVE.ERROR, payload: {data: FORM_GROUP_TYPE.DEACTIVE.ERROR} };
+  };
   const actions: ActionCreatorsMapObject<FormGroup> = {
     reset,
     getAll,
@@ -65,6 +83,12 @@ export const useFormGroupAction = (): ActionCreatorsMapObject<FormGroup> => {
     remove,
     removeSuccess,
     removeError,
+    active,
+    activeSuccess,
+    activeError,
+    deactive,
+    deactiveSuccess,
+    deactiveError,
   };
   return actions;
 };

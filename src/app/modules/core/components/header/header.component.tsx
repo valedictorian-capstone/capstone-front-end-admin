@@ -4,11 +4,11 @@ import React from 'react';
 import './header.component.css';
 
 export interface IHeaderComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
-export const HeaderComponent = (props: IHeaderComponentProps) => {
+export const HeaderComponent: React.FC<IHeaderComponentProps> = (props: IHeaderComponentProps) => {
   return (
     <Layout.Header
       className={props.className}

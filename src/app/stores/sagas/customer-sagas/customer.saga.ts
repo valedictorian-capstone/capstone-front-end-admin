@@ -12,6 +12,8 @@ export const useCustomerSaga = () => {
     yield takeLatest(CUSTOMER_TYPE.CREATE.FETCH, useCreate);
     yield takeLatest(CUSTOMER_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(CUSTOMER_TYPE.REMOVE.FETCH, useRemove);
+    yield takeLatest(CUSTOMER_TYPE.ACTIVE.FETCH, useActive);
+    yield takeLatest(CUSTOMER_TYPE.DEACTIVE.FETCH, useDeactive);
   }
   function* useGetAll() {
     yield put(useLoadingAction().showLoader());
@@ -53,6 +55,25 @@ export const useCustomerSaga = () => {
     }
     yield put(useLoadingAction().hideLoader());
   }
-
+  function* useActive(action: Customer) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(CustomerService.active, action.payload.data as string[]);
+      yield put(useCustomerAction().activeSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useCustomerAction().activeError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useDeactive(action: Customer) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(CustomerService.deactive, action.payload.data as string[]);
+      yield put(useCustomerAction().deactiveSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useCustomerAction().deactiveError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
   return { useInit };
 };

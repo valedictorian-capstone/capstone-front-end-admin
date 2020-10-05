@@ -13,6 +13,8 @@ export const useFormGroupSaga = () => {
     yield takeLatest(FORM_GROUP_TYPE.CREATE.FETCH, useCreate);
     yield takeLatest(FORM_GROUP_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(FORM_GROUP_TYPE.REMOVE.FETCH, useRemove);
+    yield takeLatest(FORM_GROUP_TYPE.ACTIVE.FETCH, useActive);
+    yield takeLatest(FORM_GROUP_TYPE.DEACTIVE.FETCH, useDeactive);
   }
   function* useGetAll() {
     yield put(useLoadingAction().showLoader());
@@ -48,9 +50,29 @@ export const useFormGroupSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(FormGroupService.remove, action.payload.data as string);
-      yield put(useFormGroupAction().removeSuccess(data));
+      yield put(useFormGroupAction().removeSuccess(action.payload.data as string));
     } catch (error) {
       yield put(useFormGroupAction().removeError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useActive(action: FormGroup) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(FormGroupService.active, action.payload.data as string[]);
+      yield put(useFormGroupAction().activeSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useFormGroupAction().activeError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useDeactive(action: FormGroup) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(FormGroupService.deactive, action.payload.data as string[]);
+      yield put(useFormGroupAction().deactiveSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useFormGroupAction().deactiveError(error));
     }
     yield put(useLoadingAction().hideLoader());
   }

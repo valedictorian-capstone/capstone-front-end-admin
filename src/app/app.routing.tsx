@@ -1,20 +1,19 @@
 import { IBaseProps } from '@extras/interfaces';
 import { AuthModule, CoreModule } from '@modules';
-import { AuthenticationComponent } from '@modules/auth/components/auth/authentication.component';
 import React from 'react';
-import { HashRouter, Redirect, Route, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, RouteComponentProps } from 'react-router-dom';
 
 export interface IAppRoutesProps extends IBaseProps {
   input: {};
   output: {};
 }
 
-export const AppRoutes = (props: IAppRoutesProps) => {
+export const AppRoutes: React.FC<IAppRoutesProps> = (props: IAppRoutesProps) => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Route exact={true} path="/" component={() => <Redirect to="/core" />} />
       <Route path="/core" component={(routeProps: RouteComponentProps) => <CoreModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/auth" component={(routeProps: RouteComponentProps) => <AuthModule />} />
-    </HashRouter>
+    </BrowserRouter>
   );
 };

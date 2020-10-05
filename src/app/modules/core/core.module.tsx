@@ -8,9 +8,9 @@ export interface ICoreModuleProps extends IBaseProps {
   output: {};
 }
 
-export const CoreModule = (props: ICoreModuleProps) => {
+export const CoreModule: React.FC<ICoreModuleProps> = (props: ICoreModuleProps) => {
   return (
-    <LayoutComponent>
+    <LayoutComponent fatherProps={props} input={{}} output={{}}>
       <CoreRoutes fatherProps={props} input={{}} output={{}} />
     </LayoutComponent>
   );

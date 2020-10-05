@@ -7,6 +7,9 @@ import React, { useRef } from 'react';
 import { DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
 import { FormCanvasComponent } from '..';
 import { FileUpload } from 'primereact/fileupload';
+import { environment } from '@environments/environment';
+import { RootState } from '@stores/states';
+import { useSelector } from 'react-redux';
 
 export interface IFormControlComponentProps extends IBaseProps {
   input: {
@@ -27,7 +30,9 @@ interface DragItem {
   type: string;
 }
 
-export const FormControlComponent = (props: IFormControlComponentProps) => {
+export const FormControlComponent: React.FC<IFormControlComponentProps> = (props: IFormControlComponentProps) => {
+  const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
+  const config = environment.i18n.data.core.modules.form.components['form-control'][region];
   const ref = useRef<any>(null);
   const [, drop] = useDrop({
     accept: 'control',
@@ -155,8 +160,8 @@ export const FormControlComponent = (props: IFormControlComponentProps) => {
       style={{ height: props.input.item.height, textTransform: props.input.item.isCapitialize ? 'capitalize' : 'unset', opacity: 1 }}
     >
       <div style={{ width: '100%', border: '1px dashed gray', marginBottom: 5, background: 'transparent' }}>
-        <span style={{ display: 'block', textAlign: 'right', padding: 5, background: 'black' }}>
-          <Tooltip placement="top" title="Hold to drag">
+        <span style={{ display: 'block', textAlign: 'right', padding: 10, background: 'black' }}>
+          <Tooltip placement="top" title={config.drag.tooltip}>
             <Button shape="circle" size="small" style={{ marginRight: 10, cursor: 'grab' }} className="setting"><InsertRowRightOutlined /></Button>
           </Tooltip>
           <Popover placement="bottomRight" trigger="click" content={
@@ -164,21 +169,18 @@ export const FormControlComponent = (props: IFormControlComponentProps) => {
               <FormCanvasComponent input={{ control: props.input.item }} output={{ edit: props.output.edit }} />
             </>
           }>
-            <Tooltip placement="top" title="Edit control">
+            <Tooltip placement="top" title={config.edit.tooltip}>
               <Button shape="circle" size="small" style={{ marginRight: 10 }} className="setting"><EditOutlined /></Button>
             </Tooltip>
           </Popover>
           <Popconfirm
-            title="Are you sure delete this control?"
+            title={config.remove.confirm}
             placement="top"
             onConfirm={props.output.onRemove}
-            okText="Yes"
-            cancelText="No"
+            okText={config.remove.oke}
+            cancelText={config.remove.cancel}
           >
-            <Tooltip placement="top" title="Deactive control">
-              <Button shape="circle" size="small" style={{ marginRight: 10 }} danger={true} className="setting"><MinusCircleOutlined /></Button>
-            </Tooltip>
-            <Tooltip placement="top" title="Remove control">
+            <Tooltip placement="top" title={config.remove.tooltip}>
               <Button shape="circle" size="small" danger={true} className="setting"><RestOutlined /></Button>
             </Tooltip>
           </Popconfirm>

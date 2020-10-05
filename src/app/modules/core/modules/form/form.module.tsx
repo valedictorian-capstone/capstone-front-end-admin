@@ -7,8 +7,8 @@ export interface IFormModuleProps extends IBaseProps {
   output: {};
 }
 
-export const FormModule = (props: IFormModuleProps) => {
+export const FormModule: React.FC<IFormModuleProps> = (props: IFormModuleProps) => {
   return (
-    <FormRoutes input={{}} output={{}} />
+    <FormRoutes fatherProps={props} input={{}} output={{}} />
   );
 };

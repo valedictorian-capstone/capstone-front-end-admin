@@ -10,18 +10,18 @@ import { useHistory } from 'react-router-dom';
 import './side-bar.component.scss';
 
 export interface ISideBarComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
-export const SideBarComponent = (props: ISideBarComponentProps) => {
+export const SideBarComponent: React.FC<ISideBarComponentProps> = (props: ISideBarComponentProps) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [state, setState] = React.useState<{ collapsed: boolean }>({ collapsed: true });
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((data) => data.language.language.region);
-  const config = environment.i18n[region].data;
+  const config = environment.i18n.data.core.components['side-bar'][region];
   const toggle = (collapsed: boolean) => {
-    setState({ collapsed });
+    // setState({ collapsed });
   };
   const gotoPage = (link: string) => {
     dispatch(useLoadingAction().showLoader());
@@ -35,8 +35,8 @@ export const SideBarComponent = (props: ISideBarComponentProps) => {
       React.createElement(state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)
     } onCollapse={toggle} collapsible={true} collapsed={state.collapsed} >
       <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)', margin: 10 }} />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        {(config?.categories as any).map((category: any) => (
+      <Menu theme="dark" mode="inline"  defaultSelectedKeys={[history.location.pathname.split('/')[2]]}>
+        {(config.categories as any).map((category: any) => (
           <Menu.Item key={category.value} icon={category.icon} onClick={() => gotoPage('/core/' + category.value)}>
             <span>{category.label}</span>
           </Menu.Item>

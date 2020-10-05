@@ -45,6 +45,24 @@ export const useWorkFlowAction = (): ActionCreatorsMapObject<WorkFlow> => {
   const removeError = (error: any): WorkFlow => {
     return { type: WORK_FLOW_TYPE.REMOVE.ERROR, payload: {data: WORK_FLOW_TYPE.REMOVE.ERROR} };
   };
+  const active = (data: string[]): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.ACTIVE.FETCH, payload: { data } };
+  };
+  const activeSuccess = (data: string[]): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.ACTIVE.SUCCESS, payload: { data } };
+  };
+  const activeError = (error: any): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.ACTIVE.ERROR, payload: {data: WORK_FLOW_TYPE.ACTIVE.ERROR} };
+  };
+  const deactive = (data: string[]): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.DEACTIVE.FETCH, payload: { data } };
+  };
+  const deactiveSuccess = (data: string[]): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.DEACTIVE.SUCCESS, payload: { data } };
+  };
+  const deactiveError = (error: any): WorkFlow => {
+    return { type: WORK_FLOW_TYPE.DEACTIVE.ERROR, payload: {data: WORK_FLOW_TYPE.DEACTIVE.ERROR} };
+  };
   const actions: ActionCreatorsMapObject<WorkFlow> = {
     reset,
     getAll,
@@ -59,6 +77,12 @@ export const useWorkFlowAction = (): ActionCreatorsMapObject<WorkFlow> => {
     remove,
     removeSuccess,
     removeError,
+    active,
+    activeSuccess,
+    activeError,
+    deactive,
+    deactiveSuccess,
+    deactiveError,
   };
   return actions;
 };

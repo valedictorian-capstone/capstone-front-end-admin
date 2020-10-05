@@ -9,11 +9,11 @@ import './language.component.css';
 import { IBaseProps } from '@extras/interfaces';
 
 export interface ILanguageComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
-export const LanguageComponent = (props: ILanguageComponentProps) => {
+export const LanguageComponent: React.FC<ILanguageComponentProps> = (props: ILanguageComponentProps) => {
   const dispatch = useDispatch();
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const menu = <Menu activeKey={region as any} onClick={(e) => {

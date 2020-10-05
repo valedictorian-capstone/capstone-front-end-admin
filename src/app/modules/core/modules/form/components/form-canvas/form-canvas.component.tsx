@@ -21,7 +21,7 @@ export interface IFormCanvasComponentProps extends IBaseProps {
 
 export const FormCanvasComponent: React.FC<IFormCanvasComponentProps> = (props: IFormCanvasComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
-  const canvas = environment.i18n[region].data['form'].canvas;
+  const config = environment.i18n.data.core.modules.form.components['form-canvas'][region];
   const [control, setControl] = React.useState<FormControlCM | FormControlUM>({
     ...props.input.control,
     options: JSON.parse(props.input.control.options as string),
@@ -37,16 +37,16 @@ export const FormCanvasComponent: React.FC<IFormCanvasComponentProps> = (props: 
   return control ? (
     <Card key="canvas" title={(
       <span style={{ textAlign: 'center', display: 'block' }}>
-        {canvas.title.controls}
+        {config.title}
       </span>
     )} style={{ background: 'transparent', border: '1px solid gray', width: 500 }}>
       <>
         <div style={{ margin: '16px 0' }} >Name: </div>
-        <Input placeholder={canvas.form.basic.name.placeholder} value={control.name} onChange={(e) => setControl({ ...control, name: e.target.value })} />
+        <Input placeholder={config.form.name.placeholder} value={control.name} onChange={(e) => setControl({ ...control, name: e.target.value })} />
         <div style={{ margin: '16px 0' }} >Placeholder: </div>
-        {       control.type !== 'date-range' ? <Input placeholder={canvas.form.basic.placeHolder.placeholder} value={control.placeHolder} onChange={(e) => setControl({ ...control, placeHolder: e.target.value })} /> : <Input.Group compact={true}>
-          <Input style={{ width: '50%' }} placeholder={canvas.form.basic.placeHolder['placeholder-array'][0]} value={control.placeHolder[0]} onChange={(e) => { (control.placeHolder as any)[0] = e.target.value; setControl({ ...control }); }} />
-          <Input style={{ width: '50%' }} placeholder={canvas.form.basic.placeHolder['placeholder-array'][1]} value={control.placeHolder[1]} onChange={(e) => { (control.placeHolder as any)[1] = e.target.value; setControl({ ...control }); }} />
+        {       control.type !== 'date-range' ? <Input placeholder={config.form.placeHolder.placeholder} value={control.placeHolder} onChange={(e) => setControl({ ...control, placeHolder: e.target.value })} /> : <Input.Group compact={true}>
+          <Input style={{ width: '50%' }} placeholder={config.form.placeHolder['placeholder-array'][0]} value={control.placeHolder[0]} onChange={(e) => { (control.placeHolder as any)[0] = e.target.value; setControl({ ...control }); }} />
+          <Input style={{ width: '50%' }} placeholder={config.form.placeHolder['placeholder-array'][1]} value={control.placeHolder[1]} onChange={(e) => { (control.placeHolder as any)[1] = e.target.value; setControl({ ...control }); }} />
         </Input.Group>}
         {(control.type === 'input' && control.subType !== 'password') && <>
           <div style={{ margin: '16px 0' }} >Subtype: </div>
@@ -55,7 +55,7 @@ export const FormCanvasComponent: React.FC<IFormCanvasComponentProps> = (props: 
             <Select.Option value="number">Number</Select.Option>
           </Select>
           <div style={{ margin: '16px 0' }} >Tooltip: </div>
-          <Input placeholder={canvas.form.basic.tooltip.placeholder} value={control.tooltip} onChange={(e) => setControl({ ...control, tooltip: e.target.value })} />
+          <Input placeholder={config.form.tooltip.placeholder} value={control.tooltip} onChange={(e) => setControl({ ...control, tooltip: e.target.value })} />
         </>}
         <div style={{ margin: '16px 0' }} >Width: </div>
         <Slider defaultValue={12} value={(control as FormControlCM | FormControlUM).width} min={6} max={24} marks={{
@@ -87,7 +87,7 @@ export const FormCanvasComponent: React.FC<IFormCanvasComponentProps> = (props: 
               }}
               style={{ marginTop: 10 }}
             >
-              <PlusOutlined /> Add field
+              <PlusOutlined /> {config['add-button']}
                 </Button>
           </>
         )}

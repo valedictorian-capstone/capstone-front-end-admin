@@ -25,11 +25,11 @@ export class AccountService {
     return useHttp().delete<AccountVM>(`${environment.apiEndpont}${environment.api['account-api']['account'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<AccountVM>> => {
-    return useHttp().put<AccountVM>(`${environment.apiEndpont}${environment.api['account-api']['account'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<AccountVM>> => {
+    return useHttp().put<AccountVM>(`${environment.apiEndpont}${environment.api['account-api']['account'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<AccountVM>> => {
-    return useHttp().put<AccountVM>(`${environment.apiEndpont}${environment.api['account-api']['account'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<AccountVM>> => {
+    return useHttp().put<AccountVM>(`${environment.apiEndpont}${environment.api['account-api']['account'].deactive}`, ids);
   }
 }

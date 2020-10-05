@@ -1,21 +1,22 @@
-import { EyeOutlined, MinusCircleOutlined, RestOutlined, RollbackOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, EyeOutlined, MinusCircleOutlined, RollbackOutlined } from '@ant-design/icons';
+import { environment } from '@environments/environment';
 import { IBaseProps } from '@extras/interfaces';
-import { FormControlCM, FormControlUM, FormGroupCM, FormGroupUM } from '@view-models';
+import { useFormGroupAction } from '@stores/actions';
+import { RootState } from '@stores/states';
+import { FormControlCM, FormControlUM, FormGroupUM } from '@view-models';
 import { Button, Col, message, Row, Tooltip } from 'antd';
 import update from 'immutability-helper';
 import React, { useCallback } from 'react';
 import { useDrop } from 'react-dnd';
+import { useDispatch, useSelector } from 'react-redux';
 import { uuid } from 'uuidv4';
 import { FormDetailComponent } from '..';
 import { FormControlComponent } from '../form-control/form-control.component';
 import { FormPaletteComponent } from '../form-palette/form-palette.component';
 import './form-view.component.css';
-import { useFormGroupAction } from '@stores/actions';
-import { useDispatch } from 'react-redux';
 export interface IFormViewComponentProps extends IBaseProps {
   input: {
-    data: FormGroupCM | FormGroupUM;
-    isNew: boolean,
+    data: FormGroupUM;
   };
   output: {
     back: () => void,
@@ -27,11 +28,13 @@ interface DragItem {
   type: string;
   item: FormControlCM | FormControlUM;
 }
-export const FormViewComponent = (props: IFormViewComponentProps) => {
+export const FormViewComponent: React.FC<IFormViewComponentProps> = (props: IFormViewComponentProps) => {
+  const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
+  const config = environment.i18n.data.core.modules.form.components['form-view'][region];
   const dispatch = useDispatch();
-  const [isNew, setIsNew] = React.useState<boolean>(props.input.isNew);
-  const [form, setForm] = React.useState<FormGroupCM | FormGroupUM>(props.input.data);
-  const [controls, setControls] = React.useState<FormControlCM[] | FormControlUM[]>(form.formControls);
+  const [form, setForm] = React.useState<FormGroupUM>(props.input.data);
+  const [controls, setControls] = React.useState<FormControlCM[] | FormControlUM[]>(form.formControls.sort((a, b) => a.position - b.position));
+  const [formControlRemove, setFormControlRemove] = React.useState<string[]>([]);
   const [, drop] = useDrop({
     accept: ['control', 'new-control'],
     drop(data: DragItem) {
@@ -68,7 +71,8 @@ export const FormViewComponent = (props: IFormViewComponentProps) => {
     <FormControlComponent output={{
       moveControl, onRemove: () => {
         setControls(controls.filter(control => control.id !== item.id).map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
-        message.success(`Delete control with name: ${item.name} successfully`, 1);
+        setFormControlRemove([...formControlRemove, item.id]);
+        message.success(config.message, 1);
       }, edit: (control) => {
         controls[index] = control;
         setControls([...controls].map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
@@ -86,20 +90,20 @@ export const FormViewComponent = (props: IFormViewComponentProps) => {
         <Row
           ref={drop}
           style={{ width: '100%', maxHeight: window.innerHeight - 140, height: window.innerHeight - 140, alignContent: 'baseline', overflow: 'auto', border: '1px solid gray' }}>
-          <Col span={1} style={{ height: 50, borderBottom: '1px solid gray', padding: 13, background: 'antiquewhite' }}>
-            <Tooltip placement="top" title="Back to list form">
+          <Col span={1} style={{ height: 50, borderBottom: '1px solid gray', padding: 13, background: 'moccasin' }}>
+            <Tooltip placement="top" title={config.buttons.back.tooltip}>
               <Button onClick={props.output.back} shape="circle" size="small" type="primary" className="setting"><RollbackOutlined /></Button>
             </Tooltip>
           </Col>
-          <Col span={23} style={{ height: 50, borderBottom: '1px solid gray', textAlign: 'right', padding: 13, background: 'antiquewhite' }}>
-            <Tooltip placement="top" title="Preview form">
+          <Col span={23} style={{ height: 50, borderBottom: '1px solid gray', textAlign: 'right', padding: 13, background: 'moccasin' }}>
+            <Tooltip placement="top" title={config.buttons.preview.tooltip}>
               <Button shape="circle" size="small" style={{ marginRight: 10 }} className="setting"><EyeOutlined /></Button>
             </Tooltip>
-            <Tooltip placement="top" title="Deactive form">
-              <Button shape="circle" size="small" style={{ marginRight: 10 }} danger={true} className="setting"><MinusCircleOutlined /></Button>
+            <Tooltip placement="top" title={config.buttons.active.tooltip}>
+              <Button shape="circle" size="small" style={{ marginRight: 10 }} className="setting"><CheckCircleOutlined /></Button>
             </Tooltip>
-            <Tooltip placement="top" title="Remove form">
-              <Button shape="circle" size="small" danger={true} className="setting"><RestOutlined /></Button>
+            <Tooltip placement="top" title={config.buttons.deactive.tooltip}>
+              <Button shape="circle" size="small" danger={true} className="setting"><MinusCircleOutlined /></Button>
             </Tooltip>
           </Col>
           {render}
@@ -111,12 +115,7 @@ export const FormViewComponent = (props: IFormViewComponentProps) => {
           <FormDetailComponent input={{ form }} output={{
             onSave: (data) => {
               setForm({ ...data, formControls: [...controls] });
-              if (isNew) {
-                dispatch(useFormGroupAction().create({ ...data, formControls: [...controls] }));
-                setIsNew(false);
-              } else {
-                dispatch(useFormGroupAction().update({ ...data, formControls: [...controls] }));
-              }
+              dispatch(useFormGroupAction().update({ ...data, formControls: [...controls], formControlRemove }));
               dispatch(useFormGroupAction().getAll());
             },
           }} />

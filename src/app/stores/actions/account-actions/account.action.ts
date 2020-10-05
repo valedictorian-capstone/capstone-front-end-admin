@@ -45,6 +45,24 @@ export const useAccountAction = (): ActionCreatorsMapObject<Account> => {
   const removeError = (error: any): Account => {
     return { type: ACCOUNT_TYPE.REMOVE.ERROR, payload: {data: ACCOUNT_TYPE.REMOVE.ERROR} };
   };
+  const active = (data: string[]): Account => {
+    return { type: ACCOUNT_TYPE.ACTIVE.FETCH, payload: { data } };
+  };
+  const activeSuccess = (data: string[]): Account => {
+    return { type: ACCOUNT_TYPE.ACTIVE.SUCCESS, payload: { data } };
+  };
+  const activeError = (error: any): Account => {
+    return { type: ACCOUNT_TYPE.ACTIVE.ERROR, payload: {data: ACCOUNT_TYPE.ACTIVE.ERROR} };
+  };
+  const deactive = (data: string[]): Account => {
+    return { type: ACCOUNT_TYPE.DEACTIVE.FETCH, payload: { data } };
+  };
+  const deactiveSuccess = (data: string[]): Account => {
+    return { type: ACCOUNT_TYPE.DEACTIVE.SUCCESS, payload: { data } };
+  };
+  const deactiveError = (error: any): Account => {
+    return { type: ACCOUNT_TYPE.DEACTIVE.ERROR, payload: {data: ACCOUNT_TYPE.DEACTIVE.ERROR} };
+  };
   const actions: ActionCreatorsMapObject<Account> = {
     reset,
     getAll,
@@ -59,6 +77,12 @@ export const useAccountAction = (): ActionCreatorsMapObject<Account> => {
     remove,
     removeSuccess,
     removeError,
+    active,
+    activeSuccess,
+    activeError,
+    deactive,
+    deactiveSuccess,
+    deactiveError,
   };
   return actions;
 };

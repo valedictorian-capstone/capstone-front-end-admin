@@ -18,7 +18,6 @@ export interface FormGroupVM {
 }
 
 export interface FormGroupCM {
-  id: string;
   name: string;
   code: string;
   description: string;

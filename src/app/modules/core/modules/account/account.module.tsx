@@ -3,12 +3,12 @@ import React from 'react';
 import { AccountRoutes } from './account.routing';
 
 export interface IAccountModuleProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
 export const AccountModule = (props: IAccountModuleProps) => {
   return (
-    <AccountRoutes />
+    <AccountRoutes input={{}} output={{}} fatherProps={props} />
   );
 };

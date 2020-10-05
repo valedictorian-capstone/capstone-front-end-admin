@@ -12,6 +12,8 @@ export const useAccountSaga = () => {
     yield takeLatest(ACCOUNT_TYPE.CREATE.FETCH, useCreate);
     yield takeLatest(ACCOUNT_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(ACCOUNT_TYPE.REMOVE.FETCH, useRemove);
+    yield takeLatest(ACCOUNT_TYPE.ACTIVE.FETCH, useActive);
+    yield takeLatest(ACCOUNT_TYPE.DEACTIVE.FETCH, useDeactive);
   }
   function* useGetAll() {
     yield put(useLoadingAction().showLoader());
@@ -53,6 +55,25 @@ export const useAccountSaga = () => {
     }
     yield put(useLoadingAction().hideLoader());
   }
-
+  function* useActive(action: Account) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(AccountService.active, action.payload.data as string[]);
+      yield put(useAccountAction().activeSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useAccountAction().activeError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useDeactive(action: Account) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(AccountService.deactive, action.payload.data as string[]);
+      yield put(useAccountAction().deactiveSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useAccountAction().deactiveError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
   return { useInit };
 };

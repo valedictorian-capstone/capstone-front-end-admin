@@ -15,12 +15,12 @@ export interface IFormPaletteComponentProps extends IBaseProps {
   output: {};
 }
 
-export const FormPaletteComponent = (props: IFormPaletteComponentProps) => {
+export const FormPaletteComponent: React.FC<IFormPaletteComponentProps> = (props: IFormPaletteComponentProps) => {
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
-  const config = environment.i18n[region].data['form'];
+  const config = environment.i18n.data.core.modules.form.components['form-palette'][region];
   return (
     <div style={{width: '80%', margin: 'auto'}}>
-      {config.controls.map((item, index) => <FormItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as FormControlUM | FormControlCM, index, disabled: true, isNew: true }} />)}
+      {config.items.map((item, index) => <FormItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as FormControlUM | FormControlCM, index, disabled: true, isNew: true }} />)}
     </div>
   );
 };

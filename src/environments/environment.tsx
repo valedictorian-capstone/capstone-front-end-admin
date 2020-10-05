@@ -1,7 +1,7 @@
-import { ApartmentOutlined, HomeOutlined, LogoutOutlined, NotificationOutlined, PartitionOutlined, PhoneOutlined, ProfileOutlined, SettingOutlined, SmileOutlined, TeamOutlined } from '@ant-design/icons';
+import { ApartmentOutlined, HomeOutlined, LogoutOutlined, NotificationOutlined, PartitionOutlined, PhoneOutlined, ProfileOutlined, SettingOutlined, SmileOutlined, SyncOutlined, TeamOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import React from 'react';
-const getPorts = (id: string) => {
+export const getPorts = (id: string) => {
   return [
     {
       'id': id + 'port1',
@@ -307,1547 +307,5279 @@ export const environment = {
       { 'label': 'Tiếng việt', 'value': 'vi' },
       { 'label': '日本語', 'value': 'jp' },
     ],
-    'vi': {
-      'label': 'Tiếng Việt',
-      'data': {
-        'categories': [
-          {
-            'label': 'Trang chủ',
-            'value': 'dashboard',
-            'icon': (<HomeOutlined />),
-          },
-          {
-            'label': 'Nhân sự',
-            'value': 'account',
-            'icon': (<TeamOutlined />),
-          },
-          {
-            'label': 'Khách hàng',
-            'value': 'customer',
-            'icon': (<PhoneOutlined />),
-          },
-          {
-            'label': 'Biểu mẫu',
-            'value': 'form',
-            'icon': (<ProfileOutlined />),
-          },
-          {
-            'label': 'Quy trình',
-            'value': 'work-flow',
-            'icon': (<PartitionOutlined />),
-          },
-        ],
-        'work-flow': {
-          'nodes': [
-            {
-              'key': 'events',
-              'label': 'Event Shapes',
-              'data': [
-                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
-                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
-                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
-                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
-                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
-                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
-              ],
-            },
-            {
-              'key': 'gateways',
-              'label': 'Gateway Shapes',
-              'data': [
-                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
-                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
-                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
-                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
-                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
-                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
-                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
-                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
-              ],
-            },
-            {
-              'key': 'activitys',
-              'label': 'Activity Shapes',
-              'data': [
-                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
-              ],
-            },
-            {
-              'key': 'messages',
-              'label': 'Message Shapes',
-              'data': [
-                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
-              ],
-            },
-            {
-              'key': 'dataobjects',
-              'label': 'DataObject Shapes',
-              'data': [
-                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
-                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
-                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'datasources',
-              'label': 'DataSource Shapes',
-              'data': [
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'groups',
-              'label': 'Group Shapes',
-              'data': [
-                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
-              ],
-            },
-            {
-              'key': 'textannotations',
-              'label': 'Text Annotation Shapes',
-              'data': [
-                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
-              ],
-            },
-            {
-              'key': 'connectors',
-              'label': 'Connectors',
-              'data': [
-                {
-                  'id': 'SequenFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'Arrow' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
-                },
-                {
-                  'id': 'Association_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'None' },
-                  'sourceDecorator': { 'shape': 'None' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
-                },
-                {
-                  'id': 'MessageFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'OpenArrow' },
-                  'sourceDecorator': { 'shape': 'Circle' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Message', 'message': 'Default' },
-                },
-              ],
-            },
-          ],
-          'label': 'Qui trình',
-          'canvas': {
-            'title': {
-              'nodes': 'Thông tin bước',
-              'connectors': 'Thông tin kết nối',
-            },
-            'form': {
-              'basic': {
-                'content': {
-                  'placeholder': 'Nội dung',
-                },
-                'description': {
-                  'placeholder': 'Ghi chú',
-                },
-              },
-            },
-          },
-          'detail': {
-            'title': 'Thông tin qui trình',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'Mã',
-                },
-                'name': {
-                  'placeholder': 'Tên',
-                },
-                'description': {
-                  'placeholder': 'Ghi chú',
-                },
-                'button': {
-                  'save': 'Lưu',
-                  'draft': 'Nháp',
-                },
-              },
-            },
-          },
-        },
-        'form': {
-          'controls': [
-            {
-              'name': 'input-text-control',
-              'placeHolder': 'Đây là ô nhập chữ',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'input-number-control',
-              'placeHolder': 'Đây là ô nhập số',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'number',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'input-password-control',
-              'placeHolder': 'Đây là ô nhập mật khẩu',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'password',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'text-area-control',
-              'placeHolder': 'Đây là ô to nhập chữ',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'text-area',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'select-control',
-              'placeHolder': 'Đây là ô chọn một',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'multi-select-control',
-              'placeHolder': 'Đây là ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'multi-select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'auto-complete-control',
-              'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'auto-complete',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'radio-control',
-              'placeHolder': 'Đây là nhóm lựa chọn một',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'radio',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'check-box-control',
-              'placeHolder': 'Đây là 1 tích chọn',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'check-box-group-control',
-              'placeHolder': 'Đây là nhóm tích chọn',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box-group',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'date-picker-control',
-              'placeHolder': 'Đây là ô lựa chọn ngày',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'date-range-control',
-              'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-range',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'time-picker-control',
-              'placeHolder': 'Đây là ô lựa chọn giờ',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'time-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'file-upload-control',
-              'placeHolder': 'Xử lí tệp',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'file-upload',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-          ],
-          'label': 'Biểu mẫu',
-          'canvas': {
-            'title': {
-              'controls': 'Thông tin đối tượng',
-            },
-            'form': {
-              'basic': {
-                'name': {
-                  'placeholder': 'Tên đối tượng',
-                },
-                'type': {
-                  'placeholder': 'Loại đối tượng',
-                },
-                'subType': {
-                  'placeholder': 'Loại phụ đối tuợng',
-                },
-                'placeHolder': {
-                  'placeholder': 'Mẫu gợi ý',
-                  'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
-                },
-                'fontSize': {
-                  'placeholder': 'Cỡ chữ',
-                },
-                'size': {
-                  'placeholder': 'kích cỡ',
-                },
-                'options': {
-                  'placeholder': ['Giá trị', 'Hiển thị'],
-                },
-                'width': {
-                  'placeholder': 'Chiều rộng',
-                },
-                'height': {
-                  'placeholder': 'Chiều cao',
-                },
-                'isCapitalize': {
-                  'placeholder': 'In hoa',
-                },
-                'tooltip': {
-                  'placeholder': 'Gợi ý đính kèm',
-                },
-                'color': {
-                  'placeholder': 'Màu sắc',
-                },
-              },
-            },
-          },
-          'detail': {
-            'title': 'Thông tin biểu mẫu',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'Mã',
-                },
-                'name': {
-                  'placeholder': 'Tên',
-                },
-                'description': {
-                  'placeholder': 'Ghi chú',
-                },
-                'button': {
-                  'save': 'Lưu',
-                  'draft': 'Nháp',
-                },
-              },
-            },
-          },
-          'table': {
-            'name': 'Tên biểu mẫu',
-            'description': 'Ghi chú',
-          },
-        },
-        'acccount': {
+    'data': {
+      'auth': {
 
-        },
-        'customer': {
-
-        },
-        'dashboard': {
-
-        },
-        'profile': {
-
-        },
-        'header': {
-          'account': {
-            'items': [
-              {
-                'value': 'setting',
-                'label': 'Tài khoản',
-                'icon': (<SettingOutlined />),
-              },
-              {
-                'value': 'log-out',
-                'label': 'Đăng xuất',
-                'icon': (<LogoutOutlined />),
-              },
-            ],
-          },
-          'notification': {
-            'tabs': [
-              {
-                'key': 'work',
-                'tab': (
-                  <span>
-                    <NotificationOutlined />
-                    Công việc
-                  </span>
-                ),
-              },
-              {
-                'key': 'self',
-                'tab': (
-                  <span>
-                    <SmileOutlined />
-                    Cá nhân
-                  </span>
-                ),
-              },
-              {
-                'key': 'company',
-                'tab': (
-                  <span>
-                    <ApartmentOutlined />
-                    Công ty
-                  </span>
-                ),
-              },
-            ],
-            'emptyDescription': (
-              <span>
-                Chưa có thông báo
-              </span>
-            ),
-            'title': 'Thông báo',
-          },
-        },
       },
-    },
-    'en': {
-      'label': 'English',
-      'data': {
-        'categories': [
-          {
-            'label': 'Home',
-            'value': 'dashboard',
-            'icon': (<HomeOutlined />),
-          },
-          {
-            'label': 'Account',
-            'value': 'account',
-            'icon': (<TeamOutlined />),
-          },
-          {
-            'label': 'Customer',
-            'value': 'customer',
-            'icon': (<PhoneOutlined />),
-          },
-          {
-            'label': 'Form',
-            'value': 'form',
-            'icon': (<ProfileOutlined />),
-          },
-          {
-            'label': 'Work Flow',
-            'value': 'work-flow',
-            'icon': (<PartitionOutlined />),
-          },
-        ],
-        'work-flow': {
-          'nodes': [
-            {
-              'key': 'events',
-              'label': 'Event Shapes',
-              'data': [
-                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
-                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
-                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
-                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
-                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
-                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
-              ],
-            },
-            {
-              'key': 'gateways',
-              'label': 'Gateway Shapes',
-              'data': [
-                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
-                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
-                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
-                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
-                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
-                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
-                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
-                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
-              ],
-            },
-            {
-              'key': 'activitys',
-              'label': 'Activity Shapes',
-              'data': [
-                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
-              ],
-            },
-            {
-              'key': 'messages',
-              'label': 'Message Shapes',
-              'data': [
-                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
-              ],
-            },
-            {
-              'key': 'dataobjects',
-              'label': 'DataObject Shapes',
-              'data': [
-                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
-                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
-                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'datasources',
-              'label': 'DataSource Shapes',
-              'data': [
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'groups',
-              'label': 'Group Shapes',
-              'data': [
-                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
-              ],
-            },
-            {
-              'key': 'textannotations',
-              'label': 'Text Annotation Shapes',
-              'data': [
-                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
-              ],
-            },
-            {
-              'key': 'connectors',
-              'label': 'Connectors',
-              'data': [
-                {
-                  'id': 'SequenFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'Arrow' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
-                },
-                {
-                  'id': 'Association_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'None' },
-                  'sourceDecorator': { 'shape': 'None' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
-                },
-                {
-                  'id': 'MessageFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'OpenArrow' },
-                  'sourceDecorator': { 'shape': 'Circle' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Message', 'message': 'InitiatingMessage' },
-                },
-              ],
-            },
-          ],
-          'label': 'Work Flow',
-          'canvas': {
-            'title': {
-              'nodes': 'Step detail',
-              'connectors': 'Connection detail',
-            },
-            'form': {
-              'basic': {
-                'content': {
-                  'placeholder': 'Content',
-                },
-                'description': {
-                  'placeholder': 'Note',
-                },
-              },
-            },
-          },
-          'detail': {
-            'title': 'Workflow detail',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'Code',
-                },
-                'name': {
-                  'placeholder': 'Name',
-                },
-                'description': {
-                  'placeholder': 'Note',
-                },
-                'button': {
-                  'save': 'Save',
-                  'draft': 'Draft',
-                },
-              },
-            },
-          },
-        },
-        'form': {
-          'controls': [
-            {
-              'name': 'input-text-control',
-              'placeHolder': 'This is text input',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'input-number-control',
-              'placeHolder': 'This is number input',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'number',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'input-password-control',
-              'placeHolder': 'This is password input',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'password',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'text-area-control',
-              'placeHolder': 'This is text-ara',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'text-area',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'select-control',
-              'placeHolder': 'This is select',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'multi-select-control',
-              'placeHolder': 'This is multiple select',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'multi-select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'auto-complete-control',
-              'placeHolder': 'This is auto-complete input',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'auto-complete',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'radio-control',
-              'placeHolder': 'This is radio group',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'radio',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'check-box-control',
-              'placeHolder': 'This is check-box',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'check-box-group-control',
-              'placeHolder': 'This is check-box group',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box-group',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'date-picker-control',
-              'placeHolder': 'This is date picker',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'date-range-control',
-              'placeHolder': '["Start date", "End date"]',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-range',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'time-picker-control',
-              'placeHolder': 'This is time picker',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'time-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'This is tooltip',
-              'color': '',
-            },
-            {
-              'name': 'file-upload-control',
-              'placeHolder': 'Xử lí tệp',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'file-upload',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-          ],
-          'label': 'Form',
-          'canvas': {
-            'title': {
-              'controls': 'Form-control detail',
-            },
-            'form': {
-              'basic': {
-                'name': {
-                  'placeholder': 'Name',
-                },
-                'type': {
-                  'placeholder': 'Type',
-                },
-                'subType': {
-                  'placeholder': 'SubType',
-                },
-                'placeHolder': {
-                  'placeholder': 'Placeholder',
-                  'placeholder-array': ['Start date', 'End date'],
-                },
-                'fontSize': {
-                  'placeholder': 'Font Size',
-                },
-                'size': {
-                  'placeholder': 'Size',
-                },
-                'options': {
-                  'placeholder': ['Value', 'Label'],
-                },
-                'width': {
-                  'placeholder': 'Width',
-                },
-                'height': {
-                  'placeholder': 'Height',
-                },
-                'isCapitalize': {
-                  'placeholder': 'Capitalize',
-                },
-                'tooltip': {
-                  'placeholder': 'Tooltip',
-                },
-                'color': {
-                  'placeholder': 'Color',
-                },
-              },
-            },
-          },
-          'detail': {
-            'title': 'Thông tin biểu mẫu',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'Mã',
-                },
-                'name': {
-                  'placeholder': 'Tên',
-                },
-                'description': {
-                  'placeholder': 'Ghi chú',
-                },
-                'button': {
-                  'save': 'Lưu',
-                  'draft': 'Nháp',
-                },
-              },
-            },
-          },
-          'table': {
-            'name': 'Name',
-            'description': 'Description',
-          },
-        },
-        'acccount': {
+      'core': {
+        'pages': {
+          'layout': {
 
+          },
         },
-        'customer': {
-
-        },
-        'dashboard': {
-
-        },
-        'profile': {
-
-        },
-        'header': {
+        'components': {
           'account': {
-            'items': [
-              {
-                'value': 'setting',
-                'label': 'Setting',
-                'icon': (<SettingOutlined />),
-              },
-              {
-                'value': 'log-out',
-                'label': 'Log-out',
-                'icon': (<LogoutOutlined />),
-              },
+            'vi': {
+              'items': [
+                {
+                  'value': 'setting',
+                  'label': 'Tài khoản',
+                  'icon': (<SettingOutlined />),
+                },
+                {
+                  'value': 'log-out',
+                  'label': 'Đăng xuất',
+                  'icon': (<LogoutOutlined />),
+                },
+              ],
+            },
+            'en': {
+              'items': [
+                {
+                  'value': 'setting',
+                  'label': 'Tài khoản',
+                  'icon': (<SettingOutlined />),
+                },
+                {
+                  'value': 'log-out',
+                  'label': 'Đăng xuất',
+                  'icon': (<LogoutOutlined />),
+                },
+              ],
+            },
+            'jp': {
+              'items': [
+                {
+                  'value': 'setting',
+                  'label': 'Tài khoản',
+                  'icon': (<SettingOutlined />),
+                },
+                {
+                  'value': 'log-out',
+                  'label': 'Đăng xuất',
+                  'icon': (<LogoutOutlined />),
+                },
+              ],
+            },
+          },
+          'content': {
+
+          },
+          'footer': {
+
+          },
+          'header': {
+
+          },
+          'language': {
+            'categories': [
+              { 'label': 'English', 'value': 'en' },
+              { 'label': 'Tiếng việt', 'value': 'vi' },
+              { 'label': '日本語', 'value': 'jp' },
             ],
           },
           'notification': {
-            'tabs': [
-              {
-                'key': 'work',
-                'tab': (
-                  <span>
-                    <NotificationOutlined />
-                    Work
-                  </span>
-                ),
-              },
-              {
-                'key': 'self',
-                'tab': (
-                  <span>
-                    <SmileOutlined />
-                    MySelf
-                  </span>
-                ),
-              },
-              {
-                'key': 'company',
-                'tab': (
-                  <span>
-                    <ApartmentOutlined />
-                    Company
-                  </span>
-                ),
-              },
-            ],
-            'emptyDescription': (
-              <span>
-                No notification yet
-              </span>
-            ),
-            'title': 'Notification',
-          },
-        },
-      },
-    },
-    'jp': {
-      'label': '日本語',
-      'data': {
-        'categories': [
-          {
-            'label': '自宅',
-            'value': 'dashboard',
-            'icon': (<HomeOutlined />),
-          },
-          {
-            'label': '口座',
-            'value': 'account',
-            'icon': (<TeamOutlined />),
-          },
-          {
-            'label': 'お客様',
-            'value': 'customer',
-            'icon': (<PhoneOutlined />),
-          },
-          {
-            'label': '形',
-            'value': 'form',
-            'icon': (<ProfileOutlined />),
-          },
-          {
-            'label': 'ワークフロー',
-            'value': 'work-flow',
-            'icon': (<PartitionOutlined />),
-          },
-        ],
-        'work-flow': {
-          'nodes': [
-            {
-              'key': 'events',
-              'label': 'Event Shapes',
-              'data': [
-                { 'id': 'Start', 'ports': getPorts('Start'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Start' } } },
-                { 'id': 'Intermediate', 'ports': getPorts('Intermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'Intermediate' } } },
-                { 'id': 'NonInterruptingIntermediate', 'ports': getPorts('NonInterruptingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingIntermediate' } } },
-                { 'id': 'NonInterruptingStart', 'ports': getPorts('NonInterruptingStart'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'NonInterruptingStart' } } },
-                { 'id': 'End', 'ports': getPorts('End'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'End' } } },
-                { 'id': 'ThrowingIntermediate', 'ports': getPorts('ThrowingIntermediate'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Event', 'event': { 'event': 'ThrowingIntermediate' } } },
-              ],
-            },
-            {
-              'key': 'gateways',
-              'label': 'Gateway Shapes',
-              'data': [
-                { 'id': 'Complex', 'ports': getPorts('Complex'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Complex' } } },
-                { 'id': 'EventBased', 'ports': getPorts('EventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'EventBased' } } },
-                { 'id': 'Exclusive', 'ports': getPorts('Exclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Exclusive' } } },
-                { 'id': 'ExclusiveEventBased', 'ports': getPorts('ExclusiveEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ExclusiveEventBased' } } },
-                { 'id': 'Inclusive', 'ports': getPorts('Inclusive'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Inclusive' } } },
-                { 'id': 'None', 'ports': getPorts('None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'None' } } },
-                { 'id': 'Parallel', 'ports': getPorts('Parallel'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'Parallel' } } },
-                { 'id': 'ParallelEventBased', 'ports': getPorts('ParallelEventBased'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Gateway', 'gateway': { 'type': 'ParallelEventBased' } } },
-              ],
-            },
-            {
-              'key': 'activitys',
-              'label': 'Activity Shapes',
-              'data': [
-                { 'id': 'Activity_Task', 'ports': getPorts('Activity_Task'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Activity', 'activity': { 'activity': 'Task' } } },
-              ],
-            },
-            {
-              'key': 'messages',
-              'label': 'Message Shapes',
-              'data': [
-                { 'id': 'Message', 'ports': getPorts('Message'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Message' } },
-              ],
-            },
-            {
-              'key': 'dataobjects',
-              'label': 'DataObject Shapes',
-              'data': [
-                { 'id': 'DataObject_Input', 'ports': getPorts('DataObject_Input'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Input' } } },
-                { 'id': 'DataObject_None', 'ports': getPorts('DataObject_None'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'None' } } },
-                { 'id': 'DataObject_Output', 'ports': getPorts('DataObject_Output'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataObject', 'dataObject': { 'type': 'Output' } } },
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'datasources',
-              'label': 'DataSource Shapes',
-              'data': [
-                { 'id': 'DataSource', 'ports': getPorts('DataSource'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'DataSource' } },
-              ],
-            },
-            {
-              'key': 'groups',
-              'label': 'Group Shapes',
-              'data': [
-                { 'id': 'Group', 'ports': getPorts('Group'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'Group' } },
-              ],
-            },
-            {
-              'key': 'textannotations',
-              'label': 'Text Annotation Shapes',
-              'data': [
-                { 'id': 'TextAnnotation', 'ports': getPorts('TextAnnotation'), 'width': 50, 'height': 50, 'shape': { 'type': 'Bpmn', 'shape': 'TextAnnotation' } },
-              ],
-            },
-            {
-              'key': 'connectors',
-              'label': 'Connectors',
-              'data': [
+            'vi': {
+              'tabs': [
                 {
-                  'id': 'SequenceFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'Arrow' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                  'key': 'work',
+                  'tab': (
+                    <span>
+                      <NotificationOutlined />
+                      Công việc
+                    </span>
+                  ),
                 },
                 {
-                  'id': 'Association_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'None' },
-                  'sourceDecorator': { 'shape': 'None' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Association', 'association': 'Default' },
+                  'key': 'self',
+                  'tab': (
+                    <span>
+                      <SmileOutlined />
+                      Cá nhân
+                    </span>
+                  ),
                 },
                 {
-                  'id': 'MessageFlow_',
-                  'type': 'Orthogonal',
-                  'sourcePoint': { 'x': 0, 'y': 0 },
-                  'targetPoint': { 'x': 40, 'y': 40 },
-                  'targetDecorator': { 'shape': 'OpenArrow' },
-                  'sourceDecorator': { 'shape': 'Circle' },
-                  'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
-                  'shape': { 'bpmnFlow': 'Message', 'message': 'Default' },
+                  'key': 'company',
+                  'tab': (
+                    <span>
+                      <ApartmentOutlined />
+                      Công ty
+                    </span>
+                  ),
+                },
+              ],
+              'emptyDescription': (
+                <span>
+                  Chưa có thông báo
+                </span>
+              ),
+              'title': 'Thông báo',
+            },
+            'en': {
+              'tabs': [
+                {
+                  'key': 'work',
+                  'tab': (
+                    <span>
+                      <NotificationOutlined />
+                      Công việc
+                    </span>
+                  ),
+                },
+                {
+                  'key': 'self',
+                  'tab': (
+                    <span>
+                      <SmileOutlined />
+                      Cá nhân
+                    </span>
+                  ),
+                },
+                {
+                  'key': 'company',
+                  'tab': (
+                    <span>
+                      <ApartmentOutlined />
+                      Công ty
+                    </span>
+                  ),
+                },
+              ],
+              'emptyDescription': (
+                <span>
+                  Chưa có thông báo
+                </span>
+              ),
+              'title': 'Thông báo',
+            },
+            'jp': {
+              'tabs': [
+                {
+                  'key': 'work',
+                  'tab': (
+                    <span>
+                      <NotificationOutlined />
+                      Công việc
+                    </span>
+                  ),
+                },
+                {
+                  'key': 'self',
+                  'tab': (
+                    <span>
+                      <SmileOutlined />
+                      Cá nhân
+                    </span>
+                  ),
+                },
+                {
+                  'key': 'company',
+                  'tab': (
+                    <span>
+                      <ApartmentOutlined />
+                      Công ty
+                    </span>
+                  ),
+                },
+              ],
+              'emptyDescription': (
+                <span>
+                  Chưa có thông báo
+                </span>
+              ),
+              'title': 'Thông báo',
+            },
+          },
+          'side-bar': {
+            'vi': {
+              'categories': [
+                {
+                  'label': 'Trang chủ',
+                  'value': 'dashboard',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Nhân sự',
+                  'value': 'account',
+                  'icon': (<TeamOutlined />),
+                },
+                {
+                  'label': 'Khách hàng',
+                  'value': 'customer',
+                  'icon': (<PhoneOutlined />),
+                },
+                {
+                  'label': 'Biểu mẫu',
+                  'value': 'form',
+                  'icon': (<ProfileOutlined />),
+                },
+                {
+                  'label': 'Quy trình',
+                  'value': 'work-flow',
+                  'icon': (<PartitionOutlined />),
+                },
+                {
+                  'label': 'Tiến trình',
+                  'value': 'process',
+                  'icon': (<SyncOutlined spin={true} />),
                 },
               ],
             },
-          ],
-          'label': 'ワークフロー',
-          'canvas': {
-            'title': {
-              'nodes': 'ステップ詳細',
-              'connectors': '接続詳細',
-            },
-            'form': {
-              'basic': {
-                'content': {
-                  'placeholder': 'コンテンツ',
+            'en': {
+              'categories': [
+                {
+                  'label': 'Trang chủ',
+                  'value': 'dashboard',
+                  'icon': (<HomeOutlined />),
                 },
-                'description': {
-                  'placeholder': '注意',
+                {
+                  'label': 'Nhân sự',
+                  'value': 'account',
+                  'icon': (<TeamOutlined />),
                 },
-              },
-            },
-          },
-          'detail': {
-            'title': 'ワークフローの詳細',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'コード',
+                {
+                  'label': 'Khách hàng',
+                  'value': 'customer',
+                  'icon': (<PhoneOutlined />),
                 },
-                'name': {
-                  'placeholder': '名前',
+                {
+                  'label': 'Biểu mẫu',
+                  'value': 'form',
+                  'icon': (<ProfileOutlined />),
                 },
-                'description': {
-                  'placeholder': '注意',
+                {
+                  'label': 'Quy trình',
+                  'value': 'work-flow',
+                  'icon': (<PartitionOutlined />),
                 },
-                'button': {
-                  'save': '保存する',
-                  'draft': 'ドラフト',
+                {
+                  'label': 'Tiến trình',
+                  'value': 'process',
+                  'icon': (<SyncOutlined spin={true} />),
                 },
-              },
+              ],
             },
-          },
-        },
-        'form': {
-          'controls': [
-            {
-              'name': 'input-text-control',
-              'placeHolder': 'Ô nhập chữ',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'input-number-control',
-              'placeHolder': 'Ô nhập số',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'number',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'input-password-control',
-              'placeHolder': 'Ô nhập mật khẩu',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'input',
-              'subType': 'password',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'text-area-control',
-              'placeHolder': 'Ô to nhập chữ',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'text-area',
-              'subType': 'text',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'select-control',
-              'placeHolder': 'Ô chọn một',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'multi-select-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'multi-select',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'auto-complete-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'auto-complete',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'radio-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'radio',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'check-box-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'check-box-group-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'check-box-group',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'date-picker-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'date-range-control',
-              'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'date-range',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'time-picker-control',
-              'placeHolder': 'Ô chọn nhiều',
-              'fontSize': '',
-              'size': '',
-              'options': '[{"value": "yes", "label": "Yes"}]',
-              'type': 'time-picker',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-            {
-              'name': 'file-upload-control',
-              'placeHolder': 'Xử lí tệp',
-              'fontSize': '',
-              'size': '',
-              'options': '[]',
-              'type': 'file-upload',
-              'subType': '',
-              'width': 12,
-              'height': '',
-              'isCapitialize': false,
-              'tooltip': 'Đây là gợi ý',
-              'color': '',
-            },
-          ],
-          'label': 'Form',
-          'canvas': {
-            'title': {
-              'controls': 'フォームコントロールの詳細',
-            },
-            'form': {
-              'basic': {
-                'name': {
-                  'placeholder': '名前',
+            'jp': {
+              'categories': [
+                {
+                  'label': 'Trang chủ',
+                  'value': 'dashboard',
+                  'icon': (<HomeOutlined />),
                 },
-                'type': {
-                  'placeholder': 'タイプ',
+                {
+                  'label': 'Nhân sự',
+                  'value': 'account',
+                  'icon': (<TeamOutlined />),
                 },
-                'subType': {
-                  'placeholder': 'サブタイプ',
+                {
+                  'label': 'Khách hàng',
+                  'value': 'customer',
+                  'icon': (<PhoneOutlined />),
                 },
-                'placeHolder': {
-                  'placeholder': 'プレースホルダー',
-                  'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                {
+                  'label': 'Biểu mẫu',
+                  'value': 'form',
+                  'icon': (<ProfileOutlined />),
                 },
-                'fontSize': {
-                  'placeholder': 'フォントサイズ',
+                {
+                  'label': 'Quy trình',
+                  'value': 'work-flow',
+                  'icon': (<PartitionOutlined />),
                 },
-                'size': {
-                  'placeholder': 'サイズ',
+                {
+                  'label': 'Tiến trình',
+                  'value': 'process',
+                  'icon': (<SyncOutlined spin={true} />),
                 },
-                'options': {
-                  'placeholder': ['オプション', 'オプション'],
-                },
-                'width': {
-                  'placeholder': '幅',
-                },
-                'height': {
-                  'placeholder': '高さ',
-                },
-                'isCapitalize': {
-                  'placeholder': '大文字にする',
-                },
-                'tooltip': {
-                  'placeholder': 'Gợi ý đính kèm',
-                },
-                'color': {
-                  'placeholder': 'Màu sắc',
-                },
-              },
+              ],
             },
           },
-          'detail': {
-            'title': 'Thông tin biểu mẫu',
-            'form': {
-              'basic': {
-                'code': {
-                  'placeholder': 'Mã',
-                },
-                'name': {
-                  'placeholder': 'Tên',
-                },
-                'description': {
-                  'placeholder': 'Ghi chú',
-                },
-                'button': {
-                  'save': 'Lưu',
-                  'draft': 'Nháp',
-                },
-              },
-            },
-          },
-          'table': {
-            'name': 'Name',
-            'description': 'Description',
-          },
         },
-        'acccount': {
-
-        },
-        'customer': {
-
-        },
-        'dashboard': {
-
-        },
-        'profile': {
-
-        },
-        'header': {
+        'modules': {
           'account': {
-            'items': [
-              {
-                'value': 'setting',
-                'label': '設定',
-                'icon': (<SettingOutlined />),
+            'components': {
+              'account-extra': {},
+              'account-canvas': {
+                'vi': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
+                'en': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
+                'jp': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
               },
-              {
-                'value': 'log-out',
-                'label': 'ログアウト',
-                'icon': (<LogoutOutlined />),
+              'account-control': {
+                'vi': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của nhân viên này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của nhân viên này?',
+                  },
+                },
+                'en': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của nhân viên này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của nhân viên này?',
+                  },
+                },
+                'jp': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của nhân viên này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của nhân viên này?',
+                  },
+                },
               },
-            ],
+              'account-create': {
+                'vi': {
+                  'label': 'Tạo mới nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới nhân viên',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'en': {
+                  'label': 'Tạo mới nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới nhân viên',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'jp': {
+                  'label': 'Tạo mới nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới nhân viên',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+              },
+              'account-detail': {
+                'vi': {
+                  'label': 'Thông tin nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin nhân viên',
+                  },
+                },
+                'en': {
+                  'label': 'Thông tin nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin nhân viên',
+                  },
+                },
+                'jp': {
+                  'label': 'Thông tin nhân viên',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã nhân viên',
+                      'error-message': 'Mã nhân viên không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên nhân viên',
+                      'error-message': 'Tên nhân viên không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử nhân viên không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại nhân viên không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin nhân viên',
+                  },
+                },
+              },
+              'account-item': {
+                'vi': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'en': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'jp': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+              },
+              'account-list': {
+                'vi': {
+                  'label': 'Danh sách nhân viên',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã nhân viên',
+                      'fullname': 'Tìm kiếm theo tên nhân viên',
+                      'email': 'Tìm kiếm theo thư điện tử nhân viên',
+                      'phone': 'Tìm kiếm theo số điện thoại nhân viên',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một nhân viên',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ nhân viên',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các nhân viên bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa nhân viên',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của nhân viên',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới nhân viên theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã nhân viên',
+                    'fullname': 'Tên nhân viên',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ nhân viên nào',
+                },
+                'en': {
+                  'label': 'Danh sách nhân viên',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã nhân viên',
+                      'fullname': 'Tìm kiếm theo tên nhân viên',
+                      'email': 'Tìm kiếm theo thư điện tử nhân viên',
+                      'phone': 'Tìm kiếm theo số điện thoại nhân viên',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một nhân viên',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ nhân viên',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các nhân viên bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa nhân viên',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của nhân viên',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới nhân viên theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã nhân viên',
+                    'fullname': 'Tên nhân viên',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ nhân viên nào',
+                },
+                'jp': {
+                  'label': 'Danh sách nhân viên',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã nhân viên',
+                      'fullname': 'Tìm kiếm theo tên nhân viên',
+                      'email': 'Tìm kiếm theo thư điện tử nhân viên',
+                      'phone': 'Tìm kiếm theo số điện thoại nhân viên',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một nhân viên',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ nhân viên',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các nhân viên bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa nhân viên',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của nhân viên',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng nhân viên này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng nhân viên',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng nhân viên này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới nhân viên theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã nhân viên',
+                    'fullname': 'Tên nhân viên',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ nhân viên nào',
+                },
+              },
+              'account-option': {
+                'vi': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'en': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'jp': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+              },
+              'account-palette': {
+                'vi': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'file-upload-control',
+                      'placeHolder': 'Xử lí tệp',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'file-upload',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'en': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'jp': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+              },
+              'account-view': {
+                'vi': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách nhân viên',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của nhân viên',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của nhân viên',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+                'en': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách nhân viên',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của nhân viên',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của nhân viên',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+                'jp': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách nhân viên',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của nhân viên',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của nhân viên',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của nhân viên',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của nhân viên',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+              },
+            },
+            'pages': {
+              'account-editable': {
+
+              },
+              'account-main': {
+
+              },
+            },
           },
-          'notification': {
-            'tabs': [
-              {
-                'key': 'work',
-                'tab': (
-                  <span>
-                    <NotificationOutlined />
-                    作業
-                  </span>
-                ),
+          'customer': {
+            'components': {
+              'customer-extra': {},
+              'customer-canvas': {
+                'vi': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
+                'en': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
+                'jp': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                  },
+                },
               },
-              {
-                'key': 'self',
-                'tab': (
-                  <span>
-                    <SmileOutlined />
-                    私自身
-                  </span>
-                ),
+              'customer-control': {
+                'vi': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của khách hàng này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của khách hàng này?',
+                  },
+                },
+                'en': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của khách hàng này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của khách hàng này?',
+                  },
+                },
+                'jp': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'deactive': {
+                    'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc ngừng sử dụng thông tin thêm của khách hàng này?',
+                  },
+                  'active': {
+                    'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    'yes': 'Đồng ý',
+                    'no': 'Hủy',
+                    'confirm': 'Chắc chắn việc cho phép sử dụng thông tin thêm của khách hàng này?',
+                  },
+                },
               },
-              {
-                'key': 'company',
-                'tab': (
-                  <span>
-                    <ApartmentOutlined />
-                    会社
-                  </span>
-                ),
+              'customer-create': {
+                'vi': {
+                  'label': 'Tạo mới khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới khách hàng',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'en': {
+                  'label': 'Tạo mới khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới khách hàng',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'jp': {
+                  'label': 'Tạo mới khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới khách hàng',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
               },
-            ],
-            'emptyDescription': (
-              <span>
-                通知なし
-              </span>
-            ),
-            'title': '通知',
+              'customer-detail': {
+                'vi': {
+                  'label': 'Thông tin khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin khách hàng',
+                  },
+                },
+                'en': {
+                  'label': 'Thông tin khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin khách hàng',
+                  },
+                },
+                'jp': {
+                  'label': 'Thông tin khách hàng',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã khách hàng',
+                      'error-message': 'Mã khách hàng không được trống',
+                    },
+                    'fullname': {
+                      'label': 'Tên khách hàng',
+                      'error-message': 'Tên khách hàng không được trống',
+                    },
+                    'email': {
+                      'label': 'Thư điện tử',
+                      'error-message': 'Thư điện tử khách hàng không được trống',
+                    },
+                    'phone': {
+                      'label': 'Số điện thoại',
+                      'error-message': 'Số điện thoại khách hàng không được trống',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin khách hàng',
+                  },
+                },
+              },
+              'customer-item': {
+                'vi': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'en': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'jp': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+              },
+              'customer-list': {
+                'vi': {
+                  'label': 'Danh sách khách hàng',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã khách hàng',
+                      'fullname': 'Tìm kiếm theo tên khách hàng',
+                      'email': 'Tìm kiếm theo thư điện tử khách hàng',
+                      'phone': 'Tìm kiếm theo số điện thoại khách hàng',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một khách hàng',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ khách hàng',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các khách hàng bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa khách hàng',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của khách hàng',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới khách hàng theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã khách hàng',
+                    'fullname': 'Tên khách hàng',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+                'en': {
+                  'label': 'Danh sách khách hàng',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã khách hàng',
+                      'fullname': 'Tìm kiếm theo tên khách hàng',
+                      'email': 'Tìm kiếm theo thư điện tử khách hàng',
+                      'phone': 'Tìm kiếm theo số điện thoại khách hàng',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một khách hàng',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ khách hàng',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các khách hàng bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa khách hàng',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của khách hàng',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới khách hàng theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã khách hàng',
+                    'fullname': 'Tên khách hàng',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+                'jp': {
+                  'label': 'Danh sách khách hàng',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã khách hàng',
+                      'fullname': 'Tìm kiếm theo tên khách hàng',
+                      'email': 'Tìm kiếm theo thư điện tử khách hàng',
+                      'phone': 'Tìm kiếm theo số điện thoại khách hàng',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một khách hàng',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ khách hàng',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các khách hàng bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa khách hàng',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của khách hàng',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng khách hàng này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng khách hàng',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng khách hàng này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới khách hàng theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã khách hàng',
+                    'fullname': 'Tên khách hàng',
+                    'email': 'Thư điện tử',
+                    'phone': 'Số điện thoại',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+              },
+              'customer-option': {
+                'vi': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'en': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'jp': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+              },
+              'customer-palette': {
+                'vi': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'file-upload-control',
+                      'placeHolder': 'Xử lí tệp',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'file-upload',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'en': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'jp': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+              },
+              'customer-view': {
+                'vi': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách khách hàng',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của khách hàng',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của khách hàng',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+                'en': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách khách hàng',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của khách hàng',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của khách hàng',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+                'jp': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách khách hàng',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của thông tin thêm của khách hàng',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của thông tin thêm của khách hàng',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng thông tin thêm của khách hàng',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng thông tin thêm của khách hàng',
+                    },
+                  },
+                  'message': 'Xóa thành công',
+                },
+              },
+            },
+            'pages': {
+              'customer-editable': {
+
+              },
+              'customer-main': {
+
+              },
+            },
+          },
+          'dashboard': {
+            'components': {
+
+            },
+            'pages': {
+
+            },
+          },
+          'form': {
+            'components': {
+              'form-canvas': {
+                'vi': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+                'en': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+                'jp': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'form': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+              },
+              'form-control': {
+                'vi': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'remove': {
+                    'tooltip': 'Nhấn để xóa',
+                    'confirm': 'Chắc chắn xóa ?',
+                    'oke': 'Đồng ý xóa',
+                    'cancel': 'Không',
+                  },
+                },
+                'en': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'remove': {
+                    'tooltip': 'Nhấn để xóa',
+                    'confirm': 'Chắc chắn xóa ?',
+                    'oke': 'Đồng ý xóa',
+                    'cancel': 'Không',
+                  },
+                },
+                'jp': {
+                  'drag': {
+                    'tooltip': 'Giữ để kéo và thả vào vị trí muốn chuyển',
+                  },
+                  'edit': {
+                    'tooltip': 'Nhấn để chỉnh sửa',
+                  },
+                  'remove': {
+                    'tooltip': 'Nhấn để xóa',
+                    'confirm': 'Chắc chắn xóa ?',
+                    'oke': 'Đồng ý xóa',
+                    'cancel': 'Không',
+                  },
+                },
+              },
+              'form-create': {
+                'vi': {
+                  'label': 'Tạo mới biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới biểu mẫu',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'en': {
+                  'label': 'Tạo mới biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới biểu mẫu',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'jp': {
+                  'label': 'Tạo mới biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới biểu mẫu',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+              },
+              'form-detail': {
+                'vi': {
+                  'label': 'Thông tin biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin biểu mẫu',
+                  },
+                },
+                'en': {
+                  'label': 'Thông tin biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin biểu mẫu',
+                  },
+                },
+                'jp': {
+                  'label': 'Thông tin biểu mẫu',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã biểu mẫu',
+                      'error-message': 'Mã biểu mẫu không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên biểu mẫu',
+                      'error-message': 'Tên biểu mẫu không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin biểu mẫu',
+                  },
+                },
+              },
+              'form-item': {
+                'vi': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'en': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'jp': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+              },
+              'form-list': {
+                'vi': {
+                  'label': 'Danh sách biểu mẫu',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã biểu mẫu',
+                      'name': 'Tìm kiếm theo tên biểu mẫu',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một biểu mẫu',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ biểu mẫu',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các biểu mẫu bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa biểu mẫu',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới biểu mẫu theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã biểu mẫu',
+                    'name': 'Tên biểu mẫu',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ biểu mẫu nào',
+                },
+                'en': {
+                  'label': 'Danh sách biểu mẫu',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã biểu mẫu',
+                      'name': 'Tìm kiếm theo tên biểu mẫu',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một biểu mẫu',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ biểu mẫu',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các biểu mẫu bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa biểu mẫu',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới biểu mẫu theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã biểu mẫu',
+                    'name': 'Tên biểu mẫu',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ biểu mẫu nào',
+                },
+                'jp': {
+                  'label': 'Danh sách biểu mẫu',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã biểu mẫu',
+                      'name': 'Tìm kiếm theo tên biểu mẫu',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một biểu mẫu',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ biểu mẫu',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các biểu mẫu bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa biểu mẫu',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng biểu mẫu này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng biểu mẫu này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới biểu mẫu theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã biểu mẫu',
+                    'name': 'Tên biểu mẫu',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ biểu mẫu nào',
+                },
+              },
+              'form-option': {
+                'vi': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'en': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+                'jp': {
+                  'label': 'Hiển thị',
+                  'value': 'Giá trị',
+                },
+              },
+              'form-palette': {
+                'vi': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-password-control',
+                      'placeHolder': 'Đây là ô nhập mật khẩu',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'password',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'file-upload-control',
+                      'placeHolder': 'Xử lí tệp',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'file-upload',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'en': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-password-control',
+                      'placeHolder': 'Đây là ô nhập mật khẩu',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'password',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'file-upload-control',
+                      'placeHolder': 'Xử lí tệp',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'file-upload',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+                'jp': {
+                  'items': [
+                    {
+                      'name': 'input-text-control',
+                      'placeHolder': 'Đây là ô nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-number-control',
+                      'placeHolder': 'Đây là ô nhập số',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'number',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'input-password-control',
+                      'placeHolder': 'Đây là ô nhập mật khẩu',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'input',
+                      'subType': 'password',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'text-area-control',
+                      'placeHolder': 'Đây là ô to nhập chữ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'text-area',
+                      'subType': 'text',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'select-control',
+                      'placeHolder': 'Đây là ô chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'multi-select-control',
+                      'placeHolder': 'Đây là ô chọn nhiều',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'multi-select',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'auto-complete-control',
+                      'placeHolder': 'Đây là ô chọn nhiều và tìm kiếm',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'auto-complete',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'radio-control',
+                      'placeHolder': 'Đây là nhóm lựa chọn một',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'radio',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-control',
+                      'placeHolder': 'Đây là 1 tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'check-box-group-control',
+                      'placeHolder': 'Đây là nhóm tích chọn',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[{"value": "yes", "label": "Yes"},{"value": "no", "label": "No"}]',
+                      'type': 'check-box-group',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn ngày',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'date-range-control',
+                      'placeHolder': '["Ngày bắt đầu", "Ngày kết thúc"]',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'date-range',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'time-picker-control',
+                      'placeHolder': 'Đây là ô lựa chọn giờ',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'time-picker',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                    {
+                      'name': 'file-upload-control',
+                      'placeHolder': 'Xử lí tệp',
+                      'fontSize': '',
+                      'size': '',
+                      'options': '[]',
+                      'type': 'file-upload',
+                      'subType': '',
+                      'width': 12,
+                      'height': '',
+                      'isCapitialize': false,
+                      'tooltip': 'Đây là gợi ý',
+                      'color': '',
+                    },
+                  ],
+                },
+              },
+              'form-view': {
+                'vi': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách biểu mẫu',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của biểu mẫu',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+                'en': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách biểu mẫu',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của biểu mẫu',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+                'jp': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách biểu mẫu',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của biểu mẫu',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của biểu mẫu',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng biểu mẫu',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng biểu mẫu',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+              },
+            },
+            'pages': {
+              'form-editable': {
+
+              },
+              'form-main': {
+
+              },
+            },
+          },
+          'process': {
+            'components': {
+              'process-list': {
+                'vi': {
+                  'label': 'Danh sách tiến trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã tiến trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một tiến trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ tiến trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các tiến trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa tiến trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của tiến trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới tiến trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã tiến trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ tiến trình nào',
+                },
+                'en': {
+                  'label': 'Danh sách tiến trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã tiến trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một tiến trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ tiến trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các tiến trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa tiến trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của tiến trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới tiến trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã tiến trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ tiến trình nào',
+                },
+                'jp': {
+                  'label': 'Danh sách tiến trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã tiến trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một tiến trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ tiến trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các tiến trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa tiến trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của tiến trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng tiến trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng tiến trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng tiến trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới tiến trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã tiến trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ tiến trình nào',
+                },
+              },
+              'process-create': {
+                'vi': {
+                  'label': 'Tạo mới tiến trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã tiến trình',
+                      'error-message': 'Mã tiến trình không được trống',
+                    },
+                    'note': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới tiến trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'en': {
+                  'label': 'Tạo mới tiến trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã tiến trình',
+                      'error-message': 'Mã tiến trình không được trống',
+                    },
+                    'note': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới tiến trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'jp': {
+                  'label': 'Tạo mới tiến trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã tiến trình',
+                      'error-message': 'Mã tiến trình không được trống',
+                    },
+                    'note': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới tiến trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+              },
+            },
+            'pages': {
+              'process-main': {
+
+              },
+              'process-editable': {
+
+              },
+            },
+          },
+          'profile': {
+            'components': {
+
+            },
+            'pages': {
+
+            },
+          },
+          'work-flow': {
+            'components': {
+              'work-flow-canvas': {
+                'vi': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'work-flow': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+                'en': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'work-flow': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+                'jp': {
+                  'title': 'Thông tin đối tượng',
+                  'add-button': 'Thêm lựa chọn',
+                  'work-flow': {
+                    'name': {
+                      'placeholder': 'Tên đối tượng',
+                    },
+                    'type': {
+                      'placeholder': 'Loại đối tượng',
+                    },
+                    'subType': {
+                      'placeholder': 'Loại phụ đối tuợng',
+                    },
+                    'placeHolder': {
+                      'placeholder': 'Mẫu gợi ý',
+                      'placeholder-array': ['Ngày bắt đầu', 'Ngày kết thúc'],
+                    },
+                    'fontSize': {
+                      'placeholder': 'Cỡ chữ',
+                    },
+                    'size': {
+                      'placeholder': 'kích cỡ',
+                    },
+                    'options': {
+                      'placeholder': ['Giá trị', 'Hiển thị'],
+                    },
+                    'width': {
+                      'placeholder': 'Chiều rộng',
+                    },
+                    'height': {
+                      'placeholder': 'Chiều cao',
+                    },
+                    'isCapitalize': {
+                      'placeholder': 'In hoa',
+                    },
+                    'tooltip': {
+                      'placeholder': 'Gợi ý đính kèm',
+                    },
+                    'color': {
+                      'placeholder': 'Màu sắc',
+                    },
+                  },
+                },
+              },
+              'work-flow-create': {
+                'vi': {
+                  'label': 'Tạo mới qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới qui trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'en': {
+                  'label': 'Tạo mới qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới qui trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+                'jp': {
+                  'label': 'Tạo mới qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'create': 'Tạo mới qui trình',
+                    'create-and-edit': 'Tạo mới và thêm thuộc tính',
+                  },
+                },
+              },
+              'work-flow-detail': {
+                'vi': {
+                  'label': 'Thông tin qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin qui trình',
+                  },
+                },
+                'en': {
+                  'label': 'Thông tin qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin qui trình',
+                  },
+                },
+                'jp': {
+                  'label': 'Thông tin qui trình',
+                  'fields': {
+                    'code': {
+                      'label': 'Mã qui trình',
+                      'error-message': 'Mã qui trình không được trống',
+                    },
+                    'name': {
+                      'label': 'Tên qui trình',
+                      'error-message': 'Tên qui trình không được trống',
+                    },
+                    'description': {
+                      'label': 'Ghi chú',
+                    },
+                  },
+                  'buttons': {
+                    'save': 'Lưu thông tin qui trình',
+                  },
+                },
+              },
+              'work-flow-item': {
+                'vi': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'en': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+                'jp': {
+                  'tooltip': 'Giữ kéo và thả qua vùng trống bên cạnh',
+                },
+              },
+              'work-flow-list': {
+                'vi': {
+                  'label': 'Danh sách qui trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã qui trình',
+                      'name': 'Tìm kiếm theo tên qui trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một qui trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ qui trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các qui trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa qui trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới qui trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã qui trình',
+                    'name': 'Tên qui trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+                'en': {
+                  'label': 'Danh sách qui trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã qui trình',
+                      'name': 'Tìm kiếm theo tên qui trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một qui trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ qui trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các qui trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa qui trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới qui trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã qui trình',
+                    'name': 'Tên qui trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+                'jp': {
+                  'label': 'Danh sách qui trình',
+                  'search': {
+                    'global-search': 'Nhập để tìm kiếm',
+                    'regexs': {
+                      'contains': 'Chứa',
+                      'not-contains': 'Không chứa',
+                      'equals': 'Bằng',
+                      'not-equals': 'Không bằng',
+                    },
+                    'fields': {
+                      'code': 'Tìm kiếm theo mã qui trình',
+                      'name': 'Tìm kiếm theo tên qui trình',
+                      'status': {
+                        'active': 'Hoạt động',
+                        'deactive': 'Đã dừng',
+                      },
+                    },
+                  },
+                  'buttons': {
+                    'create': {
+                      'tooltip': 'Nhấn để thêm mới một qui trình',
+                    },
+                    'export-excel': {
+                      'tooltip': 'Nhấn để tải tệp thông tin toàn bộ qui trình',
+                    },
+                    'import-excel': {
+                      'tooltip': 'Nhấn để chèn thông tin các qui trình bằng tệp dữ liệu excel',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                      'yes': 'Đồng ý',
+                      'no': 'Hủy',
+                      'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                    },
+                    'setting': {
+                      'edit': {
+                        'tooltip': 'Nhấn để chỉnh sửa qui trình',
+                      },
+                      'preview': {
+                        'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                      },
+                      'deactive': {
+                        'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc ngừng sử dụng qui trình này?',
+                      },
+                      'active': {
+                        'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                        'yes': 'Đồng ý',
+                        'no': 'Hủy',
+                        'confirm': 'Chắc chắn việc cho phép sử dụng qui trình này?',
+                      },
+                    },
+                    'create-with-search': 'Tạo mới qui trình theo dữ liệu tìm kiếm',
+                  },
+                  'col': {
+                    'code': 'Mã qui trình',
+                    'name': 'Tên qui trình',
+                    'status': 'Trạng thái',
+                    'action': 'T.Chỉnh',
+                  },
+                  'paging': {
+                    'all': 'Tất cả',
+                  },
+                  'empty-message': 'Không tìm thấy bất kỳ khách hàng nào',
+                },
+              },
+              'work-flow-palette': {
+                'vi': {
+                  'items': [
+                    {
+                      'key': 'events',
+                      'label': 'Event Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Start',
+                          'ports': getPorts('Start'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'Start',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Start',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_End',
+                          'ports': getPorts('End'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'End',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_End',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'gateways',
+                      'label': 'Gateway Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Exclusive',
+                          'ports': getPorts('Exclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Exclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Exclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Inclusive',
+                          'ports': getPorts('Inclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Inclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Inclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Parallel',
+                          'ports': getPorts('Parallel'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Parallel',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Parallel',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'activitys',
+                      'label': 'Activity Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Activity_Task',
+                          'ports': getPorts('Activity_Task'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Activity',
+                            'activity': {
+                              'activity': 'Task',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Activity_Task',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'connectors',
+                      'label': 'Connectors',
+                      'data': [
+                        {
+                          'id': 'Connector_SequenFlow',
+                          'type': 'Orthogonal',
+                          'sourcePoint': { 'x': 0, 'y': 0 },
+                          'targetPoint': { 'x': 40, 'y': 40 },
+                          'targetDecorator': { 'shape': 'Arrow' },
+                          'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                          'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                          'annotations': [{
+                            'content': 'Connector_SequenFlow',
+                            'margin': {
+                              'bottom': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': 0.5,
+                          }],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                'en': {
+                  'items': [
+                    {
+                      'key': 'events',
+                      'label': 'Event Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Start',
+                          'ports': getPorts('Start'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'Start',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Start',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_End',
+                          'ports': getPorts('End'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'End',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_End',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'gateways',
+                      'label': 'Gateway Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Exclusive',
+                          'ports': getPorts('Exclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Exclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Exclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Inclusive',
+                          'ports': getPorts('Inclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Inclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Inclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Parallel',
+                          'ports': getPorts('Parallel'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Parallel',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Parallel',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'activitys',
+                      'label': 'Activity Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Activity_Task',
+                          'ports': getPorts('Activity_Task'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Activity',
+                            'activity': {
+                              'activity': 'Task',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Activity_Task',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'connectors',
+                      'label': 'Connectors',
+                      'data': [
+                        {
+                          'id': 'Connector_SequenFlow',
+                          'type': 'Orthogonal',
+                          'sourcePoint': { 'x': 0, 'y': 0 },
+                          'targetPoint': { 'x': 40, 'y': 40 },
+                          'targetDecorator': { 'shape': 'Arrow' },
+                          'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                          'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                          'annotations': [{
+                            'content': 'Connector_SequenFlow',
+                            'margin': {
+                              'bottom': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': 0.5,
+                          }],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                'jp': {
+                  'items': [
+                    {
+                      'key': 'events',
+                      'label': 'Event Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Start',
+                          'ports': getPorts('Start'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'Start',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Start',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_End',
+                          'ports': getPorts('End'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Event',
+                            'event': {
+                              'event': 'End',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_End',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'gateways',
+                      'label': 'Gateway Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Exclusive',
+                          'ports': getPorts('Exclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Exclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Exclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Inclusive',
+                          'ports': getPorts('Inclusive'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Inclusive',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Inclusive',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                        {
+                          'id': 'Node_Parallel',
+                          'ports': getPorts('Parallel'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Gateway',
+                            'gateway': {
+                              'type': 'Parallel',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Parallel',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'activitys',
+                      'label': 'Activity Shapes',
+                      'data': [
+                        {
+                          'id': 'Node_Activity_Task',
+                          'ports': getPorts('Activity_Task'),
+                          'width': 50,
+                          'height': 50,
+                          'shape': {
+                            'type': 'Bpmn',
+                            'shape': 'Activity',
+                            'activity': {
+                              'activity': 'Task',
+                            },
+                          },
+                          'annotations': [{
+                            'content': 'Node_Activity_Task',
+                            'margin': {
+                              'top': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': {
+                              'x': 0.5,
+                              'y': -0.7,
+                            },
+                          }],
+                        },
+                      ],
+                    },
+                    {
+                      'key': 'connectors',
+                      'label': 'Connectors',
+                      'data': [
+                        {
+                          'id': 'Connector_SequenFlow',
+                          'type': 'Orthogonal',
+                          'sourcePoint': { 'x': 0, 'y': 0 },
+                          'targetPoint': { 'x': 40, 'y': 40 },
+                          'targetDecorator': { 'shape': 'Arrow' },
+                          'style': { 'strokeWidth': 2, 'strokeDashArray': '5.5' },
+                          'shape': { 'bpmnFlow': 'Sequence', 'sequence': 'Normal' },
+                          'annotations': [{
+                            'content': 'Connector_SequenFlow',
+                            'margin': {
+                              'bottom': 10,
+                            },
+                            'horizontalAlignment': 'Center',
+                            'verticalAlignment': 'Top',
+                            'offset': 0.5,
+                          }],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              },
+              'work-flow-view': {
+                'vi': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách qui trình',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của qui trình',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+                'en': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách qui trình',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của qui trình',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+                'jp': {
+                  'buttons': {
+                    'back': {
+                      'tooltip': 'Nhấn đế quay về trang danh sách qui trình',
+                    },
+                    'config': {
+                      'tooltip': 'Nhấn để xem bản chỉnh của qui trình',
+                    },
+                    'preview': {
+                      'tooltip': 'Nhấn để xem bản thực tế của qui trình',
+                    },
+                    'active': {
+                      'tooltip': 'Nhấn để cho phép sử dụng qui trình',
+                    },
+                    'deactive': {
+                      'tooltip': 'Nhấn để ngừng sử dụng qui trình',
+                    },
+                  },
+                  'message': 'Cập nhật thành công',
+                },
+              },
+            },
+            'pages': {
+              'work-flow-editable': {
+
+              },
+              'work-flow-main': {
+
+              },
+            },
           },
         },
       },

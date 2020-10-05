@@ -3,12 +3,12 @@ import React from 'react';
 import { CustomerRoutes } from './customer.routing';
 
 export interface ICustomerModuleProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
-export const CustomerModule = (props: ICustomerModuleProps) => {
+export const CustomerModule: React.FC<ICustomerModuleProps> = (props: ICustomerModuleProps) => {
   return (
-    <CustomerRoutes />
+    <CustomerRoutes input={{}} output={{}} fatherProps={props} />
   );
 };

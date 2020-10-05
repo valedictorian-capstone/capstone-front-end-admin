@@ -4,7 +4,7 @@ import { FormGroupState } from '@stores/states';
 import { FormGroup } from '@stores/models';
 import { FormGroupUM, FormGroupVM } from '@view-models';
 
-export const useFormGroupReducer: Reducer<FormGroupState, FormGroup> = (state: FormGroupState = new FormGroupState({arr: []}), action: FormGroup): FormGroupState => {
+export const useFormGroupReducer: Reducer<FormGroupState, FormGroup> = (state: FormGroupState = new FormGroupState({ arr: [] }), action: FormGroup): FormGroupState => {
   switch (action.type) {
     case FORM_GROUP_TYPE.RESET.FETCH: {
       return {
@@ -35,10 +35,21 @@ export const useFormGroupReducer: Reducer<FormGroupState, FormGroup> = (state: F
       };
     }
     case FORM_GROUP_TYPE.REMOVE.SUCCESS: {
-      const newArr = state.arr.filter(model => model.id !== action.payload.data);
       return {
         ...state,
-        arr: [...newArr],
+        arr: state.arr.filter(model => model.id !== action.payload.data),
+      };
+    }
+    case FORM_GROUP_TYPE.ACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? false : e.isDelete })),
+      };
+    }
+    case FORM_GROUP_TYPE.DEACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? true : e.isDelete })),
       };
     }
     default: {

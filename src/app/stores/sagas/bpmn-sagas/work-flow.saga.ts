@@ -12,6 +12,8 @@ export const useWorkFlowSaga = () => {
     yield takeLatest(WORK_FLOW_TYPE.CREATE.FETCH, useCreate);
     yield takeLatest(WORK_FLOW_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(WORK_FLOW_TYPE.REMOVE.FETCH, useRemove);
+    yield takeLatest(WORK_FLOW_TYPE.ACTIVE.FETCH, useActive);
+    yield takeLatest(WORK_FLOW_TYPE.DEACTIVE.FETCH, useDeactive);
   }
   function* useGetAll() {
     yield put(useLoadingAction().showLoader());
@@ -53,6 +55,25 @@ export const useWorkFlowSaga = () => {
     }
     yield put(useLoadingAction().hideLoader());
   }
-
+  function* useActive(action: WorkFlow) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(WorkFlowService.active, action.payload.data as string[]);
+      yield put(useWorkFlowAction().activeSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useWorkFlowAction().activeError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useDeactive(action: WorkFlow) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(WorkFlowService.deactive, action.payload.data as string[]);
+      yield put(useWorkFlowAction().deactiveSuccess(action.payload.data as string[]));
+    } catch (error) {
+      yield put(useWorkFlowAction().deactiveError(error));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
   return { useInit };
 };

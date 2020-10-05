@@ -7,7 +7,7 @@ export interface IAppComponentProps extends IBaseProps {
   output: {};
 }
 
-export const AppComponent = (props: IAppComponentProps) => {
+export const AppComponent: React.FC<IAppComponentProps> = (props: IAppComponentProps) => {
   return (
     <div>
       {props.children}

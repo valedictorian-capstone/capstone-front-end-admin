@@ -4,7 +4,6 @@ import { CustomerExtraInformationDataVM } from './customer-extra-information-dat
 export interface CustomerExtraInformationVM {
   readonly id: string;
   readonly name: string;
-  readonly customerId: string;
   readonly type: string;
   readonly subType: string;
   readonly options: string;
@@ -12,6 +11,7 @@ export interface CustomerExtraInformationVM {
   readonly tooltip: string;
   readonly customerExtraInformationDatas: CustomerExtraInformationDataVM[];
   readonly patterns: PatternVM[];
+  position: number;
   readonly isDelete: boolean;
   readonly createdBy: string;
   readonly updatedBy: string;
@@ -20,22 +20,25 @@ export interface CustomerExtraInformationVM {
 }
 
 export interface CustomerExtraInformationCM {
+  id: string;
   name: string;
-  customerId: string;
   type: string;
   subType: string;
   options: string;
   placeHolder: string;
   tooltip: string;
+  position: number;
+  isDelete: boolean;
 }
 
 export interface CustomerExtraInformationUM {
   id: string;
   name: string;
-  customerId: string;
   type: string;
   subType: string;
   options: string;
   placeHolder: string;
   tooltip: string;
+  position: number;
+  isDelete: boolean;
 }

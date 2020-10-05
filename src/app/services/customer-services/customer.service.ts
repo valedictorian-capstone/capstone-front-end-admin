@@ -25,11 +25,11 @@ export class CustomerService {
     return useHttp().delete<CustomerVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<CustomerVM>> => {
-    return useHttp().put<CustomerVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<CustomerVM>> => {
+    return useHttp().put<CustomerVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<CustomerVM>> => {
-    return useHttp().put<CustomerVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<CustomerVM>> => {
+    return useHttp().put<CustomerVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer'].deactive}`, ids);
   }
 }

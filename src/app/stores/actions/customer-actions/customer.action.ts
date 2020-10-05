@@ -45,6 +45,24 @@ export const useCustomerAction = (): ActionCreatorsMapObject<Customer> => {
   const removeError = (error: any): Customer => {
     return { type: CUSTOMER_TYPE.REMOVE.ERROR, payload: {data: CUSTOMER_TYPE.REMOVE.ERROR} };
   };
+  const active = (data: string[]): Customer => {
+    return { type: CUSTOMER_TYPE.ACTIVE.FETCH, payload: { data } };
+  };
+  const activeSuccess = (data: string[]): Customer => {
+    return { type: CUSTOMER_TYPE.ACTIVE.SUCCESS, payload: { data } };
+  };
+  const activeError = (error: any): Customer => {
+    return { type: CUSTOMER_TYPE.ACTIVE.ERROR, payload: {data: CUSTOMER_TYPE.ACTIVE.ERROR} };
+  };
+  const deactive = (data: string[]): Customer => {
+    return { type: CUSTOMER_TYPE.DEACTIVE.FETCH, payload: { data } };
+  };
+  const deactiveSuccess = (data: string[]): Customer => {
+    return { type: CUSTOMER_TYPE.DEACTIVE.SUCCESS, payload: { data } };
+  };
+  const deactiveError = (error: any): Customer => {
+    return { type: CUSTOMER_TYPE.DEACTIVE.ERROR, payload: {data: CUSTOMER_TYPE.DEACTIVE.ERROR} };
+  };
   const actions: ActionCreatorsMapObject<Customer> = {
     reset,
     getAll,
@@ -59,6 +77,12 @@ export const useCustomerAction = (): ActionCreatorsMapObject<Customer> => {
     remove,
     removeSuccess,
     removeError,
+    active,
+    activeSuccess,
+    activeError,
+    deactive,
+    deactiveSuccess,
+    deactiveError,
   };
   return actions;
 };

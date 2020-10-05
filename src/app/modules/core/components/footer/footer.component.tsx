@@ -4,8 +4,8 @@ import React from 'react';
 import './footer.component.css';
 
 export interface IFooterComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
 
 export const FooterComponent = (props: IFooterComponentProps) => {

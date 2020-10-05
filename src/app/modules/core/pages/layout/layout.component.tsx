@@ -7,23 +7,23 @@ import { useSelector } from 'react-redux';
 import './layout.component.css';
 import { ProgressBar } from 'primereact/progressbar';
 export interface ILayoutComponentProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
-export const LayoutComponent = (props: ILayoutComponentProps) => {
+export const LayoutComponent: React.FC<ILayoutComponentProps> = (props: ILayoutComponentProps) => {
   const account: any = localStorage.getItem('m-crm-username');
   const status = useSelector<RootState, boolean>((state: RootState) => state.loading.loading.status);
   return (
     <Layout style={{ minHeight: '100vh', overflow: 'hidden' }}>
-      <SideBarComponent />
+      <SideBarComponent fatherProps={props} input={{}} output={{}} />
       <Layout className="site-layout">
-        <HeaderComponent>
-          <NotificationComponent />
-          {account && <AccountComponent input={{ account }} />}
-          <LanguageComponent />
+        <HeaderComponent fatherProps={props} input={{}} output={{}}>
+          <NotificationComponent fatherProps={props} input={{}} output={{}} />
+          {account && <AccountComponent fatherProps={props} output={{}} input={{ account }} />}
+          <LanguageComponent fatherProps={props} input={{}} output={{}} />
         </HeaderComponent>
         {status && <ProgressBar mode="indeterminate" style={{ height: '4px' }} />}
-        <ContentComponent>
+        <ContentComponent fatherProps={props} input={{}} output={{}}>
           {props.children}
         </ContentComponent>
       </Layout>

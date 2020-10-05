@@ -41,6 +41,18 @@ export const useWorkFlowReducer: Reducer<WorkFlowState, WorkFlow> = (state: Work
         arr: [...newArr],
       };
     }
+    case WORK_FLOW_TYPE.ACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? false : e.isDelete })),
+      };
+    }
+    case WORK_FLOW_TYPE.DEACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? true : e.isDelete })),
+      };
+    }
     default: {
       return {
         ...state,

@@ -8,8 +8,8 @@ export interface WorkFlowStepVM {
   readonly name: string;
   readonly description: string;
   readonly type: string;
-  readonly subType: string;
-  readonly workFlowId: string;
+  readonly shape: string;
+  readonly props: any;
   readonly workFlowConnections: WorkFlowConnectionVM[];
   readonly workFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
   readonly permissions: PermissionVM[];

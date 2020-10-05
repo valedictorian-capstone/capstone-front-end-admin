@@ -6,30 +6,30 @@ import { AxiosResponse } from 'axios';
 export class WorkFlowService {
 
   public static readonly findAll = (): Promise<AxiosResponse<WorkFlowVM[]>> => {
-    return useHttp().get<WorkFlowVM[]>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].main}`);
+    return useHttp().get<WorkFlowVM[]>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].main}`);
   }
 
   public static readonly findById = (id: string): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().get<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].getById}${id}`);
+    return useHttp().get<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].getById}${id}`);
   }
 
   public static readonly insert = (data: WorkFlowCM): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().post<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].main}`, data);
+    return useHttp().post<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].main}`, data);
   }
 
   public static readonly update = (data: WorkFlowUM): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].main}`, data);
+    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].main}`, data);
   }
 
   public static readonly remove = (id: string): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().delete<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].getById}${id}`);
+    return useHttp().delete<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<WorkFlowVM>> => {
+    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<WorkFlowVM>> => {
-    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['comment'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<WorkFlowVM>> => {
+    return useHttp().put<WorkFlowVM>(`${environment.apiEndpont}${environment.api['bpmn-api']['work-flow'].deactive}`, ids);
   }
 }

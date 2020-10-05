@@ -2,8 +2,7 @@ export interface WorkFlowConnectionVM {
   readonly id: string;
   readonly type: string;
   readonly description: string;
-  readonly fromWorkFlowStepId: string;
-  readonly toWorkFlowStepId: string;
+  readonly props: any;
   readonly isDelete: boolean;
   readonly createdBy: string;
   readonly updatedBy: string;
