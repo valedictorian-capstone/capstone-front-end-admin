@@ -35,7 +35,7 @@ export const SideBarComponent: React.FC<ISideBarComponentProps> = (props: ISideB
       React.createElement(state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)
     } onCollapse={toggle} collapsible={true} collapsed={state.collapsed} >
       <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)', margin: 10 }} />
-      <Menu theme="dark" mode="inline"  defaultSelectedKeys={[history.location.pathname.split('/')[2]]}>
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={[history.location.pathname.split('/')[2]]}>
         {(config.categories as any).map((category: any) => (
           <Menu.Item key={category.value} icon={category.icon} onClick={() => gotoPage('/core/' + category.value)}>
             <span>{category.label}</span>
