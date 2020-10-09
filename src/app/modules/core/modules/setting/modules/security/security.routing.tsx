@@ -11,7 +11,7 @@ export const SecurityRoutes = (props: ISecurityRoutesProps) => {
   return (
     <Switch>
       {/* <Route exact={true} path="/core/setting/security" component={() => <Redirect to="/core/setting/security" />} /> */}
-      <Route exact={true} path="/core/setting/security" component={() => <SecurityMainComponent input={{ mode: 1 }} />} />
+      <Route exact={true} path="/core/setting/security" component={(routeProps: RouteComponentProps) => <SecurityMainComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
     </Switch>
   );
 };

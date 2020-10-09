@@ -1,13 +1,51 @@
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import { IBaseProps } from '@extras/interfaces';
 import { InputComponent } from '@modules/core/modules/setting/components/input/input.component';
-import { Button, Form, Col, Row, Typography } from 'antd';
-import React, { FC } from 'react';
-import './account-password.component.css';
+import { AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, Layout, Row, Select, Tooltip, Typography } from 'antd';
+import React, { FC, useEffect, useState } from 'react';
+import './data-field.component.css';
 
-export interface IAccountPasswordComponentProps extends IBaseProps {
+export interface IDataFieldComponentProps extends IBaseProps {
   input?: {};
   output?: {};
 }
+const { Option } = Select;
+const AutoCompleteOption = AutoComplete.Option;
+
+const residences = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
 
 const formItemLayout = {
   labelCol: {
@@ -32,7 +70,7 @@ const tailFormItemLayout = {
   },
 };
 
-export const AccountPasswordComponent: FC<IAccountPasswordComponentProps> = (props: IAccountPasswordComponentProps) => {
+export const DataFieldComponent: FC<IDataFieldComponentProps> = (props: IDataFieldComponentProps) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
@@ -65,17 +103,11 @@ export const AccountPasswordComponent: FC<IAccountPasswordComponentProps> = (pro
       }],
     },
   ];
-
   return (
     <>
-      <Col span={20} style={{ maxHeight: window.innerHeight - 110, padding: '12px 0' }}>
-        <Typography.Title style={{ textAlign: 'left' }} level={2}>
-          Change password
-            </Typography.Title>
-        <Typography.Text style={{ textAlign: 'left' }}>
-          Keep your data safe by creating a password that is complex and long enough. It should be easy for you to remember but hard for others to guess.
-            </Typography.Text>
-      </Col>
+      <Typography.Title style={{ textAlign: 'left' }} >
+        Data Field
+      </Typography.Title>
       <Col span={20} style={{ maxHeight: window.innerHeight - 110, padding: '12px 0' }}>
         <Form
           {...formItemLayout}
@@ -91,7 +123,7 @@ export const AccountPasswordComponent: FC<IAccountPasswordComponentProps> = (pro
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit">
               Change password
-        </Button>
+          </Button>
           </Form.Item>
         </Form>
       </Col>

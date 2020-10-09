@@ -10,11 +10,11 @@ export interface ILayoutSettingComponentProps extends IBaseProps {
   output?: {};
 }
 export const LayoutSettingComponent: FC<ILayoutSettingComponentProps> = (props: ILayoutSettingComponentProps) => {
-  console.log(props.children);
+  // console.log(props.children);
   return (
     <>
       <Layout style={{ overflow: 'hidden' }}>
-        <Content style={{overflow: 'hidden'}}>
+        <Content style={{ overflow: 'hidden' }}>
           <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
             <SideBarSettingComponent />
             <ContentComponent>

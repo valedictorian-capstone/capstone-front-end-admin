@@ -4487,12 +4487,12 @@ export const environment = {
                 },
                 {
                   'label': 'Manager users',
-                  'value': '',
+                  'value': 'user',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Data fields',
-                  'value': '',
+                  'value': 'data-field',
                   'icon': (<HomeOutlined />),
                 },
               ],

@@ -1,2 +1,3 @@
-export * from './account-password/account-password.component';
-export * from './account-profile/account-profile.component';
+export * from './user-management/user-management.component';
+export * from './data-field/data-field.component';
+export * from './company-setting/company-setting.component';

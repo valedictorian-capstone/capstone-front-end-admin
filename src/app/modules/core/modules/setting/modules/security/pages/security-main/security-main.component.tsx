@@ -5,7 +5,6 @@ import './security-main.component.css';
 
 export interface ISecurityMainComponentProps extends IBaseProps {
   input?: {
-    mode: number,
   };
   output?: {};
 }

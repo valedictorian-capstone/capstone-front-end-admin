@@ -1,7 +1,7 @@
 import { IBaseProps } from '@extras/interfaces';
 import React, { FC } from 'react';
-import { BrowserRouter, Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { CompanyMainComponent } from './pages';
+import { Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { CompanySettingComponent, DataFieldComponent, UserManagementComponent } from './components';
 
 export interface ICompanyRoutesProps extends IBaseProps {
   input?: {};
@@ -10,8 +10,10 @@ export interface ICompanyRoutesProps extends IBaseProps {
 export const CompanyRoutes: FC<ICompanyRoutesProps> = (props: ICompanyRoutesProps) => {
   return (
     <Switch>
-      {/* <Route exact={true} path="/core/setting/company" component={() => <Redirect to="/core/setting/company" />} /> */}
-      <Route exact={true} path="/core/setting/company" component={() => <CompanyMainComponent input={{ mode: 1 }} />} />
+      {/* <Route exact={true} path="/core/setting/profile" component={() => <Redirect to="/core/setting/profile" />} /> */}
+      <Route exact={true} path="/core/setting/company" component={(routeProps: RouteComponentProps) => <CompanySettingComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route exact={true} path="/core/setting/company/user" component={(routeProps: RouteComponentProps) => <UserManagementComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route exact={true} path="/core/setting/company/data-field" component={(routeProps: RouteComponentProps) => <DataFieldComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
     </Switch>
   );
 };

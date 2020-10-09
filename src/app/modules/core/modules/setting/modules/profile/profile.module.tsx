@@ -1,6 +1,6 @@
 import { IBaseProps } from '@extras/interfaces';
 import React from 'react';
-import { LayoutProfileComponent } from './pages';
+import { ProfileMainComponent } from './pages';
 import { ProfileRoutes } from './profile.routing';
 
 export interface IProfileModuleProps extends IBaseProps {
@@ -10,8 +10,8 @@ export interface IProfileModuleProps extends IBaseProps {
 
 export const ProfileModule = (props: IProfileModuleProps) => {
   return (
-    <LayoutProfileComponent>
-      <ProfileRoutes />
-    </LayoutProfileComponent>
+    <ProfileMainComponent>
+      <ProfileRoutes fatherProps={props} input={{}} output={{}} />
+    </ProfileMainComponent>
   );
 };

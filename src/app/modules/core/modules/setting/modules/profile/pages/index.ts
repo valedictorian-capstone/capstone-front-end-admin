@@ -1,1 +1,1 @@
-export * from './layout/layout.profile.component';
+export * from './profile-main/profile-main.component';
