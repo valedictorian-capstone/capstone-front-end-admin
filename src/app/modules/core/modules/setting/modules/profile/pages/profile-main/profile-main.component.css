@@ -1,4 +1,103 @@
-.site-layout-background {
-    background: #fff;
-  }
-  
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: white;
+}
+
+.menu :global(.anticon) {
+  margin-right: 8px;
+}
+
+.menu :global(.ant-dropdown-menu-item) {
+  min-width: 160px;
+}
+
+.right {
+  display: flex;
+  float: right;
+  height: 48px;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.right .action {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.right .action>span {
+  vertical-align: middle;
+}
+
+.right .action:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.right .action:global(.opened) {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.right .search {
+  padding: 0 12px;
+}
+
+.right .search:hover {
+  background: transparent;
+}
+
+.right .account .avatar {
+  margin: calc((100vh - 24px) / 2) 0;
+  margin-right: 8px;
+  color: '#fff';
+  vertical-align: top;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.dark .action {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .action>span {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .action:hover,
+.dark .action:global(.opened) {
+  background: '#fff';
+}
+
+:global(.ant-pro-global-header) .dark .action {
+  color: 'gray';
+}
+
+:global(.ant-pro-global-header) .dark .action>span {
+  color: 'gray';
+}
+
+:global(.ant-pro-global-header) .dark .action:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+:global(.ant-pro-global-header) .dark .action:hover>span {
+  color: rgba(255, 255, 255, 0.85);
+}

@@ -1,23 +1,35 @@
 import { IBaseProps } from '@extras/interfaces';
-import { Col, Row } from 'antd';
-import React, { FC } from 'react';
+import { HeaderSettingComponent, ContentSettingComponent } from '@modules/core/modules/setting/components';
+import { Col, Layout, Row, Typography } from 'antd';
+import React, { FC, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './security-main.component.css';
-
+const { Header, Content } = Layout;
 export interface ISecurityMainComponentProps extends IBaseProps {
-  input?: {
-  };
+  input?: {};
   output?: {};
 }
 
 export const SecurityMainComponent: FC<ISecurityMainComponentProps> = (props: ISecurityMainComponentProps) => {
-  const content = () => {
-    return (<></>);
+  const location = useLocation();
+  const header = () => {
+    const arr = (location.pathname.split('/')[4]).split('-');
+    let result = '';
+    arr.map((value: string) => {
+      result += value[0].toUpperCase() + value.slice(1) + ' ';
+    });
+    return result;
   };
   return (
-    <Row justify="center" align="middle" style={{ minHeight: '100vh' }} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-      <Col span={12}>
-        {content()}
-      </Col>
-    </Row>
+    <>
+      <Layout className="site-layout">
+        <HeaderSettingComponent>
+          {header()}
+        </HeaderSettingComponent>
+        <ContentSettingComponent fatherProps={props} input={{}} output={{}}>
+          {props.children}
+        </ContentSettingComponent>
+      </Layout>
+    </>
   );
 };

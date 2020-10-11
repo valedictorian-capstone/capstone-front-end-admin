@@ -1,14 +1,14 @@
 import { IBaseProps } from '@extras/interfaces';
 import { Layout } from 'antd';
 import React from 'react';
-import './footer.component.css';
+import './footer.setting.component.scss';
 
-export interface IFooterComponentProps extends IBaseProps {
+export interface IFooterSettingComponentProps extends IBaseProps {
   input?: {};
   output?: {};
 }
 
-export const FooterComponent = (props: IFooterComponentProps) => {
+export const FooterSettingComponent = (props: IFooterSettingComponentProps) => {
   return (
     <Layout.Footer
       className={props.className}

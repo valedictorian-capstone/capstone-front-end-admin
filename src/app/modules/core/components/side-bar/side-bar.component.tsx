@@ -21,7 +21,7 @@ export const SideBarComponent: React.FC<ISideBarComponentProps> = (props: ISideB
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((data) => data.language.language.region);
   const config = environment.i18n.data.core.components['side-bar'][region];
   const toggle = (collapsed: boolean) => {
-    // setState({ collapsed });
+    setState({ collapsed });
   };
   const gotoPage = (link: string) => {
     dispatch(useLoadingAction().showLoader());

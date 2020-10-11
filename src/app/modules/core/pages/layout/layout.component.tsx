@@ -6,6 +6,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './layout.component.css';
 import { ProgressBar } from 'primereact/progressbar';
+import { SideBarSettingComponent } from '@modules/core/modules/setting/components';
 export interface ILayoutComponentProps extends IBaseProps {
   input: {};
   output: {};
@@ -23,9 +24,12 @@ export const LayoutComponent: React.FC<ILayoutComponentProps> = (props: ILayoutC
           <LanguageComponent fatherProps={props} input={{}} output={{}} />
         </HeaderComponent>
         {status && <ProgressBar mode="indeterminate" style={{ height: '4px' }} />}
-        <ContentComponent fatherProps={props} input={{}} output={{}}>
-          {props.children}
-        </ContentComponent>
+        <Layout>
+          <ContentComponent fatherProps={props} input={{}} output={{}}>
+            {props.children}
+          </ContentComponent>
+          <SideBarSettingComponent fatherProps={props} input={{}} output={{}} />
+        </Layout>
       </Layout>
     </Layout>
   );

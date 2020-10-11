@@ -4435,7 +4435,7 @@ export const environment = {
               'profile': [
                 {
                   'label': 'Profile',
-                  'value': '',
+                  'value': 'profile',
                   'icon': (<HomeOutlined />),
                 },
                 {
@@ -4450,44 +4450,44 @@ export const environment = {
                 },
                 {
                   'label': 'Contact sync',
-                  'value': '',
+                  'value': 'contact-sync',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Calender sync',
-                  'value': '',
+                  'value': 'calender-sync',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Google Drive',
-                  'value': '',
+                  'value': 'google-drive',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Your devices',
-                  'value': '',
+                  'value': 'device',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Notifications',
-                  'value': '',
+                  'value': 'notification',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Referral program',
-                  'value': '',
+                  'value': 'referal-program',
                   'icon': (<HomeOutlined />),
                 },
               ],
               'company': [
                 {
                   'label': 'Company settings',
-                  'value': '',
+                  'value': 'company',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Manager users',
-                  'value': 'user',
+                  'value': 'manage-user',
                   'icon': (<HomeOutlined />),
                 },
                 {
@@ -4499,22 +4499,22 @@ export const environment = {
               'security': [
                 {
                   'label': 'Dashboard',
-                  'value': '',
+                  'value': 'dashboard',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Alerts',
-                  'value': '',
+                  'value': 'alert',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Rules',
-                  'value': '',
+                  'value': 'rule',
                   'icon': (<HomeOutlined />),
                 },
                 {
                   'label': 'Single sign-on',
-                  'value': '',
+                  'value': 'single-sign-on',
                   'icon': (<HomeOutlined />),
                 },
               ],

@@ -11,8 +11,8 @@ export const CompanyRoutes: FC<ICompanyRoutesProps> = (props: ICompanyRoutesProp
   return (
     <Switch>
       {/* <Route exact={true} path="/core/setting/profile" component={() => <Redirect to="/core/setting/profile" />} /> */}
-      <Route exact={true} path="/core/setting/company" component={(routeProps: RouteComponentProps) => <CompanySettingComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
-      <Route exact={true} path="/core/setting/company/user" component={(routeProps: RouteComponentProps) => <UserManagementComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route exact={true} path={['/core/setting/company', '/core/setting/company/company']} component={(routeProps: RouteComponentProps) => <CompanySettingComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route exact={true} path="/core/setting/company/manage-user" component={(routeProps: RouteComponentProps) => <UserManagementComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route exact={true} path="/core/setting/company/data-field" component={(routeProps: RouteComponentProps) => <DataFieldComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
     </Switch>
   );
