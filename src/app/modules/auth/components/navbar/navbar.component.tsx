@@ -56,7 +56,7 @@ export const NavBarComponent: React.FC<INavBarComponentProps> = (props: INavBarC
             <AppBar position="static" color="transparent" className={classes.root}>
                 <Toolbar>
                     <Link href="#">
-                        <img style={{ width: '20%', height: '20%' }} alt="..." src={require('./../../../../../assets/img/brand/argon-react-white.png')} />
+                        <img style={{ width: '20%', height: '20%' }} alt="..." src={require('./../../../../../assets/lg.png')} />
                     </Link>
                     <div className={classes.grow} />
                     {/* <Button startIcon={<PeopleIcon htmlColor="white" />} href="/login" color="default">Sign In</Button>

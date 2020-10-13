@@ -1,5 +1,5 @@
 import { DepartmentState, GroupState, PatternState, PermissionState, RoleState } from './basic-states';
-import { AuthenticationState, LanguageState, LoadingState } from './extra-states';
+import { AuthenticationState, LanguageState, LoadingState, SettingState } from './extra-states';
 import { CommentState, ConditionState, WorkFlowConnectionState, WorkFlowInstanceState, WorkFlowState, WorkFlowStepInstanceState, WorkFlowStepState } from './bpmn-states';
 import { CustomerExtraDataState, CustomerExtraInformationDataState, CustomerExtraInformationState, CustomerState } from './customer-states';
 import { AccountExtraDataState, AccountExtraInformationDataState, AccountExtraInformationState, AccountState } from './account-states';
@@ -39,6 +39,7 @@ export class RootState {
   formValue: FormValueState;
   formGroup: FormGroupState;
   authentication: AuthenticationState;
+  setting: SettingState;
   constructor(props: RootState) {
     this.department = props.department;
     this.group = props.group;
@@ -67,5 +68,6 @@ export class RootState {
     this.formValue = props.formValue;
     this.formGroup = props.formGroup;
     this.authentication = props.authentication;
+    this.setting = props.setting;
   }
 }

@@ -5525,6 +5525,99 @@ export const environment = {
 
             },
           },
+          'setting': {
+            'components': {
+              'profile': [
+                {
+                  'label': 'Profile',
+                  'value': 'profile',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Password',
+                  'value': 'password',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Email sync',
+                  'value': 'email',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Contact sync',
+                  'value': 'contact-sync',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Calender sync',
+                  'value': 'calender-sync',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Google Drive',
+                  'value': 'google-drive',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Your devices',
+                  'value': 'device',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Notifications',
+                  'value': 'notification',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Referral program',
+                  'value': 'referal-program',
+                  'icon': (<HomeOutlined />),
+                },
+              ],
+              'company': [
+                {
+                  'label': 'Company settings',
+                  'value': 'company',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Manager users',
+                  'value': 'manage-user',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Data fields',
+                  'value': 'data-field',
+                  'icon': (<HomeOutlined />),
+                },
+              ],
+              'security': [
+                {
+                  'label': 'Dashboard',
+                  'value': 'dashboard',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Alerts',
+                  'value': 'alert',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Rules',
+                  'value': 'rule',
+                  'icon': (<HomeOutlined />),
+                },
+                {
+                  'label': 'Single sign-on',
+                  'value': 'single-sign-on',
+                  'icon': (<HomeOutlined />),
+                },
+              ],
+            },
+            'pages': {
+
+            },
+          },
           'work-flow': {
             'components': {
               'work-flow-canvas': {

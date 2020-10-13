@@ -1,0 +1,1 @@
+export * from './profile-main/profile-main.component';
