@@ -1,17 +1,17 @@
 import { IBaseProps } from '@extras/interfaces';
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { WorkFlowMainComponent } from './pages';
+import { Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { WorkFlowMainComponent, WorkFlowEditableComponent } from './pages';
 
 export interface IWorkFlowRoutesProps extends IBaseProps {
-  input?: {};
-  output?: {};
+  input: {};
+  output: {};
 }
-
-export const WorkFlowRoutes = (props: IWorkFlowRoutesProps) => {
+export const WorkFlowRoutes: React.FC<IWorkFlowRoutesProps> = (props: IWorkFlowRoutesProps) => {
   return (
     <Switch>
-      <Route path="/core/work-flow" component={() => <WorkFlowMainComponent />} />
+      <Route exact={true} path="/core/work-flow" component={(routeProps: RouteComponentProps) => <WorkFlowMainComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route path="/core/work-flow/:id" component={(routeProps: RouteComponentProps) => <WorkFlowEditableComponent input={{}} output={{}} {...routeProps} fatherProps={props} />} />
     </Switch>
   );
 };

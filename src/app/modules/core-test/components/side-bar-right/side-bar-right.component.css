@@ -1,0 +1,105 @@
+.main-right {
+    height: 100%;
+    width: 100%;
+}
+
+.main-right:hover .main-box {
+    width: 200%;
+    box-shadow: -5px 0px 0px 0px #ccbebe;
+}
+
+.main-right:hover .menu .box {
+    width: 180%;
+}
+
+.main-right.stick .main-box {
+    width: 200%;
+}
+
+.main-right.stick .menu .box {
+    width: 180%;
+}
+
+.main-right.stick:hover .main-box {
+    box-shadow: none;
+}
+
+.main-right .main-box {
+    padding-top: 8px;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    margin-right: 100%;
+    background: white;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.main-right .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main-right .menu:hover {
+    background-color: rgba(60, 64, 67, 0.1);
+    cursor: pointer;
+}
+
+.main-right .menu:hover .box {
+    background-color: rgba(60, 64, 67, 0.1);
+    cursor: pointer;
+    border-radius: 16px 0 0 16px;
+}
+
+.main-right .menu.stick {
+    background-color: antiquewhite;
+}
+
+.main-right .menu.stick .box {
+    background-color: antiquewhite;
+    cursor: pointer;
+    border-radius: 0 16px 16px 0;
+}
+
+.main-right .menu.stick:hover {
+    background-color: moccasin;
+    cursor: pointer;
+}
+
+.main-right .menu.stick:hover .box {
+    background-color: moccasin;
+    cursor: pointer;
+    border-radius: 0 16px 16px 0;
+}
+
+.main-right .menu .box {
+    position: absolute;
+    height: 48px;
+    width: 0;
+    margin-right: 100%;
+    background: white;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+}
+
+.main-right .menu .box .box-text {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    width: 100%;
+    justify-content: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -6,4 +6,5 @@ export interface IBaseProps extends RouteProps {
   className?: string;
   id?: string;
   fatherProps?: IBaseProps;
+  ref?: React.Ref<any>;
 }

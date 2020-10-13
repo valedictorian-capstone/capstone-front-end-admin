@@ -1,0 +1,42 @@
+.form-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.form-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.form-support .form-support-left {
+    height: 100%;
+}
+
+.form-support .form-support-left div {
+    display: none;
+    align-items: center;
+    height: 100%;
+}
+
+.form-support .form-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.form-support .form-support-right {
+    height: 100%;
+}
+
+.form-support .form-support-right {}
+
+@media (max-width: 992px) {
+    .form-support .form-support-left div {
+        display: flex;
+    }
+}
+
+.ant-popover-content {
+    width: 90vw !important;
+    margin-left: 5vw;
+}

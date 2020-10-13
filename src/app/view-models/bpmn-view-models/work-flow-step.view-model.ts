@@ -14,6 +14,7 @@ export interface WorkFlowStepVM {
   readonly workFlowStepInstanceVMs: WorkFlowStepInstanceVM[];
   readonly permissions: PermissionVM[];
   readonly formGroups: FormGroupVM[];
+  readonly departmentId: string;
   readonly isDelete: boolean;
   readonly createdBy: string;
   readonly updatedBy: string;
@@ -27,6 +28,8 @@ export interface WorkFlowStepCM {
   type: string;
   subType: string;
   workFlowId: string;
+  departmentId: string;
+  formGroups: FormGroupVM[];
 }
 
 export interface WorkFlowStepUM {
@@ -36,4 +39,6 @@ export interface WorkFlowStepUM {
   type: string;
   subType: string;
   workFlowId: string;
+  departmentId: string;
+  formGroups: FormGroupVM[];
 }

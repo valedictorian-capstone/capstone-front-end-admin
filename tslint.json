@@ -7,6 +7,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "array-type": false,
         "jsx-no-lambda": false,
         "jsx-boolean-value": "never",
         "ordered-imports": false,
@@ -21,6 +22,7 @@
         "curly": true,
         "eofline": false,
         "forin": false,
+        "prefer-for-of": false,
         "import-spacing": true,
         "interface-name": false,
         "interface-over-type-literal": true,

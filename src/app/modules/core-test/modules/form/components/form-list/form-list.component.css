@@ -1,0 +1,176 @@
+.form-list {
+    height: calc(100% - 96px);
+    max-height: calc(100% - 96px);
+    border: 1px solid gray;
+    padding: calc((100% - 96px)/ 40);
+    overflow: auto;
+}
+
+.form-list .form-item {
+    height: 20%;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid gray;
+    position: relative;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+.form-list .form-item .form-item-edit {
+    position: absolute;
+}
+
+.form-list .form-item .form-item-edit {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-list .form-item .form-item-header {
+    height: 50%;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+
+.form-list .form-item .form-item-header .form-item-header-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.form-list .form-item .form-item-header .form-item-header-content .form-item-header-content-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.form-list .form-item .form-item-header .form-item-header-content .form-item-header-content-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.form-list .form-item .form-item-footer {
+    height: 50%;
+    width: 100%;
+    border-top: 1px solid gray;
+    position: relative;
+}
+
+.form-list .form-item .form-item-footer .form-item-footer-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.form-list .form-item .form-item-footer .form-item-footer-content .form-item-footer-content-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.form-list .form-item .form-item-footer .form-item-footer-content .form-item-footer-content-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-list .form-item .form-item-footer .form-item-footer-content .form-item-footer-content-middle .form-item-footer-content-middle-buttons {
+    visibility: hidden;
+}
+
+.form-list .form-item .form-item-footer .form-item-footer-content .form-item-footer-content-right .content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.form-list .form-item .form-item-content {
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: height .35s ease-in-out;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background: #e5e5e5;
+}
+
+.form-list .form-item.selected {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.form-list .form-item.selected .form-item-header {
+    height: 10%;
+}
+
+.form-list .form-item.selected .form-item-footer {
+    height: 10%;
+}
+
+.form-list .form-item.selected .form-item-footer .form-item-footer-content .form-item-footer-content-middle .form-item-footer-content-middle-buttons {
+    visibility: visible;
+}
+
+.form-list .form-item.selected .form-item-content {
+    height: 80%;
+    overflow: auto;
+    max-height: 80%;
+}
+
+.form-list .form-item.selected .form-item-content .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-list .form-item.selected .form-item-content .p-tabview .p-tabview-nav li .p-tabview-nav-link .text {
+    margin-right: 5px;
+    display: block;
+    float: left;
+}
+
+.form-list .form-item.selected .form-item-content .p-tabview {
+    height: 100%;
+    overflow: hidden;
+}
+
+.form-list .form-item.selected .form-item-content .p-tabview .p-tabview-panels {
+    height: 87%;
+    overflow: auto;
+    margin: auto;
+}
+
+@media (max-width: 480px) {
+    .form-list .form-item.selected .form-item-content .p-tabview .p-tabview-nav li .p-tabview-nav-link .text {
+        display: none;
+    }
+}
+
+.form-list .form-item.selected .form-item-edit {
+    visibility: hidden;
+}
+
+.form-detail .content {
+    width: 70%;
+    margin: auto;
+    height: 100%;
+    overflow: auto;
+}
+
+@media (max-width: 992px) {
+    .form-detail .content {
+        width: 90%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,17 @@
+.list-render-item {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    border-bottom: 1px solid gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-render-item:hover {
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.list-render-item.active {
+    background-color: moccasin;
+}

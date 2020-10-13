@@ -12,6 +12,12 @@ export interface FormControlVM {
   readonly subType: string;
   readonly position: number;
   readonly width: number;
+  readonly xs: number;
+  readonly sm: number;
+  readonly md: number;
+  readonly lg: number;
+  readonly xl: number;
+  readonly xxl: number;
   readonly height: string;
   readonly isCapitialize: boolean;
   readonly tooltip: string;
@@ -35,6 +41,12 @@ export interface FormControlCM {
   type: string;
   subType: string;
   width: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
   position: number;
   height: string;
   isCapitialize: boolean;
@@ -52,6 +64,12 @@ export interface FormControlUM {
   type: string;
   subType: string;
   width: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
   position: number;
   height: string;
   isCapitialize: boolean;

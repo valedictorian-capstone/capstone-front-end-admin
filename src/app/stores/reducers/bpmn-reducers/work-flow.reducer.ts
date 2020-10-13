@@ -29,6 +29,7 @@ export const useWorkFlowReducer: Reducer<WorkFlowState, WorkFlow> = (state: Work
     case WORK_FLOW_TYPE.UPDATE.SUCCESS: {
       const newArr = state.arr;
       newArr[newArr.findIndex(model => model.id === (action.payload.data as WorkFlowUM).id)] = action.payload.data as WorkFlowVM;
+      console.log(newArr);
       return {
         ...state,
         arr: [...newArr],

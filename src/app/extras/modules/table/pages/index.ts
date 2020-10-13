@@ -1,0 +1,1 @@
+export * from './table-main/table-main.component';

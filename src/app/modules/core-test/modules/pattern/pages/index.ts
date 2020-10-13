@@ -1,0 +1,1 @@
+export * from './pattern-main/pattern-main.component';

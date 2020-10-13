@@ -1,0 +1,23 @@
+.tabs :global .ant-tabs-nav-scroll {
+    text-align: center;
+}
+
+.tabs :global .ant-tabs-nav-list {
+    padding-left: 30px;
+}
+
+.tabs :global .ant-tabs-bar {
+    margin-bottom: 4px;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.ant-popover-title {
+    background: moccasin;
+}

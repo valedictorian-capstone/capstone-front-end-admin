@@ -1,0 +1,8 @@
+.list-footer-middle {
+    text-align: center;
+}
+
+.list-footer-button-active {
+    background: gray !important;
+    color: white !important;
+}

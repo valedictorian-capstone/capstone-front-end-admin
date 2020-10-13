@@ -1,0 +1,103 @@
+.main-left {
+    height: 100%;
+    width: 100%;
+}
+
+.main-left:hover .main-box {
+    width: 200%;
+    box-shadow: 5px 0px 0px 0px #ccbebe;
+}
+
+.main-left:hover .menu .box {
+    width: 180%;
+}
+
+.main-left.stick .main-box {
+    width: 200%;
+}
+
+.main-left.stick:hover .main-box {
+    box-shadow: none;
+}
+
+.main-left.stick .menu .box {
+    width: 180%;
+}
+
+.main-left .main-box {
+    padding-top: 8px;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    margin-left: 100%;
+    background: white;
+    z-index: 2;
+    top: 0;
+    transition: width 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.main-left .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main-left .menu:hover {
+    background-color: rgba(60, 64, 67, 0.1);
+    cursor: pointer;
+}
+
+.main-left .menu:hover .box {
+    background-color: rgba(60, 64, 67, 0.1);
+    cursor: pointer;
+    border-radius: 0 16px 16px 0;
+}
+
+.main-left .menu.stick {
+    background-color: antiquewhite;
+}
+
+.main-left .menu.stick .box {
+    background-color: antiquewhite;
+    cursor: pointer;
+    border-radius: 0 16px 16px 0;
+}
+
+.main-left .menu.stick:hover {
+    background-color: moccasin;
+    cursor: pointer;
+}
+
+.main-left .menu.stick:hover .box {
+    background-color: moccasin;
+    cursor: pointer;
+    border-radius: 0 16px 16px 0;
+}
+
+.main-left .menu .box {
+    position: absolute;
+    height: 48px;
+    width: 0;
+    margin-left: 100%;
+    background: white;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+}
+
+.main-left .menu .box .box-text {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    width: 100%;
+    justify-content: flex-start;
+    white-space: nowrap;
+}

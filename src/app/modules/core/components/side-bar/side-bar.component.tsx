@@ -7,22 +7,22 @@ import { Layout, Menu } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import './side-bar.component.scss';
+import './side-bar.component.css';
 
 export interface ISideBarComponentProps extends IBaseProps {
-  input: {};
-  output: {};
+  input: {
+    toggle: boolean;
+  };
+  output: {
+    onOutSideClick: () => void;
+  };
 }
 
 export const SideBarComponent: React.FC<ISideBarComponentProps> = (props: ISideBarComponentProps) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [state, setState] = React.useState<{ collapsed: boolean }>({ collapsed: true });
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((data) => data.language.language.region);
   const config = environment.i18n.data.core.components['side-bar'][region];
-  const toggle = (collapsed: boolean) => {
-    // setState({ collapsed });
-  };
   const gotoPage = (link: string) => {
     dispatch(useLoadingAction().showLoader());
     setTimeout(() => {
@@ -30,12 +30,22 @@ export const SideBarComponent: React.FC<ISideBarComponentProps> = (props: ISideB
       dispatch(useLoadingAction().hideLoader());
     }, 500);
   };
+  window.onclick = (e: any) => {
+    if (e.path[2].className !== 'left') {
+      if (e.x > 200) {
+        props.output.onOutSideClick();
+      } else {
+        if (e.x > 60 && e.y <= 25) {
+          props.output.onOutSideClick();
+        }
+      }
+    }
+
+  };
   return (
-    <Layout.Sider trigger={
-      React.createElement(state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)
-    } onCollapse={toggle} collapsible={true} collapsed={state.collapsed} >
+    <Layout.Sider className={props.input.toggle ? 'side-bar show' : 'side-bar'} collapsed={!props.input.toggle} defaultCollapsed={false}>
       <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)', margin: 10 }} />
-      <Menu theme="dark" mode="inline"  defaultSelectedKeys={[history.location.pathname.split('/')[2]]}>
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={[history.location.pathname.split('/')[2]]}>
         {(config.categories as any).map((category: any) => (
           <Menu.Item key={category.value} icon={category.icon} onClick={() => gotoPage('/core/' + category.value)}>
             <span>{category.label}</span>

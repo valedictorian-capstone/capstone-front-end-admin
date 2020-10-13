@@ -1,0 +1,17 @@
+.col-item {
+    display: table;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    float: left;
+}
+
+.col-item-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+table,
+th,
+td {
+    border: 1px solid gray;
+}
