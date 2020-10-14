@@ -13,7 +13,6 @@ export interface IFormItemComponentProps extends IBaseProps {
     item: FormControlUM | FormControlCM,
     index: number,
     disabled?: boolean,
-    isNew?: boolean,
   };
   output: {
   };
@@ -24,7 +23,7 @@ export const FormItemComponent: React.FC<IFormItemComponentProps> = (props: IFor
   const config = environment.i18n.data.core.modules.form.components['form-item'][region];
   const ref = useRef<any>(null);
   const [{ isDragging }, drag] = useDrag({
-    item: { type: props.input?.isNew ? 'new-control' : 'control', item: props.input?.item, index: props.input?.index },
+    item: { type: 'new-control', item: props.input?.item, index: props.input?.index },
     collect: (monitor: DragSourceMonitor) => ({
       isDragging: monitor.isDragging(),
     }),

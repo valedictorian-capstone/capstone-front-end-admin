@@ -6,9 +6,10 @@ export interface FormControlVM {
   readonly name: string;
   readonly placeHolder: string;
   readonly fontSize: string;
+  readonly label: string;
   readonly size: string;
-  readonly options: string;
-  readonly type: string;
+  readonly options: { value: string, label: string }[] | any;
+  readonly type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
   readonly subType: string;
   readonly position: number;
   readonly width: number;
@@ -36,9 +37,10 @@ export interface FormControlCM {
   name: string;
   placeHolder: string;
   fontSize: string;
+  label: string;
   size: string;
-  options: string;
-  type: string;
+  options: { value: string, label: string }[] | any;
+  type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
   subType: string;
   width: number;
   xs: number;
@@ -59,9 +61,10 @@ export interface FormControlUM {
   name: string;
   placeHolder: string;
   fontSize: string;
+  label: string;
   size: string;
-  options: string;
-  type: string;
+  options: { value: string, label: string }[] | any;
+  type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
   subType: string;
   width: number;
   xs: number;

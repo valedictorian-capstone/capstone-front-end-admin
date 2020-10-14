@@ -8,4 +8,7 @@
     height: 100%;
 }
 
-.form-container .form-content {}
+.form-container .form-content {
+    max-height: 100%;
+    overflow: hidden;
+}

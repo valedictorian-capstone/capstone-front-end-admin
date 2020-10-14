@@ -6,6 +6,13 @@
     overflow: auto;
 }
 
+.form-helper-container.horizontal {
+    width: 90vw;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
 .form-helper-container .form-helper-content {
     height: 100%;
     scrollbar-width: 0px;

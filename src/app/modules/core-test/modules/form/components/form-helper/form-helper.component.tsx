@@ -21,7 +21,7 @@ export const FormHelperComponent: React.FC<IFormHelperComponentProps> = (props: 
   return (
     <div className={'form-helper-container' + (props.input.horizontal ? ' horizontal' : '')}>
       <div className={'form-helper-content' + (props.input.horizontal ? ' horizontal' : '')}>
-        {config.items.map((item, index) => <FormItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as FormControlUM | FormControlCM, index, disabled: true, isNew: true }} />)}
+        {config.items.map((item, index) => <FormItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as FormControlUM | FormControlCM, index, disabled: true }} />)}
       </div>
     </div>
   );

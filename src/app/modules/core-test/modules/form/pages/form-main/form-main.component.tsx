@@ -23,6 +23,7 @@ export const FormMainComponent: React.FC<IFormMainComponentProps> = (props: IFor
   const [rowFilters, setRowFilter] = React.useState<FormGroupVM[]>(rows);
   const [pagination, setPagination] = React.useState<{ rows: FormGroupVM[], itemPerPage: number }>({ rows, itemPerPage: rowFilters.length });
   const [selected, setSelected] = React.useState<FormGroupVM | undefined>(undefined);
+  const [action, setAction] = React.useState<'create' | 'edit' | ''>('');
   React.useEffect(() => {
     dispatch(useFormGroupAction().getAll());
   }, [updated]);
@@ -36,9 +37,9 @@ export const FormMainComponent: React.FC<IFormMainComponentProps> = (props: IFor
           <FormHelperComponent input={{}} output={{}} />
         </Col>
         <Col xs={24} sm={24} md={24} lg={20} xl={20} xxl={20} className="form-content">
-          <FormSupportComponent input={{}} output={{}} />
-          <FormListComponent input={{ rows: pagination.rows }} output={{ onSelect: setSelected }} />
-          <FormFooterComponent input={{ rows: rowFilters, selected }} output={{ onChange: setPagination }} />
+          <FormSupportComponent input={{ action, rows }} output={{ onCreate: () => setAction('create'), onSearch: setRowFilter }} />
+          <FormListComponent input={{ rows: pagination.rows, action }} output={{ onSelect: setSelected, onActionChange: setAction }} />
+          <FormFooterComponent input={{ rows: rowFilters, selected, action }} output={{ onChange: setPagination }} />
         </Col>
       </Row>
     </DndProvider>

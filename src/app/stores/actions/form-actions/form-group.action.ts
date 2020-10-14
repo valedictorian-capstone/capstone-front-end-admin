@@ -8,66 +8,95 @@ export const useFormGroupAction = (): ActionCreatorsMapObject<FormGroup> => {
   const reset = (): FormGroup => {
     return { type: FORM_GROUP_TYPE.RESET.FETCH, payload: { data: FORM_GROUP_TYPE.RESET.FETCH } };
   };
-  const getAll = (): FormGroup => {
-    return { type: FORM_GROUP_TYPE.GETALL.FETCH, payload: { data: FORM_GROUP_TYPE.GETALL.FETCH } };
+  const getAll = (onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.GETALL.FETCH, payload: { data: FORM_GROUP_TYPE.GETALL.FETCH }, onSuccess, onError };
   };
-  const getAllSuccess = (data: FormGroupVM[]): FormGroup => {
+  const getAllSuccess = (data: FormGroupVM[], onSuccess?: (data: FormGroupVM[]) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.GETALL.SUCCESS, payload: { data } };
   };
-  const getAllError = (error: any): FormGroup => {
-    console.log(error.response);
+  const getAllError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
     return { type: FORM_GROUP_TYPE.GETALL.ERROR, payload: { data: FORM_GROUP_TYPE.GETALL.ERROR } };
   };
-  const create = (data: FormGroupCM): FormGroup => {
-    return { type: FORM_GROUP_TYPE.CREATE.FETCH, payload: { data } };
+  const create = (data: FormGroupCM, onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.CREATE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const createSuccess = (data: FormGroupVM): FormGroup => {
-    message.success('Create success', 1);
+  const createSuccess = (data: FormGroupVM, onSuccess?: (data: FormGroupVM) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.CREATE.SUCCESS, payload: { data } };
   };
-  const createError = (error: any): FormGroup => {
-    console.log(error);
-    message.error('Have error', 1);
+  const createError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
     return { type: FORM_GROUP_TYPE.CREATE.ERROR, payload: { data: FORM_GROUP_TYPE.CREATE.ERROR } };
   };
-  const update = (data: FormGroupUM): FormGroup => {
-    return { type: FORM_GROUP_TYPE.UPDATE.FETCH, payload: { data } };
+  const update = (data: FormGroupUM, onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.UPDATE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const updateSuccess = (data: FormGroupVM): FormGroup => {
-    message.success('Update success', 1);
+  const updateSuccess = (data: FormGroupVM, onSuccess?: (data: FormGroupVM) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.UPDATE.SUCCESS, payload: { data } };
   };
-  const updateError = (error: any): FormGroup => {
-    console.log(error);
-    message.error('Have error', 1);
-    return { type: FORM_GROUP_TYPE.UPDATE.ERROR, payload: { data: FORM_GROUP_TYPE.UPDATE.ERROR} };
+  const updateError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
+    return { type: FORM_GROUP_TYPE.UPDATE.ERROR, payload: { data: FORM_GROUP_TYPE.UPDATE.ERROR } };
   };
-  const remove = (data: string): FormGroup => {
-    return { type: FORM_GROUP_TYPE.REMOVE.FETCH, payload: { data } };
+  const remove = (data: string, onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.REMOVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const removeSuccess = (data: string): FormGroup => {
+  const removeSuccess = (data: string, onSuccess?: (data: string) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.REMOVE.SUCCESS, payload: { data } };
   };
-  const removeError = (error: any): FormGroup => {
-    return { type: FORM_GROUP_TYPE.REMOVE.ERROR, payload: {data: FORM_GROUP_TYPE.REMOVE.ERROR} };
+  const removeError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
+    return { type: FORM_GROUP_TYPE.REMOVE.ERROR, payload: { data: FORM_GROUP_TYPE.REMOVE.ERROR } };
   };
-  const active = (data: string[]): FormGroup => {
-    return { type: FORM_GROUP_TYPE.ACTIVE.FETCH, payload: { data } };
+  const active = (data: string[], onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.ACTIVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const activeSuccess = (data: string[]): FormGroup => {
+  const activeSuccess = (data: string[], onSuccess?: (data: string[]) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.ACTIVE.SUCCESS, payload: { data } };
   };
-  const activeError = (error: any): FormGroup => {
-    return { type: FORM_GROUP_TYPE.ACTIVE.ERROR, payload: {data: FORM_GROUP_TYPE.ACTIVE.ERROR} };
+  const activeError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
+    return { type: FORM_GROUP_TYPE.ACTIVE.ERROR, payload: { data: FORM_GROUP_TYPE.ACTIVE.ERROR } };
   };
-  const deactive = (data: string[]): FormGroup => {
-    return { type: FORM_GROUP_TYPE.DEACTIVE.FETCH, payload: { data } };
+  const deactive = (data: string[], onSuccess?: (data: any) => void, onError?: (err: any) => void): FormGroup => {
+    return { type: FORM_GROUP_TYPE.DEACTIVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const deactiveSuccess = (data: string[]): FormGroup => {
+  const deactiveSuccess = (data: string[], onSuccess?: (data: string[]) => void): FormGroup => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: FORM_GROUP_TYPE.DEACTIVE.SUCCESS, payload: { data } };
   };
-  const deactiveError = (error: any): FormGroup => {
-    return { type: FORM_GROUP_TYPE.DEACTIVE.ERROR, payload: {data: FORM_GROUP_TYPE.DEACTIVE.ERROR} };
+  const deactiveError = (onError?: () => void): FormGroup => {
+    if (onError) {
+      onError();
+    }
+    return { type: FORM_GROUP_TYPE.DEACTIVE.ERROR, payload: { data: FORM_GROUP_TYPE.DEACTIVE.ERROR } };
   };
   const actions: ActionCreatorsMapObject<FormGroup> = {
     reset,

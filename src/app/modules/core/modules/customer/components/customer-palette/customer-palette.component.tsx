@@ -18,7 +18,7 @@ export const CustomerPaletteComponent: React.FC<ICustomerPaletteComponentProps> 
   const config = environment.i18n.data.core.modules.customer.components['customer-palette'][region];
   return (
     <div style={{width: '80%', margin: 'auto'}}>
-      {config.items.map((item, index) => <CustomerItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid(), position: 0, isDelete: false } as CustomerExtraInformationCM, index, disabled: true, isNew: true }} />)}
+      {/* {config.items.map((item, index) => <CustomerItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid(), position: 0, isDelete: false } as CustomerExtraInformationCM, index, disabled: true, isNew: true }} />)} */}
     </div>
   );
 };

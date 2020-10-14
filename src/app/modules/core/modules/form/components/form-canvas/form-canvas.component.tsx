@@ -42,7 +42,7 @@ export const FormCanvasComponent: React.FC<IFormCanvasComponentProps> = (props: 
     )} style={{ background: 'transparent', border: '1px solid gray', width: 500 }}>
       <>
         <div style={{ margin: '16px 0' }} >Name: </div>
-        <Input placeholder={config.form.name.placeholder} value={control.name} onChange={(e) => setControl({ ...control, name: e.target.value })} />
+        {/* <Input placeholder={config.form.name.placeholder} value={control.name} onChange={(e) => setControl({ ...control, name: e.target.value })} /> */}
         <div style={{ margin: '16px 0' }} >Placeholder: </div>
         {       control.type !== 'date-range' ? <Input placeholder={config.form.placeHolder.placeholder} value={control.placeHolder} onChange={(e) => setControl({ ...control, placeHolder: e.target.value })} /> : <Input.Group compact={true}>
           <Input style={{ width: '50%' }} placeholder={config.form.placeHolder['placeholder-array'][0]} value={control.placeHolder[0]} onChange={(e) => { (control.placeHolder as any)[0] = e.target.value; setControl({ ...control }); }} />

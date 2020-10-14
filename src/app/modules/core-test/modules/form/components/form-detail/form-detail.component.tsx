@@ -1,20 +1,21 @@
-import React from 'react';
-import { IBaseProps } from '@extras/interfaces';
-import './form-detail.component.css';
-import { FloatLabelComponent } from '@extras/components';
-import { CheckCircleOutlined, CheckOutlined, EditOutlined, EyeOutlined, InfoCircleOutlined, MinusCircleOutlined, MinusOutlined, RestOutlined, SettingOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Popover, Row, Tag } from 'antd';
-import { TabView, TabPanel } from 'primereact/tabview';
-import { FormGroupCM, FormGroupVM } from '@view-models';
+import { CheckCircleOutlined, CheckOutlined, EyeOutlined, InfoCircleOutlined, MinusCircleOutlined, MinusOutlined, RestOutlined, SettingOutlined } from '@ant-design/icons';
 import { environment } from '@environments/environment';
+import { IBaseProps } from '@extras/interfaces';
+import { useFormGroupAction } from '@stores/actions';
 import { RootState } from '@stores/states';
-import { useSelector } from 'react-redux';
+import { FormControlVM, FormGroupUM, FormGroupVM } from '@view-models';
+import { Button, Col, Form, Input, message, Popover, Result, Row, Tag } from 'antd';
 import { FormInstance } from 'antd/lib/form';
+import { TabPanel, TabView } from 'primereact/tabview';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormEditableComponent, FormPreviewComponent } from '..';
-
+import './form-detail.component.css';
+import swal from 'sweetalert2';
 export interface IFormDetailComponentProps extends IBaseProps {
   input: {
     row: FormGroupVM | undefined,
+    action: 'create' | 'edit' | '',
   };
   output: {
     onDone: () => void,
@@ -25,18 +26,25 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
   const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
   const config = environment.i18n.data.core.modules.form.components['form-create'][region];
   const [submit, setSubmit] = React.useState<'completed' | 'processing' | 'cancel' | 'none'>('none');
-  const [form] = Form.useForm<FormGroupCM>();
+  const [index, setIndex] = React.useState<number>(0);
+  const [form] = Form.useForm<FormGroupUM>();
+  const [editing, setEditing] = React.useState<boolean>(false);
+  const [formControlRemove, setFormControlRemove] = React.useState<string[]>([]);
+  const [formControls, setFormControls] = React.useState<FormControlVM[]>(props.input.row ? props.input.row.formControls : []);
+  const dispatch = useDispatch();
   React.useEffect(() => {
     form.setFieldsValue({
       code: props.input.row?.code || '',
       name: props.input.row?.name || '',
       description: props.input.row?.description || '',
-      formControls: [],
     });
+    setFormControls(props.input.row ? props.input.row.formControls : []);
+    setFormControlRemove([]);
+    setIndex(0);
   }, [props.input.row]);
   const formRef = React.createRef<FormInstance>();
   return (
-    <div id={props.input.row?.id} key={props.input.row?.id} className="form-item selected" style={{ display: props.input.row ? 'block' : 'none' }}>
+    <div id={props.input.row?.id} key={props.input.row?.id} className="form-item selected" style={{ display: props.input.row && props.input.action === 'edit' ? 'block' : 'none' }}>
       <div className="form-item-header">
         <Row className="form-item-header-content">
           <Col span={12} className="form-item-header-content-left">
@@ -45,7 +53,7 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
               <span style={{ float: 'right' }}>
                 <Popover placement="bottomRight" trigger="hover" content={
                   <>
-                    <table style={{ border: '1px solid gray' }}>
+                    <table style={{ border: '1px solid gray', background: 'white' }}>
                       <tbody>
                         <tr style={{ borderSpacing: '5em' }}>
                           <th colSpan={2} style={{ border: '1px solid gray', padding: '1rem', textAlign: 'center' }}>Form Information</th>
@@ -72,15 +80,15 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
             </Tag>
           </Col>
           <Col span={12} className="form-item-header-content-right">
-            <Button size="small" shape="circle" className="setting" style={{ marginRight: 5 }} type="primary" icon={<EyeOutlined />} />
-            <Button size="small" shape="circle" className="setting" danger={!props.input.row?.isDelete} style={{ marginRight: 5 }} icon={props.input.row?.isDelete ? <CheckCircleOutlined /> : <MinusCircleOutlined />} />
-            <Button size="small" shape="circle" className="setting" danger={true} type="primary" icon={<RestOutlined />} />
+            <Button disabled={editing} size="small" shape="circle" className="setting" style={{ marginRight: 5 }} type="primary" icon={<EyeOutlined />} />
+            <Button disabled={editing} size="small" shape="circle" className="setting" danger={!props.input.row?.isDelete} style={{ marginRight: 5 }} icon={props.input.row?.isDelete ? <CheckCircleOutlined /> : <MinusCircleOutlined />} />
+            <Button disabled={editing} size="small" shape="circle" className="setting" danger={true} type="primary" icon={<RestOutlined />} />
           </Col>
         </Row>
       </div>
       <div className="form-item-content">
-        <TabView>
-          <TabPanel header={
+        <TabView activeIndex={index} onTabChange={(e) => setIndex(e.index)}>
+          <TabPanel disabled={editing} header={
             <>
               <span className="text">
                 Information
@@ -89,28 +97,8 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
                 <InfoCircleOutlined />
               </span>
             </>
-          } headerStyle={{ width: '33.3333333%' }}>
-            <h3 style={{ textAlign: 'center' }}>Form Information</h3>
-            <div className="form-detail">
-              <div className="content">
-                <Form id={props.input.row?.id} form={form} name="control-ref">
-                  <Form.Item name="code" rules={[{ required: true, message: config.fields.code['error-message'] }]}>
-                    <label>{config.fields.code.label}</label>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item name="name" rules={[{ required: true, message: config.fields.name['error-message'] }]}>
-                    <label>{config.fields.name.label}</label>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item name="description">
-                    <label>{config.fields.description.label}</label>
-                    <Input.TextArea rows={5} />
-                  </Form.Item>
-                </Form>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel header={
+          } headerStyle={{ width: '33.3333333%' }} />
+          <TabPanel contentClassName="editable" header={
             <>
               <span className="text">
                 Setting
@@ -119,10 +107,8 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
                 <SettingOutlined />
               </span>
             </>
-          } headerStyle={{ width: '33.3333333%' }}>
-            <FormEditableComponent input={{ row: props.input.row }} output={{}} />
-          </TabPanel>
-          <TabPanel header={
+          } headerStyle={{ width: '33.3333333%' }} />
+          <TabPanel disabled={editing} header={
             <>
               <span className="text">
                 Preview
@@ -131,10 +117,46 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
                 <EyeOutlined />
               </span>
             </>
-          } headerStyle={{ width: '33.3333333%' }}>
-            <FormPreviewComponent input={{ row: props.input.row }} output={{}} />
-          </TabPanel>
+          } headerStyle={{ width: '33.3333333%' }} />
         </TabView>
+        <div className="tab-view">
+          <div className="form-detail" style={{ display: index === 0 ? 'block' : 'none' }}>
+            <div className="content">
+              <Form id={props.input.row?.id} form={form} name="control-ref">
+                <div className="form-control">
+                  <label>{config.fields.code.label}</label>
+                  <Form.Item name="code" rules={[{ required: true, message: config.fields.code['error-message'] }]}>
+                    <Input />
+                  </Form.Item>
+                </div>
+                <div className="form-control">
+                  <label>{config.fields.name.label}</label>
+                  <Form.Item name="name" rules={[{ required: true, message: config.fields.name['error-message'] }]}>
+                    <Input />
+                  </Form.Item>
+                </div>
+                <div className="form-control">
+                  <label>{config.fields.description.label}</label>
+                  <Form.Item name="description">
+                    <Input.TextArea rows={5} />
+                  </Form.Item>
+                </div>
+              </Form>
+            </div>
+          </div>
+          <div className="form-editable" style={{ display: index === 1 ? 'block' : 'none' }}>
+            <FormEditableComponent input={{ controls: props.input.row ? props.input.row.formControls : [] }} output={{
+              onEdit: setEditing,
+              onDone: (data, remove) => {
+                setFormControls(data);
+                setFormControlRemove(remove);
+              },
+            }} />
+          </div>
+          <div className="form-preview" style={{ display: index === 2 ? 'block' : 'none' }}>
+            <FormPreviewComponent input={{ controls: formControls }} output={{}} />
+          </div>
+        </div>
       </div>
       <div className="form-item-footer" >
         <Row className="form-item-footer-content">
@@ -144,13 +166,24 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
               <Button size="middle" shape="circle" icon={<CheckOutlined />} style={{ marginRight: 10 }} onClick={() => {
                 setSubmit('processing');
                 form.isFieldsTouched(true);
-                console.log(form.getFieldsValue());
                 form.validateFields().then(() => {
-                  props.output.onDone();
-                  setSubmit('completed');
+                  setTimeout(() => {
+                    dispatch(useFormGroupAction().update({ id: props.input.row?.id, ...form.getFieldsValue(), formControls: formControls.map((formControl, i) => ({...formControl, position: i})), formControlRemove },
+                      () => {
+                        swal.fire('Notification', 'Updated successfully', 'success');
+                        props.output.onDone();
+                        setSubmit('completed');
+                      },
+                      (err: any) => {
+                        swal.fire('Notification', 'Updated failed', 'error');
+                        props.output.onDone();
+                        setSubmit('completed');
+                      },
+                    ));
+                  }, 1000);
                 });
-              }} disabled={submit === 'processing'} loading={submit === 'processing'} className="setting" />
-              <Button size="middle" shape="circle" icon={<MinusOutlined />} danger={true} className="setting" disabled={submit === 'processing'} onClick={props.output.onDone} />
+              }} disabled={submit === 'processing' || editing} loading={submit === 'processing'} className="setting" />
+              <Button size="middle" shape="circle" icon={<MinusOutlined />} danger={true} className="setting" disabled={submit === 'processing' || editing} onClick={props.output.onDone} />
             </div>
           </Col>
           <Col xs={8} sm={8} md={0} className="form-item-footer-content-right">

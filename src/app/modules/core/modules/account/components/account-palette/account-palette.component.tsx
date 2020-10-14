@@ -18,7 +18,7 @@ export const AccountPaletteComponent: React.FC<IAccountPaletteComponentProps> = 
   const config = environment.i18n.data.core.modules.account.components['account-palette'][region];
   return (
     <div style={{width: '80%', margin: 'auto'}}>
-      {config.items.map((item, index) => <AccountItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid(), position: 0, isDelete: false } as AccountExtraInformationCM, index, disabled: true, isNew: true }} />)}
+      {/* {config.items.map((item, index) => <AccountItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid(), position: 0, isDelete: false } as AccountExtraInformationCM, index, disabled: true, isNew: true }} />)} */}
     </div>
   );
 };

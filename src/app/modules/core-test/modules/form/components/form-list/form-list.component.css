@@ -124,7 +124,6 @@
 
 .form-list .form-item.selected .form-item-content {
     height: 80%;
-    overflow: auto;
     max-height: 80%;
 }
 
@@ -140,15 +139,10 @@
     float: left;
 }
 
-.form-list .form-item.selected .form-item-content .p-tabview {
-    height: 100%;
-    overflow: hidden;
-}
-
 .form-list .form-item.selected .form-item-content .p-tabview .p-tabview-panels {
-    height: 87%;
-    overflow: auto;
-    margin: auto;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
 }
 
 @media (max-width: 480px) {
@@ -164,8 +158,8 @@
 .form-detail .content {
     width: 70%;
     margin: auto;
-    height: 100%;
-    overflow: auto;
+    height: fit-content;
+    overflow: hidden;
 }
 
 @media (max-width: 992px) {

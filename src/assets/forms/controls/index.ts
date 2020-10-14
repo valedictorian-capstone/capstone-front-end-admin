@@ -6,6 +6,9 @@ import inputNumber from './input-number.png';
 import inputPassword from './input-password.png';
 import checkboxGroup from './check-box-group.png';
 import radio from './radio.png';
+import slider from './slider.png';
+import rate from './rate.png';
+import switchPNG from './switch.png';
 import select from './select.png';
 import datePicker from './date-picker.png';
 import dateRange from './date-range.png';
@@ -19,6 +22,9 @@ export const controls = {
   'select': select,
   'multi-select': multiSelect,
   'radio': radio,
+  'switch': switchPNG,
+  'slider': slider,
+  'rate': rate,
   'input-number': inputNumber,
   'file-upload': fileUpload,
   'input-password': inputPassword,
