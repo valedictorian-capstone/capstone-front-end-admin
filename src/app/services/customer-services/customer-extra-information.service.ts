@@ -17,7 +17,7 @@ export class CustomerExtraInformationService {
     return useHttp().post<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].main}`, data);
   }
 
-  public static readonly update = (data: CustomerExtraInformationUM): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
+  public static readonly update = (data: CustomerExtraInformationUM[]): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
     return useHttp().put<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].main}`, data);
   }
 
@@ -25,11 +25,11 @@ export class CustomerExtraInformationService {
     return useHttp().delete<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
-    return useHttp().put<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
+    return useHttp().put<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
-    return useHttp().put<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<CustomerExtraInformationVM>> => {
+    return useHttp().put<CustomerExtraInformationVM>(`${environment.apiEndpont}${environment.api['customer-api']['customer-extra-information'].deactive}`, ids);
   }
 }

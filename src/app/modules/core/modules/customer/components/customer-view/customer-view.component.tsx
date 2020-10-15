@@ -52,29 +52,29 @@ export const CustomerViewComponent: React.FC<ICustomerViewComponentProps> = (pro
   const moveControl = useCallback(
     (dragIndex: number, hoverIndex: number) => {
       const dragCard = controls[dragIndex];
-      setControls(
-        update(controls, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        }).map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position),
-      );
+      // setControls(
+      //   update(controls, {
+      //     $splice: [
+      //       [dragIndex, 1],
+      //       [hoverIndex, 0, dragCard],
+      //     ],
+      //   }).map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position),
+      // );
     },
     [controls],
   );
-  const render = controls.map((item: CustomerExtraInformationCM | CustomerExtraInformationUM, index) => (
-    <CustomerControlComponent output={{
-      moveControl, onChangeStatus: (status: boolean) => {
-        setControls(controls.filter(control => control.id !== item.id).map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
-        controls[controls.findIndex((e) => e.id === item.id)].isDelete = status;
-        message.success(config.message, 1);
-      }, edit: (control) => {
-        controls[index] = control;
-        setControls([...controls].map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
-      },
-    }} key={item.id} input={{ item, index }} />
-  ));
+  // const render = controls.map((item: CustomerExtraInformationCM | CustomerExtraInformationUM, index) => (
+  //   <CustomerControlComponent output={{
+  //     moveControl, onChangeStatus: (status: boolean) => {
+  //       setControls(controls.filter(control => control.id !== item.id).map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
+  //       controls[controls.findIndex((e) => e.id === item.id)].isDelete = status;
+  //       message.success(config.message, 1);
+  //     }, edit: (control) => {
+  //       controls[index] = control;
+  //       setControls([...controls].map((e, i) => ({ ...e, position: i + 1 })).sort((a, b) => a.position - b.position));
+  //     },
+  //   }} key={item.id} input={{ item, index }} />
+  // ));
   React.useEffect(() => {
     dispatch(useCustomerExtraInformationAction().getAll());
   }, []);
@@ -105,7 +105,7 @@ export const CustomerViewComponent: React.FC<ICustomerViewComponentProps> = (pro
               <Button shape="circle" size="small" danger={true} className="setting"><MinusCircleOutlined /></Button>
             </Tooltip>
           </Col>
-          {render}
+          {/* {render} */}
           <Col span={24} style={{ marginTop: 200 }} />
         </Row>
       </Col>

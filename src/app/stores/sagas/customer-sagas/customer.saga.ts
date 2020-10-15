@@ -15,13 +15,13 @@ export const useCustomerSaga = () => {
     yield takeLatest(CUSTOMER_TYPE.ACTIVE.FETCH, useActive);
     yield takeLatest(CUSTOMER_TYPE.DEACTIVE.FETCH, useDeactive);
   }
-  function* useGetAll() {
+  function* useGetAll(action: Customer) {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.findAll);
-      yield put(useCustomerAction().getAllSuccess(data));
+      yield put(useCustomerAction().getAllSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().getAllError(error));
+      yield put(useCustomerAction().getAllError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -29,9 +29,9 @@ export const useCustomerSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.insert, action.payload.data as CustomerCM);
-      yield put(useCustomerAction().createSuccess(data));
+      yield put(useCustomerAction().createSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().createError(error));
+      yield put(useCustomerAction().createError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -39,9 +39,9 @@ export const useCustomerSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.update, action.payload.data as CustomerUM);
-      yield put(useCustomerAction().updateSuccess(data));
+      yield put(useCustomerAction().updateSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().updateError(error));
+      yield put(useCustomerAction().updateError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -49,9 +49,9 @@ export const useCustomerSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.remove, action.payload.data as string);
-      yield put(useCustomerAction().removeSuccess(data));
+      yield put(useCustomerAction().removeSuccess(action.payload.data as string, action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().removeError(error));
+      yield put(useCustomerAction().removeError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -59,9 +59,9 @@ export const useCustomerSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.active, action.payload.data as string[]);
-      yield put(useCustomerAction().activeSuccess(action.payload.data as string[]));
+      yield put(useCustomerAction().activeSuccess(action.payload.data as string[], action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().activeError(error));
+      yield put(useCustomerAction().activeError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -69,9 +69,9 @@ export const useCustomerSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(CustomerService.deactive, action.payload.data as string[]);
-      yield put(useCustomerAction().deactiveSuccess(action.payload.data as string[]));
+      yield put(useCustomerAction().deactiveSuccess(action.payload.data as string[], action.onSuccess));
     } catch (error) {
-      yield put(useCustomerAction().deactiveError(error));
+      yield put(useCustomerAction().deactiveError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }

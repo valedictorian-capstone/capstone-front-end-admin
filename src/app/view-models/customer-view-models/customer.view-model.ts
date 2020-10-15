@@ -1,7 +1,6 @@
-import { CustomerExtraInformationVM } from './customer-extra-information.view-model';
-import { CustomerExtraDataVM } from './customer-extra-data.view-model';
-import { WorkFlowStepInstanceVM } from '../bpmn-view-models';
 import { GroupVM } from '../basic-view-models';
+import { WorkFlowStepInstanceVM } from '../bpmn-view-models';
+import { CustomerExtraInformationDataVM } from './customer-extra-information-data.view-model';
 
 export interface CustomerVM {
   readonly id: string;
@@ -11,10 +10,9 @@ export interface CustomerVM {
   readonly fullname: string;
   readonly avatar: string;
   readonly address: string;
-  readonly gender: string;
-  readonly customerExtraInformations: CustomerExtraInformationVM[];
+  readonly gender: boolean;
+  readonly customerExtraInformationDatas: CustomerExtraInformationDataVM[];
   readonly groups: GroupVM[];
-  readonly customerExtraDatas: CustomerExtraDataVM[];
   readonly workFlowStepInstances: WorkFlowStepInstanceVM[];
   readonly isDelete: boolean;
   readonly createdBy: string;
@@ -30,8 +28,7 @@ export interface CustomerCM {
   fullname: string;
   avatar: string;
   address: string;
-  gender: string;
-  passwordHash: string;
+  gender: boolean;
 }
 
 export interface CustomerUM {
@@ -42,6 +39,5 @@ export interface CustomerUM {
   fullname: string;
   avatar: string;
   address: string;
-  gender: string;
-  passwordHash: string;
+  gender: boolean;
 }

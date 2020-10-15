@@ -1,0 +1,14 @@
+.customer-editable .ant-row .ant-col .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    background: white;
+}
+
+.customer-editable .ant-row .ant-col .form-control .ant-form-item {
+    margin: 0;
+}
+
+.customer-editable .ant-row .ant-col .form-control label span {
+    float: right;
+}

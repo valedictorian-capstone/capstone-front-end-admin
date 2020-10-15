@@ -7,61 +7,95 @@ export const useCustomerAction = (): ActionCreatorsMapObject<Customer> => {
   const reset = (): Customer => {
     return { type: CUSTOMER_TYPE.RESET.FETCH, payload: { data: CUSTOMER_TYPE.RESET.FETCH } };
   };
-  const getAll = (): Customer => {
-    return { type: CUSTOMER_TYPE.GETALL.FETCH, payload: { data: CUSTOMER_TYPE.GETALL.FETCH } };
+  const getAll = (onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.GETALL.FETCH, payload: { data: CUSTOMER_TYPE.GETALL.FETCH }, onSuccess, onError };
   };
-  const getAllSuccess = (data: CustomerVM[]): Customer => {
+  const getAllSuccess = (data: CustomerVM[], onSuccess?: (data: CustomerVM[]) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.GETALL.SUCCESS, payload: { data } };
   };
-  const getAllError = (error: any): Customer => {
-    console.log(error.response);
+  const getAllError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
     return { type: CUSTOMER_TYPE.GETALL.ERROR, payload: { data: CUSTOMER_TYPE.GETALL.ERROR } };
   };
-  const create = (data: CustomerCM): Customer => {
-    return { type: CUSTOMER_TYPE.CREATE.FETCH, payload: { data } };
+  const create = (data: CustomerCM, onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.CREATE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const createSuccess = (data: CustomerVM): Customer => {
+  const createSuccess = (data: CustomerVM, onSuccess?: (data: CustomerVM) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.CREATE.SUCCESS, payload: { data } };
   };
-  const createError = (error: any): Customer => {
-    console.log(error);
+  const createError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
     return { type: CUSTOMER_TYPE.CREATE.ERROR, payload: { data: CUSTOMER_TYPE.CREATE.ERROR } };
   };
-  const update = (data: CustomerUM): Customer => {
-    return { type: CUSTOMER_TYPE.UPDATE.FETCH, payload: { data } };
+  const update = (data: CustomerUM, onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.UPDATE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const updateSuccess = (data: CustomerVM): Customer => {
+  const updateSuccess = (data: CustomerVM, onSuccess?: (data: CustomerVM) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.UPDATE.SUCCESS, payload: { data } };
   };
-  const updateError = (error: any): Customer => {
-    return { type: CUSTOMER_TYPE.UPDATE.ERROR, payload: { data: CUSTOMER_TYPE.UPDATE.ERROR} };
+  const updateError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
+    return { type: CUSTOMER_TYPE.UPDATE.ERROR, payload: { data: CUSTOMER_TYPE.UPDATE.ERROR } };
   };
-  const remove = (data: string): Customer => {
-    return { type: CUSTOMER_TYPE.REMOVE.FETCH, payload: { data } };
+  const remove = (data: string, onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.REMOVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const removeSuccess = (data: string): Customer => {
+  const removeSuccess = (data: string, onSuccess?: (data: string) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.REMOVE.SUCCESS, payload: { data } };
   };
-  const removeError = (error: any): Customer => {
-    return { type: CUSTOMER_TYPE.REMOVE.ERROR, payload: {data: CUSTOMER_TYPE.REMOVE.ERROR} };
+  const removeError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
+    return { type: CUSTOMER_TYPE.REMOVE.ERROR, payload: { data: CUSTOMER_TYPE.REMOVE.ERROR } };
   };
-  const active = (data: string[]): Customer => {
-    return { type: CUSTOMER_TYPE.ACTIVE.FETCH, payload: { data } };
+  const active = (data: string[], onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.ACTIVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const activeSuccess = (data: string[]): Customer => {
+  const activeSuccess = (data: string[], onSuccess?: (data: string[]) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.ACTIVE.SUCCESS, payload: { data } };
   };
-  const activeError = (error: any): Customer => {
-    return { type: CUSTOMER_TYPE.ACTIVE.ERROR, payload: {data: CUSTOMER_TYPE.ACTIVE.ERROR} };
+  const activeError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
+    return { type: CUSTOMER_TYPE.ACTIVE.ERROR, payload: { data: CUSTOMER_TYPE.ACTIVE.ERROR } };
   };
-  const deactive = (data: string[]): Customer => {
-    return { type: CUSTOMER_TYPE.DEACTIVE.FETCH, payload: { data } };
+  const deactive = (data: string[], onSuccess?: (data: any) => void, onError?: (err: any) => void): Customer => {
+    return { type: CUSTOMER_TYPE.DEACTIVE.FETCH, payload: { data }, onSuccess, onError };
   };
-  const deactiveSuccess = (data: string[]): Customer => {
+  const deactiveSuccess = (data: string[], onSuccess?: (data: string[]) => void): Customer => {
+    if (onSuccess) {
+      onSuccess(data);
+    }
     return { type: CUSTOMER_TYPE.DEACTIVE.SUCCESS, payload: { data } };
   };
-  const deactiveError = (error: any): Customer => {
-    return { type: CUSTOMER_TYPE.DEACTIVE.ERROR, payload: {data: CUSTOMER_TYPE.DEACTIVE.ERROR} };
+  const deactiveError = (onError?: () => void): Customer => {
+    if (onError) {
+      onError();
+    }
+    return { type: CUSTOMER_TYPE.DEACTIVE.ERROR, payload: { data: CUSTOMER_TYPE.DEACTIVE.ERROR } };
   };
   const actions: ActionCreatorsMapObject<Customer> = {
     reset,

@@ -41,9 +41,9 @@ export const FormListComponent: React.FC<IFormListComponentProps> = (props: IFor
             <Row className="form-item-header-content">
               <Col span={12} className="form-item-header-content-left">
                 <Tag style={{ width: '100%', borderRadius: '10px' }} color="processing">
-                  <span style={{ display: 'block', maxWidth: '80%', overflow: 'hidden', float: 'left' }}><b>{row.code}</b></span>
+                  <span style={{ display: 'block', maxWidth: '80%', overflow: 'hidden', float: 'left' }}><b>{row.code + '-' + row.name}</b></span>
                   <span style={{ float: 'right' }}>
-                    <Popover placement="bottomRight" trigger="hover" content={
+                    <Popover placement="bottomRight" trigger="click" content={
                       <>
                         <table style={{ border: '1px solid gray' }}>
                           <tbody>

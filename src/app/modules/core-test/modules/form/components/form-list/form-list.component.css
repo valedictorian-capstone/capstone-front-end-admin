@@ -162,8 +162,19 @@
     overflow: hidden;
 }
 
+.form-create .content {
+    width: 70%;
+    margin: auto;
+    height: fit-content;
+    overflow: hidden;
+}
+
 @media (max-width: 992px) {
     .form-detail .content {
+        width: 90%;
+        margin: auto;
+    }
+    .form-create .content {
         width: 90%;
         margin: auto;
     }

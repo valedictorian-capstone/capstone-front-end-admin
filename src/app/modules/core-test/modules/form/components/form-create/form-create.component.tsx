@@ -85,7 +85,7 @@ export const FormCreateComponent: React.FC<IFormCreateComponentProps> = (props: 
           } headerStyle={{ width: '33.3333333%' }} />
         </TabView>
         <div className="tab-view">
-          <div className="form-detail" style={{ display: index === 0 ? 'block' : 'none' }}>
+          <div className="form-create" style={{ display: index === 0 ? 'block' : 'none' }}>
             <div className="content">
               <Form id="new-control" form={form} name="control-ref">
                 <div className="form-control">

@@ -13,7 +13,7 @@ export class BaseModel<VM, CM, UM> {
 
 // tslint:disable-next-line: max-classes-per-file
 export class Payload<VM, CM, UM> {
-  public readonly data: VM[] | CM | UM | VM | string | string[];
+  public readonly data: VM[] | CM | UM | VM | string | string[] | UM[];
   constructor(props: Payload<VM, CM, UM>) {
     this.data = props.data;
   }

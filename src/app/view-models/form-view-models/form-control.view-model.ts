@@ -54,6 +54,7 @@ export interface FormControlCM {
   isCapitialize: boolean;
   tooltip: string;
   color: string;
+  isDelete: boolean;
 }
 
 export interface FormControlUM {
@@ -78,4 +79,5 @@ export interface FormControlUM {
   isCapitialize: boolean;
   tooltip: string;
   color: string;
+  isDelete: boolean;
 }

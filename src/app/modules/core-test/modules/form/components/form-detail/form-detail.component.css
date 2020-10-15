@@ -1,20 +1,20 @@
-.tab-view {
+.form-item-content .tab-view {
     height: 87%;
 }
 
-.tab-view .form-detail .content .ant-form .form-control {
+.form-item-content .tab-view .form-detail .content .ant-form .form-control {
     border: 1px solid gray;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
-.tab-view .form-detail .content .ant-form .form-control .ant-form-item {
+.form-item-content .tab-view .form-detail .content .ant-form .form-control .ant-form-item {
     margin: 0;
 }
 
-.tab-view .form-detail,
-.tab-view .form-editable,
-.tab-view .form-preview {
+.form-item-content .tab-view .form-detail,
+.form-item-content .tab-view .form-editable,
+.form-item-content .tab-view .form-preview {
     height: 100%;
     width: 100%;
     overflow: auto;
@@ -22,10 +22,10 @@
     padding: 0.5rem;
 }
 
-.tab-view .form-detail {
+.form-item-content .tab-view .form-detail {
     background: white;
 }
 
-.tab-view .form-editable {
+.form-item-content .tab-view .form-editable {
     background: moccasin;
 }

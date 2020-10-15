@@ -1,0 +1,35 @@
+.customer-item-content .tab-view {
+    height: 100%;
+}
+
+.customer-item-content .tab-view .customer-create .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.customer-item-content .tab-view .customer-create .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.customer-item-content .tab-view .customer-create .content .ant-form .form-control label span {
+    float: right;
+}
+
+.customer-item-content .tab-view .customer-create,
+.customer-item-content .tab-view .customer-editable,
+.customer-item-content .tab-view .customer-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.customer-item-content .tab-view .customer-create {
+    background: white;
+}
+
+.customer-item-content .tab-view .customer-editable {
+    background: moccasin;
+}

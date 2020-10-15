@@ -6,7 +6,7 @@ import { Col, Form, Row } from 'antd';
 import { useDrop } from 'react-dnd';
 import { uuid } from 'uuidv4';
 import update from 'immutability-helper';
-import { FormControlComponent } from '@extras/components';
+import { FormControlSettingComponent } from '@extras/components';
 
 export interface IFormEditableComponentProps extends IBaseProps {
   input: {
@@ -71,7 +71,7 @@ export const FormEditableComponent: React.FC<IFormEditableComponentProps> = (pro
     <div className="ant-form ant-form-horizontal form-editable" style={{ width: '100%', height: '100%' }}>
       <Row ref={drop} style={{ width: '100%', height: formControls.length > 3 ? ((formControls.length * 30) + 100 + '%') : '100%', alignContent: 'baseline' }}>
         {formControls.map((item, index) => (
-          <FormControlComponent key={item.id + '-editable'} input={{ index, item, isDesign: true, canEdit: active === index, active }} output={{
+          <FormControlSettingComponent key={item.id + '-editable'} input={{ index, item, canEdit: active === index, active }} output={{
             moveControl,
             onCancel: () => setActive(-1),
             onEdit: () => setActive(index),
@@ -82,7 +82,8 @@ export const FormEditableComponent: React.FC<IFormEditableComponentProps> = (pro
               }
             },
             onDone: (data) => {
-              formControls[index] = data;
+              console.log(data);
+              formControls[index] = data as FormControlVM;
               setFormControls([...formControls]);
               setActive(-1);
             },

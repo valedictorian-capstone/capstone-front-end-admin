@@ -1,7 +1,8 @@
+import { CustomerExtraInformationVM, CustomerVM } from '.';
 export interface CustomerExtraInformationDataVM {
   readonly id: string;
-  readonly customerExtraInformationId: string;
-  readonly customerExtraDataId: string;
+  readonly customerExtraInformation: CustomerExtraInformationVM;
+  readonly customer: CustomerVM;
   readonly value: string;
   readonly isDelete: boolean;
   readonly createdBy: string;
