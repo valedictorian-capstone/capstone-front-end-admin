@@ -1,0 +1,35 @@
+.account-item-content .tab-view {
+    height: 100%;
+}
+
+.account-item-content .tab-view .account-detail .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.account-item-content .tab-view .account-detail .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.account-item-content .tab-view .account-detail .content .ant-form .form-control label span {
+    float: right;
+}
+
+.account-item-content .tab-view .account-detail,
+.account-item-content .tab-view .account-editable,
+.account-item-content .tab-view .account-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.account-item-content .tab-view .account-detail {
+    background: white;
+}
+
+.account-item-content .tab-view .account-editable {
+    background: moccasin;
+}

@@ -1,0 +1,43 @@
+.product-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.product-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.product-support .product-support-left {
+    height: 100%;
+}
+
+.product-support .product-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.product-support .product-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.product-support .product-support-right {
+    height: 100%;
+}
+
+.product-support .product-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .product-support .product-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

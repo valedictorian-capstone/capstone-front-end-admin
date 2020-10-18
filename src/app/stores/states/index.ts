@@ -1,8 +1,9 @@
-import { DepartmentState, GroupState, PatternState, PermissionState, RoleState } from './basic-states';
+import { DepartmentState, GroupState, PatternState, PermissionState, RoleState, ExtraInformationState } from './basic-states';
 import { AuthenticationState, LanguageState, LoadingState, SettingState } from './extra-states';
 import { CommentState, ConditionState, WorkFlowConnectionState, WorkFlowInstanceState, WorkFlowState, WorkFlowStepInstanceState, WorkFlowStepState } from './bpmn-states';
-import { CustomerExtraDataState, CustomerExtraInformationDataState, CustomerExtraInformationState, CustomerState } from './customer-states';
-import { AccountExtraDataState, AccountExtraInformationDataState, AccountExtraInformationState, AccountState } from './account-states';
+import {  CustomerExtraInformationDataState, CustomerState } from './customer-states';
+import {  ProductExtraInformationDataState, ProductState } from './product-states';
+import {  AccountExtraInformationDataState, AccountState } from './account-states';
 import { FormControlState, FormDataState, FormGroupState, FormValueState } from './form-states';
 export * from './basic-states';
 export * from './extra-states';
@@ -10,6 +11,7 @@ export * from './bpmn-states';
 export * from './customer-states';
 export * from './account-states';
 export * from './form-states';
+export * from './product-states';
 
 export class RootState {
   department: DepartmentState;
@@ -26,13 +28,12 @@ export class RootState {
   workFlow: WorkFlowState;
   workFlowStepInstance: WorkFlowStepInstanceState;
   workFlowStep: WorkFlowStepState;
-  customerExtraData: CustomerExtraDataState;
   customerExtraInformationData: CustomerExtraInformationDataState;
-  customerExtraInformation: CustomerExtraInformationState;
   customer: CustomerState;
-  accountExtraData: AccountExtraDataState;
+  productExtraInformationData: ProductExtraInformationDataState;
+  product: ProductState;
   accountExtraInformationData: AccountExtraInformationDataState;
-  accountExtraInformation: AccountExtraInformationState;
+  extraInformation: ExtraInformationState;
   account: AccountState;
   formControl: FormControlState;
   formData: FormDataState;
@@ -55,13 +56,12 @@ export class RootState {
     this.workFlow = props.workFlow;
     this.workFlowStepInstance = props.workFlowStepInstance;
     this.workFlowStep = props.workFlowStep;
-    this.customerExtraData = props.customerExtraData;
     this.customerExtraInformationData = props.customerExtraInformationData;
-    this.customerExtraInformation = props.customerExtraInformation;
     this.customer = props.customer;
-    this.accountExtraData = props.accountExtraData;
+    this.productExtraInformationData = props.productExtraInformationData;
+    this.product = props.product;
     this.accountExtraInformationData = props.accountExtraInformationData;
-    this.accountExtraInformation = props.accountExtraInformation;
+    this.extraInformation = props.extraInformation;
     this.account = props.account;
     this.formControl = props.formControl;
     this.formData = props.formData;

@@ -8,6 +8,7 @@ export * from './process/process.module';
 export * from './condition/condition.module';
 export * from './department/department.module';
 export * from './group/group.module';
+export * from './product/product.module';
 export * from './pattern/pattern.module';
 export * from './role/role.module';
 export * from './strategy/strategy.module';

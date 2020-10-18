@@ -13,6 +13,7 @@ export const useCustomerReducer: Reducer<CustomerState, Customer> = (state: Cust
       };
     }
     case CUSTOMER_TYPE.GETALL.SUCCESS: {
+      console.log(action.payload.data);
       return {
         ...state,
         arr: action.payload.data as CustomerVM[],

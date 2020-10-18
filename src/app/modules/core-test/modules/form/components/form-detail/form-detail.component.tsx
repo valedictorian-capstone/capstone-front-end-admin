@@ -120,7 +120,7 @@ export const FormDetailComponent: React.FC<IFormDetailComponentProps> = (props: 
           } headerStyle={{ width: '33.3333333%' }} />
         </TabView>
         <div className="tab-view">
-          <div className="form-detail" style={{ display: index === 0 ? 'block' : 'none' }}>
+          <div className="form-detail" style={{ display: index === 0 ? 'flex' : 'none' }}>
             <div className="content">
               <Form id={props.input.row?.id} form={form} name="control-ref">
                 <div className="form-control">

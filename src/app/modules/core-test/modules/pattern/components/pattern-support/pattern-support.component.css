@@ -1,0 +1,43 @@
+.pattern-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.pattern-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.pattern-support .pattern-support-left {
+    height: 100%;
+}
+
+.pattern-support .pattern-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.pattern-support .pattern-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.pattern-support .pattern-support-right {
+    height: 100%;
+}
+
+.pattern-support .pattern-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .pattern-support .pattern-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

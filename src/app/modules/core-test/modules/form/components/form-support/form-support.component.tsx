@@ -1,4 +1,4 @@
-import { PlusCircleOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, SearchOutlined, SettingOutlined, PlusOutlined } from '@ant-design/icons';
 import { IBaseProps } from '@extras/interfaces';
 import { FormGroupVM } from '@view-models';
 import { Button, Col, Input, Popover, Row } from 'antd';
@@ -10,10 +10,12 @@ export interface IFormSupportComponentProps extends IBaseProps {
   input: {
     action: 'create' | 'edit' | '',
     rows: FormGroupVM[],
+    transform: 'create' | 'search' | 'paging' | 'select' | 'update' | '',
   };
   output: {
     onCreate: () => void,
     onSearch: (rows: FormGroupVM[]) => void,
+    onTransform: (transform: 'create' | 'search' | 'paging' | 'select' | 'update' | '') => void,
   };
 }
 
@@ -40,25 +42,38 @@ export const FormSupportComponent: React.FC<IFormSupportComponentProps> = (props
     }
   }, [value]);
   return (
-    <div className="form-support">
-      <Row>
-        <Col xs={10} sm={10} md={12} lg={12} xl={16} xxl={16} className="form-support-left">
-          <div>
-            <Button disabled={props.input.action !== ''} style={{ background: '#28a745', color: 'white', marginRight: 5 }} shape="circle" size="small" className="setting" icon={<PlusCircleOutlined />} onClick={props.output.onCreate} />
-            <Button disabled={props.input.action !== ''} size="small" shape="circle" className="setting search" style={{ marginRight: 5 }} type="primary" icon={<SearchOutlined />} />
-            <Popover id="rop-test" placement="topLeft" trigger="click" content={<FormHelperComponent input={{ horizontal: true }} output={{}} />}>
-              <Button size="small" shape="circle" className="setting set" type="primary" icon={<SettingOutlined />} />
-            </Popover>
-          </div>
-        </Col>
-        <Col xs={14} sm={14} md={12} lg={12} xl={8} xxl={8} className="form-support-right">
-          <div>
-            <Input onChange={(e) => {
-              setValue(e.target.value);
-            }} disabled={props.input.action !== ''} placeholder="Fill anything to search..." suffix={<SearchOutlined />} width="100%" style={{ borderRadius: 10 }} />
-          </div>
-        </Col>
-      </Row>
-    </div>
+    // <div className="form-support">
+    //   <Row>
+    //     <Col xs={10} sm={10} md={12} lg={12} xl={16} xxl={16} className="form-support-left">
+    //       <div>
+    //         <Button disabled={props.input.action !== ''} style={{ background: '#28a745', color: 'white', marginRight: 5 }} shape="circle" size="small" className="setting" icon={<PlusCircleOutlined />} onClick={props.output.onCreate} />
+    //         <Button disabled={props.input.action !== ''} size="small" shape="circle" className="setting search" style={{ marginRight: 5 }} type="primary" icon={<SearchOutlined />} />
+    //         <Popover id="rop-test" placement="topLeft" trigger="click" content={<FormHelperComponent input={{ horizontal: true }} output={{}} />}>
+    //           <Button size="small" shape="circle" className="setting set" type="primary" icon={<SettingOutlined />} />
+    //         </Popover>
+    //       </div>
+    //     </Col>
+    //     <Col xs={14} sm={14} md={12} lg={12} xl={8} xxl={8} className="form-support-right">
+    //       <div>
+    //         <Input onChange={(e) => {
+    //           setValue(e.target.value);
+    //         }} disabled={props.input.action !== ''} placeholder="Fill anything to search..." suffix={<SearchOutlined />} width="100%" style={{ borderRadius: 10 }} />
+    //       </div>
+    //     </Col>
+    //   </Row>
+    // </div>
+    <>
+      <div className="create" onClick={() => {
+        props.output.onTransform('create');
+        props.output.onCreate();
+      }}>
+        <Button icon={<PlusOutlined />} size="small" type="primary" />
+      </div>
+      <div className={`search` + (props.input.transform === 'search' ? ' open' : '')}>
+        <div className="toggle" onClick={() => props.output.onTransform(props.input.transform === 'search' ? '' : 'search')}>
+          <SearchOutlined />
+        </div>
+      </div>
+    </>
   );
 };

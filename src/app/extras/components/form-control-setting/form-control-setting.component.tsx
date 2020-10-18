@@ -1,16 +1,15 @@
-import React from 'react';
+import { CheckOutlined, CloseOutlined, EditOutlined, InboxOutlined, InfoCircleOutlined, MinusCircleOutlined, PlusCircleOutlined, PlusOutlined, RestOutlined } from '@ant-design/icons';
 import { IBaseProps } from '@extras/interfaces';
-import './form-control-setting.component.css';
-import { FormControlUM, CustomerExtraInformationUM } from '@view-models';
-import { Button, Checkbox, Col, Form, Input, Popconfirm, Row, Select, Tooltip, AutoComplete, DatePicker, TimePicker, Radio, Upload, Rate, Switch, Slider, Tag } from 'antd';
-import { EditOutlined, InfoCircleOutlined, RestOutlined, CloseOutlined, CheckOutlined, MinusCircleOutlined, PlusOutlined, InboxOutlined, UploadOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { ExtraInformationUM, FormControlUM } from '@view-models';
+import { AutoComplete, Button, Checkbox, Col, DatePicker, Form, Input, Popconfirm, Radio, Rate, Row, Select, Slider, Switch, Tag, TimePicker, Tooltip, Upload } from 'antd';
 import moment from 'moment';
-import { useDrop, DropTargetMonitor, XYCoord, useDrag } from 'react-dnd';
-import swal from 'sweetalert2';
+import React from 'react';
+import { DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
+import './form-control-setting.component.css';
 
 export interface IFormControlSettingComponentProps extends IBaseProps {
   input: {
-    item: FormControlUM | CustomerExtraInformationUM,
+    item: FormControlUM | ExtraInformationUM,
     isPreview?: boolean,
     index: number,
     canEdit?: boolean,
@@ -21,7 +20,7 @@ export interface IFormControlSettingComponentProps extends IBaseProps {
   output: {
     moveControl?: (dragIndex: number, hoverIndex: number) => void,
     onEdit?: () => void,
-    onDone?: (data: FormControlUM | CustomerExtraInformationUM) => void,
+    onDone?: (data: FormControlUM | ExtraInformationUM) => void,
     onCancel?: () => void,
     onRemove?: () => void,
   };
@@ -30,82 +29,82 @@ interface DragItem {
   index: number;
   id: string;
   type: string;
-  item: FormControlUM | CustomerExtraInformationUM;
+  item: FormControlUM | ExtraInformationUM;
 }
 export const FormControlSettingComponent: React.FC<IFormControlSettingComponentProps> = (props: IFormControlSettingComponentProps) => {
   const [editable, setEditable] = React.useState<boolean>(props.input.canEdit || false);
-  const [form] = Form.useForm<FormControlUM | CustomerExtraInformationUM>();
+  const [form] = Form.useForm<FormControlUM | ExtraInformationUM>();
   const render = () => {
     switch (props.input.item.type) {
       case 'auto-complete':
         return <AutoComplete
-        key={props.input.item.id}
-        options={props.input.item.options}
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-        placeholder={props.input.item.placeHolder}
-        filterOption={(input, option) => option?.value.toLowerCase().includes(input.toLowerCase())}
+          key={props.input.item.id}
+          options={props.input.item.options}
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+          placeholder={props.input.item.placeHolder}
+          filterOption={(input, option) => option?.value.toLowerCase().includes(input.toLowerCase())}
         />;
       case 'date-picker':
-        return     <DatePicker
-        key={props.input.item.id}
+        return <DatePicker
+          key={props.input.item.id}
           style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
           placeholder={props.input.item.placeHolder}
         />;
       case 'date-range':
         return <DatePicker.RangePicker
-        key={props.input.item.id}
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-        placeholder={['From date', 'To date']}
-      />;
+          key={props.input.item.id}
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+          placeholder={['From date', 'To date']}
+        />;
       case 'select':
-        return     <Select
-        showSearch={true}
-        allowClear={true}
-        placeholder={props.input.item.placeHolder}
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-        optionFilterProp="children"
-        filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
-      >
-        {props.input.item.options.map((option: { label: string, value: string }) => (
-          <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
-        ))}
-      </Select>;
+        return <Select
+          showSearch={true}
+          allowClear={true}
+          placeholder={props.input.item.placeHolder}
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+          optionFilterProp="children"
+          filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
+        >
+          {props.input.item.options.map((option: { label: string, value: string }) => (
+            <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
+          ))}
+        </Select>;
       case 'multi-select':
-        return     <Select
-        showSearch={true}
-        allowClear={true}
-        mode="multiple"
-        placeholder={props.input.item.placeHolder}
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-        optionFilterProp="children"
-        filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
-      >
-        {props.input.item.options.map((option: { label: string, value: string }) => (
-          <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
-        ))}
-      </Select>;
+        return <Select
+          showSearch={true}
+          allowClear={true}
+          mode="multiple"
+          placeholder={props.input.item.placeHolder}
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+          optionFilterProp="children"
+          filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
+        >
+          {props.input.item.options.map((option: { label: string, value: string }) => (
+            <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
+          ))}
+        </Select>;
       case 'input':
         return <Input type={props.input.item.subType} placeholder={props.input.item.placeHolder} style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }} />;
       case 'text-area':
         return <Input.TextArea name={props.input.item.name} id={props.input.item.id} key={props.input.item.id + '-' + props.input.item.name} placeholder={props.input.item.placeHolder} style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }} />;
       case 'time-picker':
-        return     <TimePicker
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-        placeholder={props.input.item.placeHolder}
-        defaultValue={moment('00:00:00', 'HH:mm:ss')}
-      />;
+        return <TimePicker
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+          placeholder={props.input.item.placeHolder}
+          defaultValue={moment('00:00:00', 'HH:mm:ss')}
+        />;
       case 'check-box':
         return <Checkbox
-        key={props.input.item.id}
-      >{props.input.item.label}</Checkbox>;
+          key={props.input.item.id}
+        >{props.input.item.label}</Checkbox>;
       case 'radio':
-        return     <Radio.Group
-        style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
-      >
-        {props.input.item.options.map((option: { label: string, value: string }) => (
-          <Radio key={option.value} value={option.value}>{option.label}</Radio>
-        ))}
-      </Radio.Group>;
+        return <Radio.Group
+          style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}
+        >
+          {props.input.item.options.map((option: { label: string, value: string }) => (
+            <Radio key={option.value} value={option.value}>{option.label}</Radio>
+          ))}
+        </Radio.Group>;
       case 'rate':
         return <Rate />;
       case 'switch':
@@ -114,18 +113,18 @@ export const FormControlSettingComponent: React.FC<IFormControlSettingComponentP
         return <Slider />;
       case 'file-upload':
         return <Upload.Dragger name="files" action="/upload.do">
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">Support for a single or bulk upload.</p>
-      </Upload.Dragger>;
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+        </Upload.Dragger>;
       case 'check-box-group':
         return <Checkbox.Group style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }}>
-        {props.input.item.options.map((option: { label: string, value: string }) => (
-          <Checkbox key={option.value} value={option.value}>{option.label}</Checkbox>
-        ))}
-      </Checkbox.Group>;
+          {props.input.item.options.map((option: { label: string, value: string }) => (
+            <Checkbox key={option.value} value={option.value}>{option.label}</Checkbox>
+          ))}
+        </Checkbox.Group>;
       default:
         return <Input type={props.input.item.subType} placeholder={props.input.item.placeHolder} style={{ fontSize: props.input.item.fontSize, width: '100%', background: 'white' }} />;
     }
@@ -191,15 +190,15 @@ export const FormControlSettingComponent: React.FC<IFormControlSettingComponentP
         {!props.input.isPreview && <div className="tool-box" style={{ display: !editable ? 'flex' : 'none', position: 'relative' }}>
           <Button onClick={props.output.onEdit} style={{ marginRight: 5 }} size="small" type="primary" shape="circle" icon={<EditOutlined />} className="setting" />
           <Popconfirm
-            title={`Are you sure ${props.input.isUseDeactive ? (props.input.item.isDelete ? 'active' : 'deactive') : 'delete'} this control?`}
+            title={`Are you sure ${props.input.isUseDeactive ? (props.input.item.isDelete === undefined ? 'delete' : (props.input.item.isDelete ? 'active' : 'deactive')) : 'delete'} this control?`}
             onConfirm={props.output.onRemove}
             okText="Sure"
             cancelText="No"
           >
             {!props.input.isUseDeactive && <Button size="small" shape="circle" type="primary" danger={true} icon={<RestOutlined />} className="setting" />}
-            {props.input.isUseDeactive && <Button size="small" shape="circle" danger={!props.input.item.isDelete} icon={props.input.item.isDelete ? <PlusCircleOutlined /> : <MinusCircleOutlined />} className="setting" />}
+            {props.input.isUseDeactive && <Button size="small" shape="circle" danger={!props.input.item.isDelete} icon={props.input.item.isDelete === undefined ? <RestOutlined /> : (props.input.item.isDelete ? <PlusCircleOutlined /> : <MinusCircleOutlined />)} className="setting" />}
           </Popconfirm>
-            <span style={{position: 'absolute', top: 0, right: 0}}><Tag color={props.input.item.isDelete ? 'error' : 'success'}>{props.input.item.isDelete ? 'Deactive' : 'Active'}</Tag></span>
+          <span style={{ position: 'absolute', top: 0, right: 0 }}><Tag color={props.input.item.isDelete ? 'error' : 'success'}>{props.input.item.isDelete ? 'Deactive' : 'Active'}</Tag></span>
         </div>}
         {!props.input.isPreview && <div className={'detail-box' + (editable ? ' selected' : '')}>
           <div className={'control-detail' + (editable ? ' selected' : '')}>
@@ -518,7 +517,7 @@ export const FormControlSettingComponent: React.FC<IFormControlSettingComponentP
                 form.isFieldsTouched(true);
                 form.validateFields().then(() => {
                   if (props.output.onDone) {
-                    props.output.onDone({...props.input.item, ...form.getFieldsValue()});
+                    props.output.onDone({ ...props.input.item, ...form.getFieldsValue() });
                   }
                 });
               }} style={{ marginRight: 5 }} size="middle" type="primary" shape="circle" icon={<CheckOutlined />} className="setting" />

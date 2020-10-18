@@ -1,0 +1,35 @@
+.role-item-content .tab-view {
+    height: 100%;
+}
+
+.role-item-content .tab-view .role-create .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.role-item-content .tab-view .role-create .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.role-item-content .tab-view .role-create .content .ant-form .form-control label span {
+    float: right;
+}
+
+.role-item-content .tab-view .role-create,
+.role-item-content .tab-view .role-editable,
+.role-item-content .tab-view .role-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.role-item-content .tab-view .role-create {
+    background: white;
+}
+
+.role-item-content .tab-view .role-editable {
+    background: moccasin;
+}

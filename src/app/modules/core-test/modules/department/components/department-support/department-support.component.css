@@ -1,0 +1,43 @@
+.department-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.department-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.department-support .department-support-left {
+    height: 100%;
+}
+
+.department-support .department-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.department-support .department-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.department-support .department-support-right {
+    height: 100%;
+}
+
+.department-support .department-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .department-support .department-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

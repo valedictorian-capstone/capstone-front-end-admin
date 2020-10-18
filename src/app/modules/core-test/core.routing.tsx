@@ -12,6 +12,7 @@ import {
   ConditionModule,
   DepartmentModule,
   GroupModule,
+  ProductModule,
   RoleModule,
   PatternModule,
   StrategyModule,
@@ -35,6 +36,7 @@ export const CoreRoutes: React.FC<ICoreRoutesProps> = (props: ICoreRoutesProps) 
       <Route path="/core/condition" component={(routeProps: RouteComponentProps) => <ConditionModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/core/department" component={(routeProps: RouteComponentProps) => <DepartmentModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/core/group" component={(routeProps: RouteComponentProps) => <GroupModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
+      <Route path="/core/product" component={(routeProps: RouteComponentProps) => <ProductModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/core/role" component={(routeProps: RouteComponentProps) => <RoleModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/core/pattern" component={(routeProps: RouteComponentProps) => <PatternModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />
       <Route path="/core/strategy" component={(routeProps: RouteComponentProps) => <StrategyModule input={{}} output={{}} {...routeProps} fatherProps={props} />} />

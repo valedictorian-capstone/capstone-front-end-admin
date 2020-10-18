@@ -7,12 +7,15 @@ import { RootState } from '@stores/states';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useLoadingAction } from '@stores/actions';
+import { Col, Row } from 'antd';
 
 export interface ISideBarLeftComponentProps extends IBaseProps {
   input: {
+    target: EventTarget | undefined,
     stick: string,
   };
-  output: {};
+  output: {
+  };
 }
 
 export const SideBarLeftComponent: React.FC<ISideBarLeftComponentProps> = (props: ISideBarLeftComponentProps) => {
@@ -28,18 +31,17 @@ export const SideBarLeftComponent: React.FC<ISideBarLeftComponentProps> = (props
     }, 500);
   };
   return (
-    <div className={'main-left' + (props.input.stick === 'left' ? ' stick' : '')}>
+    <div className={'side-bar-menu' + ' ' + props.input.stick}>
       {config.categories.map((category, index) => (
-        <span key={index} className="menu" onClick={() => gotoPage('/core/' + category.value)}>
-          {category.icon}
-          <div className="box">
-            <span className="box-text">
-              {category.label}
-              </span>
-          </div>
-        </span>
+        <Row className={'side-bar-menu-item' + (history.location.pathname.split('/')[2] === category.value ? ' stick' : '')} key={index} onClick={() => gotoPage('/core/' + category.value)}>
+          <Col span={16} className="side-bar-menu-item-data">
+            {category.label}
+          </Col>
+          <Col span={8} className="side-bar-menu-item-icon">
+            {category.icon}
+          </Col>
+        </Row>
       ))}
-      <div className="main-box" />
     </div>
   );
 };

@@ -1,13 +1,13 @@
-import React from 'react';
+import { InboxOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { IBaseProps } from '@extras/interfaces';
-import './form-control.component.css';
-import { FormControlUM, CustomerExtraInformationUM } from '@view-models';
-import { Button, Checkbox, Col, Form, Input, Popconfirm, Row, Select, Tooltip, AutoComplete, DatePicker, TimePicker, Radio, Upload, Rate, Switch, Slider } from 'antd';
-import { EditOutlined, InfoCircleOutlined, RestOutlined, CloseOutlined, CheckOutlined, MinusCircleOutlined, PlusOutlined, InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import { ExtraInformationUM, FormControlUM } from '@view-models';
+import { AutoComplete, Checkbox, Col, DatePicker, Form, Input, Radio, Rate, Select, Slider, Switch, TimePicker, Tooltip, Upload } from 'antd';
 import moment from 'moment';
+import React from 'react';
+import './form-control.component.css';
 export interface IFormControlComponentProps extends IBaseProps {
   input: {
-    item: FormControlUM | CustomerExtraInformationUM,
+    item: FormControlUM | ExtraInformationUM,
     index: number,
     isNew?: boolean,
     active: number,
@@ -18,7 +18,7 @@ interface DragItem {
   index: number;
   id: string;
   type: string;
-  item: FormControlUM | CustomerExtraInformationUM;
+  item: FormControlUM | ExtraInformationUM;
 }
 export const FormControlComponent: React.FC<IFormControlComponentProps> = (props: IFormControlComponentProps) => {
   const render = () => {

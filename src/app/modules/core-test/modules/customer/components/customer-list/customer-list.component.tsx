@@ -1,8 +1,8 @@
 import { CheckCircleOutlined, EditOutlined, InfoCircleOutlined, MinusCircleOutlined, RestOutlined } from '@ant-design/icons';
 import { IBaseProps } from '@extras/interfaces';
 import { useCustomerAction } from '@stores/actions';
-import { CustomerExtraInformationVM, CustomerVM } from '@view-models';
-import { Button, Col, Popconfirm, Popover, Row, Tag } from 'antd';
+import { ExtraInformationVM, CustomerVM } from '@view-models';
+import { Button, Col, Empty, Popconfirm, Popover, Row, Tag } from 'antd';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert2';
@@ -12,7 +12,7 @@ export interface ICustomerListComponentProps extends IBaseProps {
   input: {
     rows: CustomerVM[],
     action: 'create' | 'edit' | 'setting' | '',
-    customerExtraInformations: CustomerExtraInformationVM[],
+    extraInformations: ExtraInformationVM[],
   };
   output: {
     onSelect: (row: CustomerVM | undefined) => void,
@@ -169,14 +169,15 @@ export const CustomerListComponent: React.FC<ICustomerListComponentProps> = (pro
         </div>
       ))
       }
-      <CustomerDetailComponent input={{ row: selected, action, customerExtraInformations: props.input.customerExtraInformations }} output={{
+      {(props.input.rows.length === 0 && action === '') && <div style={{width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', display: 'flex'}}><Empty /></div>}
+      <CustomerDetailComponent input={{ row: selected, action, extraInformations: props.input.extraInformations }} output={{
         onDone: () => {
           edit(undefined);
           setAction('');
           props.output.onActionChange('');
         },
       }} />
-      <CustomerCreateComponent input={{ action, customerExtraInformations: props.input.customerExtraInformations }} output={{
+      <CustomerCreateComponent input={{ action, extraInformations: props.input.extraInformations }} output={{
         onDone: () => {
           edit(undefined);
           setAction('');

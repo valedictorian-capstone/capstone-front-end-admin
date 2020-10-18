@@ -1,0 +1,43 @@
+.group-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.group-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.group-support .group-support-left {
+    height: 100%;
+}
+
+.group-support .group-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.group-support .group-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.group-support .group-support-right {
+    height: 100%;
+}
+
+.group-support .group-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .group-support .group-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

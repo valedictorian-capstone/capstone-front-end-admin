@@ -1,7 +1,8 @@
-import { CustomerExtraInformationVM, CustomerVM } from '.';
+import { CustomerVM } from '.';
+import { ExtraInformationVM } from '../basic-view-models';
 export interface CustomerExtraInformationDataVM {
   readonly id: string;
-  readonly customerExtraInformation: CustomerExtraInformationVM;
+  readonly extraInformation: ExtraInformationVM;
   readonly customer: CustomerVM;
   readonly value: string;
   readonly isDelete: boolean;

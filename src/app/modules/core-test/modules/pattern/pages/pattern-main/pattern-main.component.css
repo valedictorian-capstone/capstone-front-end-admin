@@ -1,0 +1,25 @@
+.ant-modal-header {
+    background: moccasin !important;
+}
+
+.pattern-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pattern-container .pattern-helper {
+    height: 100%;
+}
+
+.pattern-container .pattern-content {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+/* @media (max-height: 768px) {
+  .pattern-container {
+      height: fit-content;
+  }
+} */

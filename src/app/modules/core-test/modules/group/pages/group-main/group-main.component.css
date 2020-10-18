@@ -1,0 +1,25 @@
+.ant-modal-header {
+    background: moccasin !important;
+}
+
+.group-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.group-container .group-helper {
+    height: 100%;
+}
+
+.group-container .group-content {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+/* @media (max-height: 768px) {
+  .group-container {
+      height: fit-content;
+  }
+} */

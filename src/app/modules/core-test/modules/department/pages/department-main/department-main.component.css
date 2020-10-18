@@ -1,0 +1,25 @@
+.ant-modal-header {
+    background: moccasin !important;
+}
+
+.department-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.department-container .department-helper {
+    height: 100%;
+}
+
+.department-container .department-content {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+/* @media (max-height: 768px) {
+  .department-container {
+      height: fit-content;
+  }
+} */

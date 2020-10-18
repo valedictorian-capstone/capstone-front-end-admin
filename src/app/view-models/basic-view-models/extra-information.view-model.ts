@@ -1,0 +1,85 @@
+import { AccountExtraInformationDataVM } from '../account-view-models';
+import { PatternVM } from '.';
+
+export interface ExtraInformationVM {
+  readonly id: string;
+  readonly name: string;
+  readonly placeHolder: string;
+  readonly fontSize: string;
+  readonly label: string;
+  readonly size: string;
+  readonly state: string;
+  readonly options: { value: string, label: string }[] | any;
+  readonly type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
+  readonly subType: string;
+  readonly position: number;
+  readonly width: number;
+  readonly xs: number;
+  readonly sm: number;
+  readonly md: number;
+  readonly lg: number;
+  readonly xl: number;
+  readonly xxl: number;
+  readonly height: string;
+  readonly isCapitialize: boolean;
+  readonly tooltip: string;
+  readonly color: string;
+  readonly accountExtraInformationDatas: AccountExtraInformationDataVM[];
+  readonly patterns: PatternVM[];
+  readonly isDelete: boolean;
+  readonly createdBy: string;
+  readonly updatedBy: string;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+}
+
+export interface ExtraInformationCM {
+  id: string;
+  name: string;
+  placeHolder: string;
+  fontSize: string;
+  label: string;
+  size: string;
+  state: string;
+  options: { value: string, label: string }[] | any;
+  type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
+  subType: string;
+  position: number;
+  width: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  height: string;
+  isCapitialize: boolean;
+  tooltip: string;
+  color: string;
+}
+
+export interface ExtraInformationUM {
+  id: string;
+  name: string;
+  placeHolder: string;
+  fontSize: string;
+  label: string;
+  size: string;
+  state: string;
+  options: { value: string, label: string }[] | any;
+  type: 'auto-complete' | 'input' | 'date-picker' | 'time-picker' | 'select' | 'multi-select' | 'text-area' | 'date-range' | 'radio' | 'check-box' | 'check-box-group' | 'file-upload' | 'switch' | 'rate' | 'slider';
+  subType: string;
+  position: number;
+  width: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  height: string;
+  isCapitialize: boolean;
+  tooltip: string;
+  color: string;
+  isDelete: boolean;
+}

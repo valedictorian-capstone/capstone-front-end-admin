@@ -1,0 +1,43 @@
+.role-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.role-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.role-support .role-support-left {
+    height: 100%;
+}
+
+.role-support .role-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.role-support .role-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.role-support .role-support-right {
+    height: 100%;
+}
+
+.role-support .role-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .role-support .role-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

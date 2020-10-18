@@ -3,3 +3,4 @@ export * from './group.action';
 export * from './pattern.action';
 export * from './department.action';
 export * from './permission.action';
+export * from './extra-information.action';

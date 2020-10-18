@@ -12,14 +12,16 @@ export const useDepartmentSaga = () => {
     yield takeLatest(DEPARTMENT_TYPE.CREATE.FETCH, useCreate);
     yield takeLatest(DEPARTMENT_TYPE.UPDATE.FETCH, useUpdate);
     yield takeLatest(DEPARTMENT_TYPE.REMOVE.FETCH, useRemove);
+    yield takeLatest(DEPARTMENT_TYPE.ACTIVE.FETCH, useActive);
+    yield takeLatest(DEPARTMENT_TYPE.DEACTIVE.FETCH, useDeactive);
   }
-  function* useGetAll() {
+  function* useGetAll(action: Department) {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(DepartmentService.findAll);
-      yield put(useDepartmentAction().getAllSuccess(data));
+      yield put(useDepartmentAction().getAllSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useDepartmentAction().getAllError(error));
+      yield put(useDepartmentAction().getAllError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -27,9 +29,9 @@ export const useDepartmentSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(DepartmentService.insert, action.payload.data as DepartmentCM);
-      yield put(useDepartmentAction().createSuccess(data));
+      yield put(useDepartmentAction().createSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useDepartmentAction().createError(error));
+      yield put(useDepartmentAction().createError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -37,9 +39,9 @@ export const useDepartmentSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(DepartmentService.update, action.payload.data as DepartmentUM);
-      yield put(useDepartmentAction().updateSuccess(data));
+      yield put(useDepartmentAction().updateSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useDepartmentAction().updateError(error));
+      yield put(useDepartmentAction().updateError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -47,12 +49,31 @@ export const useDepartmentSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(DepartmentService.remove, action.payload.data as string);
-      yield put(useDepartmentAction().removeSuccess(data));
+      yield put(useDepartmentAction().removeSuccess(action.payload.data as string, action.onSuccess));
     } catch (error) {
-      yield put(useDepartmentAction().removeError(error));
+      yield put(useDepartmentAction().removeError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
-
+  function* useActive(action: Department) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(DepartmentService.active, action.payload.data as string[]);
+      yield put(useDepartmentAction().activeSuccess(action.payload.data as string[], action.onSuccess));
+    } catch (error) {
+      yield put(useDepartmentAction().activeError(() => action.onError ? action.onError(error) : (() => { })));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
+  function* useDeactive(action: Department) {
+    yield put(useLoadingAction().showLoader());
+    try {
+      const { data } = yield call(DepartmentService.deactive, action.payload.data as string[]);
+      yield put(useDepartmentAction().deactiveSuccess(action.payload.data as string[], action.onSuccess));
+    } catch (error) {
+      yield put(useDepartmentAction().deactiveError(() => action.onError ? action.onError(error) : (() => { })));
+    }
+    yield put(useLoadingAction().hideLoader());
+  }
   return { useInit };
 };

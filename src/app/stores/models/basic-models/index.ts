@@ -3,3 +3,4 @@ export * from './group.model';
 export * from './department.model';
 export * from './pattern.model';
 export * from './permission.model';
+export * from './extra-information.model';

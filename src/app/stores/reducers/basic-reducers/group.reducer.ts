@@ -41,6 +41,18 @@ export const useGroupReducer: Reducer<GroupState, Group> = (state: GroupState = 
         arr: [...newArr],
       };
     }
+    case GROUP_TYPE.ACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? false : e.isDelete })),
+      };
+    }
+    case GROUP_TYPE.DEACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? true : e.isDelete })),
+      };
+    }
     default: {
       return {
         ...state,

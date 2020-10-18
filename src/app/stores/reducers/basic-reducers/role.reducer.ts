@@ -20,6 +20,7 @@ export const useRoleReducer: Reducer<RoleState, Role> = (state: RoleState = new 
     }
     case ROLE_TYPE.CREATE.SUCCESS: {
       const newArr = state.arr;
+      console.log(action.payload.data);
       newArr.push(action.payload.data as RoleVM);
       return {
         ...state,
@@ -39,6 +40,18 @@ export const useRoleReducer: Reducer<RoleState, Role> = (state: RoleState = new 
       return {
         ...state,
         arr: [...newArr],
+      };
+    }
+    case ROLE_TYPE.ACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? false : e.isDelete })),
+      };
+    }
+    case ROLE_TYPE.DEACTIVE.SUCCESS: {
+      return {
+        ...state,
+        arr: state.arr.map((e) => ({...e, isDelete: (action.payload.data as string[]).indexOf(e.id) > -1 ? true : e.isDelete })),
       };
     }
     default: {

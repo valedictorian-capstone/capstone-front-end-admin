@@ -1,0 +1,157 @@
+.department-list {
+    height: calc(100% - 96px);
+    max-height: calc(100% - 96px);
+    border: 1px solid gray;
+    padding: calc((100% - 96px)/ 40);
+    overflow: auto;
+}
+
+.department-list .department-item {
+    height: 20%;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid gray;
+    position: relative;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+.department-list .department-item .department-item-edit {
+    position: absolute;
+}
+
+.department-list .department-item .department-item-edit {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.department-list .department-item .department-item-header {
+    height: 50%;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    position: relative;
+}
+
+.department-list .department-item .department-item-header .department-item-header-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.department-list .department-item .department-item-header .department-item-header-content .department-item-header-content-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.department-list .department-item .department-item-header .department-item-header-content .department-item-header-content-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.department-list .department-item .department-item-footer {
+    height: 50%;
+    width: 100%;
+    border-top: 1px solid gray;
+    position: relative;
+}
+
+.department-list .department-item .department-item-footer .department-item-footer-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.department-list .department-item .department-item-footer .department-item-footer-content .department-item-footer-content-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.department-list .department-item .department-item-footer .department-item-footer-content .department-item-footer-content-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.department-list .department-item .department-item-footer .department-item-footer-content .department-item-footer-content-middle .department-item-footer-content-middle-buttons {
+    visibility: hidden;
+}
+
+.department-list .department-item .department-item-footer .department-item-footer-content .department-item-footer-content-right .content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.department-list .department-item .department-item-content {
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: height .35s ease-in-out;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background: #e5e5e5;
+}
+
+.department-list .department-item.selected {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.department-list .department-item.selected .department-item-header {
+    height: 10%;
+}
+
+.department-list .department-item.selected .department-item-footer {
+    height: 10%;
+}
+
+.department-list .department-item.selected .department-item-footer .department-item-footer-content .department-item-footer-content-middle .department-item-footer-content-middle-buttons {
+    visibility: visible;
+}
+
+.department-list .department-item.selected .department-item-content {
+    height: 80%;
+    max-height: 80%;
+}
+
+.department-list .department-item.selected .department-item-edit {
+    visibility: hidden;
+}
+
+.department-detail .content {
+    width: 70%;
+    margin: auto;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.department-create .content {
+    width: 70%;
+    margin: auto;
+    height: fit-content;
+    overflow: hidden;
+}
+
+@media (max-width: 992px) {
+    .department-detail .content {
+        width: 90%;
+        margin: auto;
+    }
+    .department-create .content {
+        width: 90%;
+        margin: auto;
+    }
+}

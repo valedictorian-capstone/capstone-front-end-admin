@@ -1,9 +1,9 @@
 import { CheckCircleOutlined, CheckOutlined, EyeOutlined, InfoCircleOutlined, MinusCircleOutlined, MinusOutlined, RestOutlined, SettingOutlined } from '@ant-design/icons';
 import { environment } from '@environments/environment';
 import { IBaseProps } from '@extras/interfaces';
-import { useCustomerExtraInformationAction } from '@stores/actions';
+import { useExtraInformationAction } from '@stores/actions';
 import { RootState } from '@stores/states';
-import { CustomerExtraInformationVM } from '@view-models';
+import { ExtraInformationVM } from '@view-models';
 import { Button, Col, Form, Input, message, Popover, Result, Row, Tag } from 'antd';
 import { FormInstance } from 'antd/lib/form';
 import { TabPanel, TabView } from 'primereact/tabview';
@@ -15,7 +15,7 @@ import swal from 'sweetalert2';
 export interface ICustomerExtraComponentProps extends IBaseProps {
   input: {
     action: 'create' | 'edit' | 'setting' | '',
-    customerExtraInformations: CustomerExtraInformationVM[],
+    extraInformations: ExtraInformationVM[],
   };
   output: {
     onDone: () => void,
@@ -27,7 +27,7 @@ export const CustomerExtraComponent: React.FC<ICustomerExtraComponentProps> = (p
   const [submit, setSubmit] = React.useState<'completed' | 'processing' | 'cancel' | 'none'>('none');
   const [index, setIndex] = React.useState<number>(0);
   const [editing, setEditing] = React.useState<boolean>(false);
-  const [customerExtraInformations, setCustomerExtraInformations] = React.useState<CustomerExtraInformationVM[]>(props.input.customerExtraInformations);
+  const [extraInformations, setCustomerExtraInformations] = React.useState<ExtraInformationVM[]>(props.input.extraInformations);
   const dispatch = useDispatch();
   return (
     <div id="customer-extra" key="customer-extra" className="customer-extra">
@@ -65,7 +65,7 @@ export const CustomerExtraComponent: React.FC<ICustomerExtraComponentProps> = (p
           </TabView>
           <div className="tab-view">
             <div className="customer-editable" style={{ display: index === 0 ? 'block' : 'none' }}>
-              <CustomerEditableComponent input={{ customerExtraInformations: props.input.customerExtraInformations }} output={{
+              <CustomerEditableComponent input={{ extraInformations: props.input.extraInformations }} output={{
                 onEdit: setEditing,
                 onDone: (data) => {
                   setCustomerExtraInformations(data);
@@ -73,7 +73,7 @@ export const CustomerExtraComponent: React.FC<ICustomerExtraComponentProps> = (p
               }} />
             </div>
             <div className="customer-preview" style={{ display: index === 1 ? 'block' : 'none' }}>
-              <CustomerPreviewComponent input={{ customerExtraInformations }} output={{}} />
+              <CustomerPreviewComponent input={{ extraInformations }} output={{}} />
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export const CustomerExtraComponent: React.FC<ICustomerExtraComponentProps> = (p
                 <Button size="middle" shape="circle" icon={<CheckOutlined />} style={{ marginRight: 10 }} onClick={() => {
                   setSubmit('processing');
                   setTimeout(() => {
-                    dispatch(useCustomerExtraInformationAction().update(customerExtraInformations.map((customerExtraInformation, i) => ({ ...customerExtraInformation, position: i })),
+                    dispatch(useExtraInformationAction().update(extraInformations.map((customerExtraInformation, i) => ({ ...customerExtraInformation, position: i })),
                       () => {
                         swal.fire('Notification', 'Save successfully', 'success');
                         props.output.onDone();

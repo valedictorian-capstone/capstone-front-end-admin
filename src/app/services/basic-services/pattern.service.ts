@@ -25,11 +25,11 @@ export class PatternService {
     return useHttp().delete<PatternVM>(`${environment.apiEndpont}${environment.api['basic-api']['pattern'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<PatternVM>> => {
-    return useHttp().put<PatternVM>(`${environment.apiEndpont}${environment.api['basic-api']['pattern'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<PatternVM>> => {
+    return useHttp().put<PatternVM>(`${environment.apiEndpont}${environment.api['basic-api']['pattern'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<PatternVM>> => {
-    return useHttp().put<PatternVM>(`${environment.apiEndpont}${environment.api['basic-api']['pattern'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<PatternVM>> => {
+    return useHttp().put<PatternVM>(`${environment.apiEndpont}${environment.api['basic-api']['pattern'].deactive}`, ids);
   }
 }

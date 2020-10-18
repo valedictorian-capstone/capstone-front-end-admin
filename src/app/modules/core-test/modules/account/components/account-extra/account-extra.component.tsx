@@ -1,102 +1,112 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, CheckOutlined, EyeOutlined, InfoCircleOutlined, MinusCircleOutlined, MinusOutlined, RestOutlined, SettingOutlined } from '@ant-design/icons';
+import { environment } from '@environments/environment';
 import { IBaseProps } from '@extras/interfaces';
-import { AccountExtraInformationCM, AccountExtraInformationUM } from '@view-models';
-import { AutoComplete, Checkbox, DatePicker, Input, Radio, Select, Switch, TimePicker, Tooltip } from 'antd';
-import moment from 'moment';
+import { useExtraInformationAction } from '@stores/actions';
+import { RootState } from '@stores/states';
+import { ExtraInformationVM } from '@view-models';
+import { Button, Col, Form, Input, message, Popover, Result, Row, Tag } from 'antd';
+import { FormInstance } from 'antd/lib/form';
+import { TabPanel, TabView } from 'primereact/tabview';
 import React from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { AccountEditableComponent, AccountPreviewComponent } from '..';
+import './account-extra.component.css';
+import swal from 'sweetalert2';
 export interface IAccountExtraComponentProps extends IBaseProps {
   input: {
-    item: AccountExtraInformationCM | AccountExtraInformationUM,
-    index: number,
-    disabled?: boolean,
+    action: 'create' | 'edit' | 'setting' | '',
+    extraInformations: ExtraInformationVM[],
   };
   output: {
+    onDone: () => void,
   };
 }
 
 export const AccountExtraComponent: React.FC<IAccountExtraComponentProps> = (props: IAccountExtraComponentProps) => {
-  const renderInput = (item: AccountExtraInformationCM | AccountExtraInformationUM) => {
-    switch (item.type) {
-      case 'select':
-        return <Select
-          showSearch={true}
-          allowClear={true}
-          disabled={props.input.disabled ? props.input.disabled : false}
-          placeholder={item.placeHolder}
-          style={{ width: '100%', background: 'white' }}
-          optionFilterProp="children"
-          filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
-        >
-          {JSON.parse(item.options).map((option: { label: string, value: string }) => (
-            <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
-          ))}
-        </Select>;
-      case 'multi-select':
-        return <Select
-          showSearch={true}
-          allowClear={true}
-          mode="multiple"
-          disabled={props.input.disabled ? props.input.disabled : false}
-          placeholder={item.placeHolder}
-          style={{ width: '100%', background: 'white' }}
-          optionFilterProp="children"
-          filterOption={(input, option) => option?.children.toLowerCase().includes(input.toLowerCase())}
-        >
-          {JSON.parse(item.options).map((option: { label: string, value: string }) => (
-            <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
-          ))}
-        </Select>;
-      case 'auto-complete':
-        return <AutoComplete
-          options={JSON.parse(item.options)}
-          disabled={props.input.disabled ? props.input.disabled : false}
-          style={{ width: '100%', background: 'white' }}
-          placeholder={item.placeHolder}
-          filterOption={(input, option) => option?.value.toLowerCase().includes(input.toLowerCase())}
-        />;
-      case 'radio':
-        return <Radio.Group style={{ width: '100%' }} disabled={props.input.disabled ? props.input.disabled : false}>
-          {JSON.parse(item.options).map((option: { label: string, value: string }) => (
-            <Radio.Button key={option.value} value={option.value}>{option.label}</Radio.Button>
-          ))}
-        </Radio.Group>;
-      case 'check-box':
-        return JSON.parse(item.options).map((option: { label: string, value: string }) => (
-          <Checkbox disabled={props.input.disabled ? props.input.disabled : false} style={{ width: '100%' }} value={option.value} key={option.value}>{option.label}</Checkbox>
-        ));
-      case 'check-box-group':
-        return <Checkbox.Group disabled={props.input.disabled ? props.input.disabled : false} style={{ width: '100%' }} options={JSON.parse(item.options)} />;
-      case 'date-picker':
-        return <DatePicker
-          disabled={props.input.disabled ? props.input.disabled : false}
-          style={{ width: '100%', background: 'white' }}
-          placeholder={item.placeHolder}
-        />;
-      case 'date-range':
-        return <DatePicker.RangePicker
-          disabled={props.input.disabled ? props.input.disabled : false}
-          style={{ width: '100%', background: 'white' }}
-          placeholder={JSON.parse(item.placeHolder)}
-        />;
-      case 'time-picker':
-        return <TimePicker
-          disabled={props.input.disabled ? props.input.disabled : false}
-          style={{ width: '100%', background: 'white' }}
-          placeholder={item.placeHolder}
-          defaultValue={moment('00:00:00', 'HH:mm:ss')}
-        />;
-      case 'text-area':
-        return <Input.TextArea disabled={props.input.disabled ? props.input.disabled : false} rows={5} name={item.name} id={item.id} key={item.id + '-' + item.name} placeholder={item.placeHolder} style={{ width: '100%', background: 'white' }} />;
-      case 'switch':
-        return <Switch disabled={props.input.disabled ? props.input.disabled : false} checkedChildren={JSON.parse(item.placeHolder)[0]} unCheckedChildren={JSON.parse(item.placeHolder)[1]} />;
-      default:
-        return <Input disabled={props.input.disabled ? props.input.disabled : false} suffix={
-          <Tooltip title={item.tooltip}>
-            <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-          </Tooltip>
-        } name={item.name} id={item.id} key={item.id + '-' + item.name} type={item.subType} placeholder={item.placeHolder} style={{ width: '100%', background: 'white' }} />;
-    }
-  };
-  return renderInput(props.input.item as AccountExtraInformationCM | AccountExtraInformationUM);
+  const region = useSelector<RootState, 'vi' | 'en' | 'jp'>((state) => state.language.language.region);
+  const [submit, setSubmit] = React.useState<'completed' | 'processing' | 'cancel' | 'none'>('none');
+  const [index, setIndex] = React.useState<number>(0);
+  const [editing, setEditing] = React.useState<boolean>(false);
+  const [extraInformations, setAccountExtraInformations] = React.useState<ExtraInformationVM[]>(props.input.extraInformations);
+  const dispatch = useDispatch();
+  return (
+    <div id="account-extra" key="account-extra" className="account-extra">
+      <div className="account-item selected">
+        <div className="account-item-header">
+          <Row className="account-item-header-content">
+            <Col span={0} className="account-item-header-content-left" />
+            <Col span={24} className="account-item-header-content-right" style={{ height: '100%', justifyContent: 'center' }}>
+              <span>Account Extra Information</span>
+            </Col>
+          </Row>
+        </div>
+        <div className="account-item-content">
+          <TabView activeIndex={index} onTabChange={(e) => setIndex(e.index)}>
+            <TabPanel contentClassName="editable" header={
+              <>
+                <span className="text">
+                  Setting
+      </span>
+                <span className="icon">
+                  <SettingOutlined />
+                </span>
+              </>
+            } headerStyle={{ width: '50%' }} />
+            <TabPanel disabled={editing} header={
+              <>
+                <span className="text">
+                  Preview
+        </span>
+                <span className="icon">
+                  <EyeOutlined />
+                </span>
+              </>
+            } headerStyle={{ width: '50%' }} />
+          </TabView>
+          <div className="tab-view">
+            <div className="account-editable" style={{ display: index === 0 ? 'block' : 'none' }}>
+              <AccountEditableComponent input={{ extraInformations: props.input.extraInformations }} output={{
+                onEdit: setEditing,
+                onDone: (data) => {
+                  setAccountExtraInformations(data);
+                },
+              }} />
+            </div>
+            <div className="account-preview" style={{ display: index === 1 ? 'block' : 'none' }}>
+              <AccountPreviewComponent input={{ extraInformations }} output={{}} />
+            </div>
+          </div>
+        </div>
+        <div className="account-item-footer" >
+          <Row className="account-item-footer-content">
+            <Col span={8} className="account-item-footer-content-left" />
+            <Col span={8} className="account-item-footer-content-middle">
+              <div className="account-item-footer-content-middle-buttons">
+                <Button size="middle" shape="circle" icon={<CheckOutlined />} style={{ marginRight: 10 }} onClick={() => {
+                  setSubmit('processing');
+                  setTimeout(() => {
+                    dispatch(useExtraInformationAction().update(extraInformations.map((accountExtraInformation, i) => ({ ...accountExtraInformation, position: i })),
+                      () => {
+                        swal.fire('Notification', 'Save successfully', 'success');
+                        props.output.onDone();
+                        setSubmit('completed');
+                      },
+                      (err: any) => {
+                        swal.fire('Notification', 'Save failed', 'error');
+                        props.output.onDone();
+                        setSubmit('completed');
+                      },
+                    ));
+                  }, 1000);
+                }} disabled={submit === 'processing'} loading={submit === 'processing'} className="setting" />
+                <Button size="middle" shape="circle" icon={<MinusOutlined />} danger={true} className="setting" disabled={submit === 'processing'} onClick={props.output.onDone} />
+              </div>
+            </Col>
+            <Col xs={8} sm={8} md={0} className="account-item-footer-content-right" />
+            <Col xs={0} sm={0} md={8} className="account-item-footer-content-right" />
+          </Row>
+        </div>
+      </div>
+    </div>
+  );
 };

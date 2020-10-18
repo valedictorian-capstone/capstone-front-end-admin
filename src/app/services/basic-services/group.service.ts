@@ -25,11 +25,11 @@ export class GroupService {
     return useHttp().delete<GroupVM>(`${environment.apiEndpont}${environment.api['basic-api']['group'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<GroupVM>> => {
-    return useHttp().put<GroupVM>(`${environment.apiEndpont}${environment.api['basic-api']['group'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<GroupVM>> => {
+    return useHttp().put<GroupVM>(`${environment.apiEndpont}${environment.api['basic-api']['group'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<GroupVM>> => {
-    return useHttp().put<GroupVM>(`${environment.apiEndpont}${environment.api['basic-api']['group'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<GroupVM>> => {
+    return useHttp().put<GroupVM>(`${environment.apiEndpont}${environment.api['basic-api']['group'].deactive}`, ids);
   }
 }

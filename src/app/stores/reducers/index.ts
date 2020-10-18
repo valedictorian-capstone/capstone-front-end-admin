@@ -1,9 +1,10 @@
 import { RootState } from '@stores/states';
 import { combineReducers, Reducer, CombinedState } from 'redux';
-import { useAccountExtraDataReducer, useAccountExtraInformationDataReducer, useAccountExtraInformationReducer, useAccountReducer } from './account-reducers';
-import { useDepartmentReducer, useGroupReducer, usePatternReducer, usePermissionReducer, useRoleReducer } from './basic-reducers';
+import { useAccountExtraInformationDataReducer, useAccountReducer } from './account-reducers';
+import { useDepartmentReducer, useGroupReducer, usePatternReducer, usePermissionReducer, useRoleReducer, useExtraInformationReducer } from './basic-reducers';
 import { useCommentReducer, useConditionReducer, useWorkFlowConnectionReducer, useWorkFlowInstanceReducer, useWorkFlowReducer, useWorkFlowStepInstanceReducer, useWorkFlowStepReducer } from './bpmn-reducers';
-import { useCustomerExtraDataReducer, useCustomerExtraInformationDataReducer, useCustomerExtraInformationReducer, useCustomerReducer } from './customer-reducers';
+import { useCustomerExtraInformationDataReducer, useCustomerReducer } from './customer-reducers';
+import { useProductExtraInformationDataReducer, useProductReducer } from './product-reducers';
 import { useFormControlReducer, useFormDataReducer, useFormValueReducer, useFormGroupReducer } from './form-reducers';
 import { useAuthenticationReducer, useLanguageReducer, useLoadingReducer, useSettingReducer } from './extra-reducers';
 
@@ -22,13 +23,12 @@ export const useRootReducer = (): Reducer<CombinedState<RootState>> => (combineR
   workFlow: useWorkFlowReducer,
   workFlowStepInstance: useWorkFlowStepInstanceReducer,
   workFlowStep: useWorkFlowStepReducer,
-  customerExtraData: useCustomerExtraDataReducer,
+  extraInformation: useExtraInformationReducer,
   customerExtraInformationData: useCustomerExtraInformationDataReducer,
-  customerExtraInformation: useCustomerExtraInformationReducer,
   customer: useCustomerReducer,
-  accountExtraData: useAccountExtraDataReducer,
+  product: useProductReducer,
+  productExtraInformationData: useProductExtraInformationDataReducer,
   accountExtraInformationData: useAccountExtraInformationDataReducer,
-  accountExtraInformation: useAccountExtraInformationReducer,
   account: useAccountReducer,
   formControl: useFormControlReducer,
   formData: useFormDataReducer,

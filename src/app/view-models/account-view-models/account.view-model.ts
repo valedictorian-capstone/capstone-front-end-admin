@@ -1,7 +1,6 @@
+import { AccountExtraInformationDataVM } from '.';
 import { DepartmentVM, RoleVM } from '../basic-view-models';
 import { CommentVM, WorkFlowStepInstanceVM } from '../bpmn-view-models';
-import { AccountExtraDataVM } from './account-extra-data.view-model';
-import { AccountExtraInformationVM } from './account-extra-information.view-model';
 
 export interface AccountVM {
   readonly id: string;
@@ -13,10 +12,8 @@ export interface AccountVM {
   readonly address: string;
   readonly gender: string;
   readonly currentValidateCode: string;
-  readonly position: string;
   readonly roles: RoleVM[];
-  readonly accountExtraInformations: AccountExtraInformationVM[];
-  readonly accountExtraDatas: AccountExtraDataVM[];
+  readonly accountExtraInformationDatas: AccountExtraInformationDataVM[];
   readonly departments: DepartmentVM[];
   readonly comments: CommentVM[];
   readonly workFlowStepInstances: WorkFlowStepInstanceVM[];
@@ -35,9 +32,8 @@ export interface AccountCM {
   avatar: string;
   address: string;
   gender: string;
-  passwordHash: string;
+  password: string;
   currentValidateCode: string;
-  position: string;
 }
 
 export interface AccountUM {
@@ -49,7 +45,6 @@ export interface AccountUM {
   avatar: string;
   address: string;
   gender: string;
-  passwordHash: string;
+  password: string;
   currentValidateCode: string;
-  position: string;
 }

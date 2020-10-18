@@ -4,8 +4,7 @@ export interface DepartmentVM {
   readonly id: string;
   readonly name: string;
   readonly description: string;
-  readonly level: string;
-  readonly parentId: string;
+  readonly departmentParent: DepartmentVM | string;
   readonly accounts: AccountVM[];
   readonly childrens: DepartmentVM[];
   readonly isDelete: boolean;
@@ -18,14 +17,12 @@ export interface DepartmentVM {
 export interface DepartmentCM {
   name: string;
   description: string;
-  level: string;
-  parentId: string;
+  departmentParent: DepartmentVM | string;
 }
 
 export interface DepartmentUM {
   id: string;
   name: string;
   description: string;
-  level: string;
-  parentId: string;
+  departmentParent: DepartmentVM | string;
 }

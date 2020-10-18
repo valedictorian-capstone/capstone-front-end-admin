@@ -1,0 +1,35 @@
+.department-item-content .tab-view {
+    height: 100%;
+}
+
+.department-item-content .tab-view .department-create .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.department-item-content .tab-view .department-create .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.department-item-content .tab-view .department-create .content .ant-form .form-control label span {
+    float: right;
+}
+
+.department-item-content .tab-view .department-create,
+.department-item-content .tab-view .department-editable,
+.department-item-content .tab-view .department-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.department-item-content .tab-view .department-create {
+    background: white;
+}
+
+.department-item-content .tab-view .department-editable {
+    background: moccasin;
+}

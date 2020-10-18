@@ -1,13 +1,11 @@
-import { AccountExtraInformationVM } from '../account-view-models';
-import { CustomerExtraInformationVM } from '../customer-view-models';
 import { FormControlVM } from '../form-view-models';
+import { ExtraInformationVM } from './extra-information.view-model';
 
 export interface PatternVM {
   readonly id: string;
   readonly name: string;
   readonly description: string;
-  readonly customerExtraInformations: CustomerExtraInformationVM[];
-  readonly accountExtraInformations: AccountExtraInformationVM[];
+  readonly extraInformations: ExtraInformationVM[];
   readonly formControls: FormControlVM[];
   readonly isDelete: boolean;
   readonly createdBy: string;

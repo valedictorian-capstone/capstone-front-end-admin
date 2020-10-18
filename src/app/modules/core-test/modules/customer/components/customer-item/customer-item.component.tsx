@@ -1,7 +1,7 @@
 import { environment } from '@environments/environment';
 import { IBaseProps } from '@extras/interfaces';
 import { RootState } from '@stores/states';
-import { CustomerExtraInformationCM, CustomerExtraInformationUM } from '@view-models';
+import { ExtraInformationCM, ExtraInformationUM } from '@view-models';
 import { Tooltip } from 'antd';
 import React, { useRef } from 'react';
 import { DragSourceMonitor, useDrag } from 'react-dnd';
@@ -10,7 +10,7 @@ import { controls } from 'src/assets/forms/controls';
 import './customer-item.component.css';
 export interface ICustomerItemComponentProps extends IBaseProps {
   input: {
-    item: CustomerExtraInformationUM | CustomerExtraInformationCM,
+    item: ExtraInformationUM | ExtraInformationCM,
     index: number,
     disabled?: boolean,
   };

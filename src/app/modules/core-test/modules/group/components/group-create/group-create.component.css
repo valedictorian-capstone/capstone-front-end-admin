@@ -1,0 +1,35 @@
+.group-item-content .tab-view {
+    height: 100%;
+}
+
+.group-item-content .tab-view .group-create .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.group-item-content .tab-view .group-create .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.group-item-content .tab-view .group-create .content .ant-form .form-control label span {
+    float: right;
+}
+
+.group-item-content .tab-view .group-create,
+.group-item-content .tab-view .group-editable,
+.group-item-content .tab-view .group-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.group-item-content .tab-view .group-create {
+    background: white;
+}
+
+.group-item-content .tab-view .group-editable {
+    background: moccasin;
+}

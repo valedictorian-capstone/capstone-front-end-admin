@@ -1,0 +1,35 @@
+.pattern-item-content .tab-view {
+    height: 100%;
+}
+
+.pattern-item-content .tab-view .pattern-detail .content .ant-form .form-control {
+    border: 1px solid gray;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.pattern-item-content .tab-view .pattern-detail .content .ant-form .form-control .ant-form-item {
+    margin: 0;
+}
+
+.pattern-item-content .tab-view .pattern-detail .content .ant-form .form-control label span {
+    float: right;
+}
+
+.pattern-item-content .tab-view .pattern-detail,
+.pattern-item-content .tab-view .pattern-editable,
+.pattern-item-content .tab-view .pattern-preview {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.pattern-item-content .tab-view .pattern-detail {
+    background: white;
+}
+
+.pattern-item-content .tab-view .pattern-editable {
+    background: moccasin;
+}

@@ -41,3 +41,48 @@
 .ant-popover-content {
     width: fit-content !important;
 }
+
+.search {
+    position: absolute;
+    right: 0;
+    top: 7rem;
+    width: 20rem;
+    height: 30rem;
+    background: white;
+    transition: transform .2s ease-in-out;
+    transform: translateX(20rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search.open {
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.search .toggle {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    background: white;
+    top: 6rem;
+    right: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.create {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    background: white;
+    top: 15.5rem;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

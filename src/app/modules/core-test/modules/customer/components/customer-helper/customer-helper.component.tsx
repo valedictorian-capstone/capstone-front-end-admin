@@ -1,7 +1,7 @@
 import { environment } from '@environments/environment';
 import { IBaseProps } from '@extras/interfaces';
 import { RootState } from '@stores/states';
-import { CustomerExtraInformationCM, CustomerExtraInformationUM } from '@view-models';
+import { ExtraInformationCM, ExtraInformationUM } from '@view-models';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { uuid } from 'uuidv4';
@@ -21,7 +21,7 @@ export const CustomerHelperComponent: React.FC<ICustomerHelperComponentProps> = 
   return (
     <div className={'customer-helper-container' + (props.input.horizontal ? ' horizontal' : '')}>
       <div className={'customer-helper-content' + (props.input.horizontal ? ' horizontal' : '')}>
-        {config.items.map((item, index) => <CustomerItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as CustomerExtraInformationUM | CustomerExtraInformationCM, index, disabled: true }} />)}
+        {config.items.map((item, index) => <CustomerItemComponent key={uuid()} output={{}} input={{ item: { ...item, id: uuid() } as ExtraInformationUM | ExtraInformationCM, index, disabled: true }} />)}
       </div>
     </div>
   );

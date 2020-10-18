@@ -1,14 +1,6 @@
 .form-container {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.form-container .form-helper {
-    height: 100%;
-}
-
-.form-container .form-content {
-    max-height: 100%;
-    overflow: hidden;
+    height: calc(100vh - 7rem);
+    padding: 2rem;
+    overflow: auto;
 }

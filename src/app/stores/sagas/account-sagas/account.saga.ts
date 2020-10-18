@@ -15,13 +15,13 @@ export const useAccountSaga = () => {
     yield takeLatest(ACCOUNT_TYPE.ACTIVE.FETCH, useActive);
     yield takeLatest(ACCOUNT_TYPE.DEACTIVE.FETCH, useDeactive);
   }
-  function* useGetAll() {
+  function* useGetAll(action: Account) {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.findAll);
-      yield put(useAccountAction().getAllSuccess(data));
+      yield put(useAccountAction().getAllSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().getAllError(error));
+      yield put(useAccountAction().getAllError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -29,9 +29,9 @@ export const useAccountSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.insert, action.payload.data as AccountCM);
-      yield put(useAccountAction().createSuccess(data));
+      yield put(useAccountAction().createSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().createError(error));
+      yield put(useAccountAction().createError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -39,9 +39,9 @@ export const useAccountSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.update, action.payload.data as AccountUM);
-      yield put(useAccountAction().updateSuccess(data));
+      yield put(useAccountAction().updateSuccess(data, action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().updateError(error));
+      yield put(useAccountAction().updateError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -49,9 +49,9 @@ export const useAccountSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.remove, action.payload.data as string);
-      yield put(useAccountAction().removeSuccess(data));
+      yield put(useAccountAction().removeSuccess(action.payload.data as string, action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().removeError(error));
+      yield put(useAccountAction().removeError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -59,9 +59,9 @@ export const useAccountSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.active, action.payload.data as string[]);
-      yield put(useAccountAction().activeSuccess(action.payload.data as string[]));
+      yield put(useAccountAction().activeSuccess(action.payload.data as string[], action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().activeError(error));
+      yield put(useAccountAction().activeError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }
@@ -69,9 +69,9 @@ export const useAccountSaga = () => {
     yield put(useLoadingAction().showLoader());
     try {
       const { data } = yield call(AccountService.deactive, action.payload.data as string[]);
-      yield put(useAccountAction().deactiveSuccess(action.payload.data as string[]));
+      yield put(useAccountAction().deactiveSuccess(action.payload.data as string[], action.onSuccess));
     } catch (error) {
-      yield put(useAccountAction().deactiveError(error));
+      yield put(useAccountAction().deactiveError(() => action.onError ? action.onError(error) : (() => { })));
     }
     yield put(useLoadingAction().hideLoader());
   }

@@ -6,30 +6,30 @@ import { environment } from 'src/environments/environment';
 export class AccountExtraInformationDataService {
 
   public static readonly findAll = (): Promise<AxiosResponse<AccountExtraInformationDataVM[]>> => {
-    return useHttp().get<AccountExtraInformationDataVM[]>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].main}`);
+    return useHttp().get<AccountExtraInformationDataVM[]>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].main}`);
   }
 
   public static readonly findById = (id: string): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().get<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].getById}${id}`);
+    return useHttp().get<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].getById}${id}`);
   }
 
   public static readonly insert = (data: AccountExtraInformationDataCM): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().post<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].main}`, data);
+    return useHttp().post<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].main}`, data);
   }
 
   public static readonly update = (data: AccountExtraInformationDataUM): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].main}`, data);
+    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].main}`, data);
   }
 
   public static readonly remove = (id: string): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().delete<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].getById}${id}`);
+    return useHttp().delete<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].getById}${id}`);
   }
 
   public static readonly active = (id: string): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].active}${id}`);
+    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].active}${id}`);
   }
 
   public static readonly deactive = (id: string): Promise<AxiosResponse<AccountExtraInformationDataVM>> => {
-    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information'].deactive}${id}`);
+    return useHttp().put<AccountExtraInformationDataVM>(`${environment.apiEndpont}${environment.api['account-api']['account-extra-information-data'].deactive}${id}`);
   }
 }

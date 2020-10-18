@@ -1,0 +1,43 @@
+.account-support {
+    height: 48px;
+    border: 1px solid gray;
+}
+
+.account-support .ant-row {
+    height: 100%;
+    padding: 1rem;
+}
+
+.account-support .account-support-left {
+    height: 100%;
+}
+
+.account-support .account-support-left div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.account-support .account-support-right div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.account-support .account-support-right {
+    height: 100%;
+}
+
+.account-support .account-support-left div .set {
+    visibility: hidden;
+}
+
+@media (max-width: 992px) {
+    .account-support .account-support-left div .set {
+        visibility: visible;
+    }
+}
+
+.ant-popover-content {
+    width: fit-content !important;
+}

@@ -25,11 +25,11 @@ export class DepartmentService {
     return useHttp().delete<DepartmentVM>(`${environment.apiEndpont}${environment.api['basic-api']['department'].getById}${id}`);
   }
 
-  public static readonly active = (id: string): Promise<AxiosResponse<DepartmentVM>> => {
-    return useHttp().put<DepartmentVM>(`${environment.apiEndpont}${environment.api['basic-api']['department'].active}${id}`);
+  public static readonly active = (ids: string[]): Promise<AxiosResponse<DepartmentVM>> => {
+    return useHttp().put<DepartmentVM>(`${environment.apiEndpont}${environment.api['basic-api']['department'].active}`, ids);
   }
 
-  public static readonly deactive = (id: string): Promise<AxiosResponse<DepartmentVM>> => {
-    return useHttp().put<DepartmentVM>(`${environment.apiEndpont}${environment.api['basic-api']['department'].deactive}${id}`);
+  public static readonly deactive = (ids: string[]): Promise<AxiosResponse<DepartmentVM>> => {
+    return useHttp().put<DepartmentVM>(`${environment.apiEndpont}${environment.api['basic-api']['department'].deactive}`, ids);
   }
 }

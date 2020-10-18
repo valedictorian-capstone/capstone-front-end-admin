@@ -179,3 +179,89 @@
         margin: auto;
     }
 }
+
+.list .card {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 2rem;
+    background: white;
+    height: 16rem;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border-radius: 14px;
+}
+
+.list .card .stick {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.list .card .edit {
+    position: absolute;
+    bottom: 1rem;
+    left: 5rem;
+}
+
+.list .card .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.list .card .change {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.list .card .preview {
+    position: absolute;
+    bottom: 1rem;
+    left: 3rem;
+}
+
+.list .card .new {
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+.list .card .code {
+    position: absolute;
+    top: 0.5rem;
+    left: 3rem;
+    width: calc(100% - 6rem);
+    text-align: center;
+    font-weight: 900;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+}
+
+.list .card .name {
+    position: absolute;
+    left: 2.5rem;
+    top: 4.5rem;
+    font-size: 1rem;
+}
+
+.list .card .description {
+    position: absolute;
+    left: 2.5rem;
+    font-size: 1rem;
+    top: 6rem;
+}
+
+.list .card .status {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.list .card .status span {
+    border-radius: 25px;
+    width: 6rem;
+    text-align: center;
+    cursor: pointer;
+}

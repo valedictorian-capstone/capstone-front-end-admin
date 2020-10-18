@@ -1,7 +1,10 @@
+import { AccountVM } from '.';
+import { ExtraInformationVM } from '../basic-view-models';
+
 export interface AccountExtraInformationDataVM {
   readonly id: string;
-  readonly accountExtraInformationId: string;
-  readonly accountExtraDataId: string;
+  readonly extraInformation: ExtraInformationVM;
+  readonly account: AccountVM;
   readonly value: string;
   readonly isDelete: boolean;
   readonly createdBy: string;

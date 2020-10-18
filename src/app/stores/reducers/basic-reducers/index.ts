@@ -3,3 +3,4 @@ export * from './group.reducer';
 export * from './pattern.reducer';
 export * from './department.reducer';
 export * from './permission.reducer';
+export * from './extra-information.reducer';
